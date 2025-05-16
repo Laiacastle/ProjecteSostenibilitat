@@ -12,8 +12,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ElevatedButton
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.runtime.*
@@ -22,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -49,13 +53,24 @@ class GamesViewModel : ViewModel() {
 @Composable
 fun GamesScreen(){
     val games = GamesViewModel().gamesD
-
+    val color1 = Color(red = 0x8E, green = 0xF4, blue = 0xC0)
+    val color2 = Color(red = 0x56, green = 0xA5, blue = 0x8B)
+    val color3 = Color(red = 0x49, green = 0x60, blue = 0x5E)
+    val color4 = Color(red = 0xB4, green = 0x84, blue = 0x80)
+    val color5 = Color(red = 0xE4, green = 0xD5, blue = 0xDD)
     Column(
         Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
+        ElevatedButton(
+            onClick = {},
+            //modifier = Modifier.align(alignment =)
+        ){
+
+            Color.White
+        }
         Spacer(Modifier.height(50.dp))
-        Text("Games", fontSize = 30.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+        Text("Games", fontSize = 30.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center, color = Color.Black)
 
         Spacer(Modifier.height(20.dp))
         LazyColumn {
@@ -63,11 +78,11 @@ fun GamesScreen(){
                 Row(
                         modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
                             .border(
-                                width = 2.dp,
-                                brush = Brush.horizontalGradient(listOf(Color.Red, Color.Blue)),
+                                width = 4.dp,
+                                brush = Brush.horizontalGradient(listOf(color2,color3)),
                                 shape = RoundedCornerShape(10.dp)
                             )
-                            //.background() image Url
+                            .background(color5) //image Url
                     ,
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center,
@@ -79,13 +94,13 @@ fun GamesScreen(){
                             text = game.name,
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            color = Color(red = 0x8E, green = 0xF4, blue = 0xC0), // prova colors paleta
+                            color = Color.Black, // prova colors paleta
                             textAlign = TextAlign.Center,
                         )
                         Spacer(Modifier.height(20.dp))
                         Button(
                             onClick = {},
-                            colors = ButtonDefaults.textButtonColors(),
+                            colors = ButtonDefaults.textButtonColors(color1,color2), // prova colors
                         ){
                             Text("Jugar")
                         }
