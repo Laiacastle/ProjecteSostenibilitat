@@ -38,6 +38,7 @@ kotlin {
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
+            implementation(compose.material)
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
@@ -78,6 +79,7 @@ android {
 }
 
 dependencies {
+    implementation("androidx.compose.runtime:runtime-android:1.8.1")
     debugImplementation(compose.uiTooling)
 }
 
