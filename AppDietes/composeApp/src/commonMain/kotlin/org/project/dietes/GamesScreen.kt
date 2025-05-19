@@ -82,7 +82,7 @@ fun GamesScreen(){
                                 brush = Brush.horizontalGradient(listOf(color2,color3)),
                                 shape = RoundedCornerShape(10.dp)
                             )
-                            .background(color5) //image Url
+                            //.background() //image Url
                     ,
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center,
