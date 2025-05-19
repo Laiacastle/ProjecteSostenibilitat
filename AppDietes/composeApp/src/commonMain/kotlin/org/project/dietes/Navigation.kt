@@ -1,5 +1,5 @@
 package org.project.dietes
-/*
+
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.DrawerValue
@@ -16,15 +16,16 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.launch
-//import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 
 sealed interface Screen {
     data object Home : Screen
     data object Games : Screen
+    data object Account : Screen
 }
 class NavViewModel : ViewModel(){
-    val currentScreen = mutableStateOf<Screen>(Screen.Home)
+    val currentScreen = mutableStateOf<Screen>(Screen.Games)
     fun navTo(screen: Screen) {currentScreen.value = screen}
 }
 
@@ -47,6 +48,15 @@ fun Navigation(){
                     icon = { },
                     onClick = {
                         navViewModel.navTo(Screen.Home)
+                        scope.launch { drawerState.close() }
+                    }
+                )
+                NavigationDrawerItem(
+                    label = { Text("Account") },
+                    selected = false,
+                    icon = { },
+                    onClick = {
+                        navViewModel.navTo(Screen.Account)
                         scope.launch { drawerState.close() }
                     }
                 )
@@ -89,16 +99,19 @@ fun Navigation(){
                 when (currentScreen) {
                     Screen.Home -> HomePage() // Home Page
                     Screen.Games -> GamesScreen()
+                    Screen.Account -> AccountScreen() // Account Page
                 }
             }
         }
     }
 }
 
-
+@Composable
+fun AccountScreen() {
+    TODO("Not yet implemented")
+}
 
 @Composable
 fun HomePage() {
     TODO("Not yet implemented")
 }
-*/
