@@ -3,6 +3,7 @@ package org.project.dietes
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.DrawerValue
+//import androidx.compose.material.icons.Icons
 import androidx.compose.material3.*
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
@@ -17,7 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.launch
 import androidx.lifecycle.viewmodel.compose.viewModel
-
 
 sealed interface Screen {
     data object Home : Screen

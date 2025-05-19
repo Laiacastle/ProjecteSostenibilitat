@@ -37,15 +37,16 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
-            implementation(compose.material3)
             implementation(compose.material)
+            implementation(compose.material3)
+            implementation("androidx.compose.material:material:1.7.1")
+            //implementation("androidx.compose.material:material-icons-extended-android:1.5.0")
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.9.0-beta01")
-
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
