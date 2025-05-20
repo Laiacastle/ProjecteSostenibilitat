@@ -13,13 +13,14 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
+//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.ContentAlpha
+//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Button
 import androidx.compose.material3.Icon
 //noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.TextFieldColors
+//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Cake
@@ -28,8 +29,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.currentComposer
-import androidx.compose.runtime.currentCompositionLocalContext
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -40,7 +40,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
@@ -343,7 +342,7 @@ fun UserStatisticsScreen(){
                 ageError = age.isBlank()
 
                 // add user
-                /*users.add(
+                users.add(
                     UserData(
                         idUser = 1, // generated Auto no fet
                         name = name,
@@ -354,13 +353,13 @@ fun UserStatisticsScreen(){
                         sleepTime = sleepTime.toFloat(),
                         age = age.toInt(),
                     )
-                )*/
+                )
             },
             colors = ButtonDefaults.textButtonColors(color1,color3)
         ){
             Text("Envia")
         }
-        /*LazyColumn {
+        /*LazyColumn { // proves userData class mostrar dades inserides
             items(users){ user ->
                 Row {
                     Column {
