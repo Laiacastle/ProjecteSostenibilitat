@@ -3,7 +3,11 @@ package org.project.dietes
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.DrawerValue
-//import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Games
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.*
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
@@ -45,7 +49,7 @@ fun Navigation(){
                 NavigationDrawerItem(
                     label = { Text("HomePage") },
                     selected = false,
-                    icon = { },
+                    icon = { Icon(Icons.Default.Home, contentDescription = "Home")},
                     onClick = {
                         navViewModel.navTo(Screen.Home)
                         scope.launch { drawerState.close() }
@@ -54,7 +58,7 @@ fun Navigation(){
                 NavigationDrawerItem(
                     label = { Text("Account") },
                     selected = false,
-                    icon = { },
+                    icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Account")},
                     onClick = {
                         navViewModel.navTo(Screen.Account)
                         scope.launch { drawerState.close() }
@@ -63,7 +67,7 @@ fun Navigation(){
                 NavigationDrawerItem(
                     label = { Text("Games") },
                     selected = false,
-                    icon = {},
+                    icon = {Icon(Icons.Default.Games, contentDescription = "Games")},
                     onClick = {
                         navViewModel.navTo(Screen.Games)
                         scope.launch { drawerState.close() }
@@ -86,10 +90,10 @@ fun Navigation(){
                                 }
                             }
                         }) {
-                            /*Icon(
-                                imageVector = ,
+                            Icon(
+                                imageVector = Icons.Filled.Menu,
                                 contentDescription = "Menu",
-                            )*/
+                            )
                         }
                     }
                 )
