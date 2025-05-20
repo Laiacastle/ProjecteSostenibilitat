@@ -1,11 +1,15 @@
 package org.project.dietes
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
@@ -15,11 +19,17 @@ import androidx.compose.material.Button
 import androidx.compose.material3.Icon
 //noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.TextFieldColors
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Cake
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.currentComposer
+import androidx.compose.runtime.currentCompositionLocalContext
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -27,11 +37,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
+import appdietes.composeapp.generated.resources.Res
+import appdietes.composeapp.generated.resources.Logo
+import org.jetbrains.compose.resources.painterResource
 
 data class UserData(
     val idUser: Int,
@@ -64,14 +79,28 @@ fun UserStatisticsScreen(){
     var age by remember { mutableStateOf("") }
     var ageError by remember { mutableStateOf(false) }
 
+    val color1 = Color(red = 0x8E, green = 0xF4, blue = 0xC0)
+    val color2 = Color(red = 0x56, green = 0xA5, blue = 0x8B)
+    val color3 = Color(red = 0x49, green = 0x60, blue = 0x5E)
+    val color4 = Color(red = 0xB4, green = 0x84, blue = 0x80)
+    val color5 = Color(red = 0xE4, green = 0xD5, blue = 0xDD)
     Column(
         modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ){
-
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Image(
+                modifier = Modifier.size(40.dp),
+                painter = painterResource(Res.drawable.Logo),
+                contentDescription = "logo"
+            )
+            Spacer(Modifier.width(10.dp))
+            Text("Information User", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+        }
         Spacer(Modifier.height(10.dp))
-        Text("Information User", fontSize = 20.sp)
-
         // name input
         OutlinedTextField(
             value = name,
@@ -81,6 +110,12 @@ fun UserStatisticsScreen(){
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
             label = {Text(text = "Name")},
+            colors = TextFieldDefaults.textFieldColors(
+                backgroundColor = Color.White,
+                focusedIndicatorColor = color2,
+                unfocusedIndicatorColor = color2,
+
+            ),
             isError = nameError,
             placeholder = {Text(text = "Enter your name")}
         )
@@ -89,6 +124,7 @@ fun UserStatisticsScreen(){
             MaterialTheme.colors.error
         } else {
             MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium)
+           // color3
         }
         Text(
             text = assistiveElementText,
@@ -107,6 +143,11 @@ fun UserStatisticsScreen(){
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
             label = {Text(text = "Last Name")},
+            colors = TextFieldDefaults.textFieldColors(
+                backgroundColor = Color.White,
+                focusedIndicatorColor = color2,
+                unfocusedIndicatorColor = color2
+            ),
             isError = lastNameError,
             placeholder = {Text(text = "Enter your Last Name")}
         )
@@ -135,6 +176,11 @@ fun UserStatisticsScreen(){
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             label = { Text(text = "Email address") },
+            colors = TextFieldDefaults.textFieldColors(
+                backgroundColor = Color.White,
+                focusedIndicatorColor = color2,
+                unfocusedIndicatorColor = color2
+            ),
             isError = emailError,
             placeholder = { Text(text = "Enter your e-mail") }
         )
@@ -161,6 +207,11 @@ fun UserStatisticsScreen(){
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
             label = {Text(text = "Weight")},
+            colors = TextFieldDefaults.textFieldColors(
+                backgroundColor = Color.White,
+                focusedIndicatorColor = color2,
+                unfocusedIndicatorColor = color2
+            ),
             isError = weightError,
             placeholder = {Text(text = "Enter your Weight")}
         )
@@ -187,6 +238,11 @@ fun UserStatisticsScreen(){
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
             label = {Text(text = "Exercise Done")},
+            colors = TextFieldDefaults.textFieldColors(
+                backgroundColor = Color.White,
+                focusedIndicatorColor = color2,
+                unfocusedIndicatorColor = color2
+            ),
             isError = exerciseDoneError,
             placeholder = {Text(text = "Enter your Exercise Done")}
         )
@@ -213,6 +269,11 @@ fun UserStatisticsScreen(){
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
             label = {Text(text = "Sleep Time")},
+            colors = TextFieldDefaults.textFieldColors(
+                backgroundColor = Color.White,
+                focusedIndicatorColor = color2,
+                unfocusedIndicatorColor = color2
+            ),
             isError = sleepTimeError,
             placeholder = {Text(text = "Enter your Sleep Time")}
         )
@@ -241,6 +302,11 @@ fun UserStatisticsScreen(){
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             label = {Text(text = "Age")},
+            colors = TextFieldDefaults.textFieldColors(
+                backgroundColor = Color.White,
+                focusedIndicatorColor = color2,
+                unfocusedIndicatorColor = color2
+            ),
             isError = ageError,
             placeholder = {Text(text = "Enter your Age")}
         )
@@ -269,7 +335,7 @@ fun UserStatisticsScreen(){
                 ageError = age.isBlank()
 
                 // add user
-                users.add(
+                /*users.add(
                     UserData(
                         idUser = 1, // generated Auto no fet
                         name = name,
@@ -280,8 +346,9 @@ fun UserStatisticsScreen(){
                         sleepTime = sleepTime.toFloat(),
                         age = age.toInt(),
                     )
-                )
-            }
+                )*/
+            },
+            colors = ButtonDefaults.textButtonColors(color1,color3)
         ){
             Text("Envia")
         }
@@ -302,3 +369,8 @@ fun UserStatisticsScreen(){
         }*/
     }
 }
+/*
+ focusedIndicatorColor TextFieldColor color borde al seleccionar
+
+
+ */
