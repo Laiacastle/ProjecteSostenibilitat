@@ -112,6 +112,7 @@ fun UserStatisticsScreen(){
             label = {Text(text = "Name")},
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
+                textColor = Color.Black,
                 focusedIndicatorColor = color2,
                 unfocusedIndicatorColor = color2,
 
@@ -145,8 +146,9 @@ fun UserStatisticsScreen(){
             label = {Text(text = "Last Name")},
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
+                textColor = Color.Black,
                 focusedIndicatorColor = color2,
-                unfocusedIndicatorColor = color2
+                unfocusedIndicatorColor = color2,
             ),
             isError = lastNameError,
             placeholder = {Text(text = "Enter your Last Name")}
@@ -178,8 +180,9 @@ fun UserStatisticsScreen(){
             label = { Text(text = "Email address") },
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
+                textColor = Color.Black,
                 focusedIndicatorColor = color2,
-                unfocusedIndicatorColor = color2
+                unfocusedIndicatorColor = color2,
             ),
             isError = emailError,
             placeholder = { Text(text = "Enter your e-mail") }
@@ -209,8 +212,9 @@ fun UserStatisticsScreen(){
             label = {Text(text = "Weight")},
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
+                textColor = Color.Black,
                 focusedIndicatorColor = color2,
-                unfocusedIndicatorColor = color2
+                unfocusedIndicatorColor = color2,
             ),
             isError = weightError,
             placeholder = {Text(text = "Enter your Weight")}
@@ -240,10 +244,12 @@ fun UserStatisticsScreen(){
             label = {Text(text = "Exercise Done")},
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
+                textColor = Color.Black,
                 focusedIndicatorColor = color2,
-                unfocusedIndicatorColor = color2
+                unfocusedIndicatorColor = color2,
             ),
             isError = exerciseDoneError,
+            singleLine = true,
             placeholder = {Text(text = "Enter your Exercise Done")}
         )
         val assistiveElementTextExercise = if (exerciseDoneError) "Error: Obligatorio" else "*Obligatorio"
@@ -271,8 +277,9 @@ fun UserStatisticsScreen(){
             label = {Text(text = "Sleep Time")},
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
+                textColor = Color.Black,
                 focusedIndicatorColor = color2,
-                unfocusedIndicatorColor = color2
+                unfocusedIndicatorColor = color2,
             ),
             isError = sleepTimeError,
             placeholder = {Text(text = "Enter your Sleep Time")}
@@ -304,8 +311,9 @@ fun UserStatisticsScreen(){
             label = {Text(text = "Age")},
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
+                textColor = Color.Black,
                 focusedIndicatorColor = color2,
-                unfocusedIndicatorColor = color2
+                unfocusedIndicatorColor = color2,
             ),
             isError = ageError,
             placeholder = {Text(text = "Enter your Age")}
