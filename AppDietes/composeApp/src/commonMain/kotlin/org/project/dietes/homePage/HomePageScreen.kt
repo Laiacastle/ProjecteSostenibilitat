@@ -1,33 +1,103 @@
 package org.project.dietes.homePage
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.em
 import appdietes.composeapp.generated.resources.Logo
 import appdietes.composeapp.generated.resources.Res
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
-fun HomePageScreen(navigateToGamesScreen: () -> Unit, navigateToDietesScreen: () -> Unit) {
-    Box(contentAlignment = Alignment.Center) {
+fun HomePageScreen(
+    navigateToModifyInformationScreen: () -> Unit,
+    navigateToGamesScreen: () -> Unit,
+    navigateToGamesResultsScreen: () -> Unit,
+    navigateToDietesScreen: () -> Unit
+) {
+
+    Column(
+        Modifier
+            .fillMaxSize()
+            .background(color = Color(228, 213, 221))
+            .padding(50.dp, 0.dp, 75.dp, 0.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+
         Image(
             painter = painterResource(Res.drawable.Logo),
             contentDescription = null,
             modifier = Modifier
-                .size(100.dp)
+                .size(200.dp)
         )
-    }
 
-    Column(Modifier.fillMaxWidth()) {
-        Text("1")
-        Text("2")
+        Spacer(modifier = Modifier.size(25.dp))
+        Text("Títol: Dietes i Tests", fontSize = 7.em, fontWeight = FontWeight.Bold)
+
+        Spacer(modifier = Modifier.size(50.dp))
+        Text("Afegir/modificar informació: edat, pes...")
+        Spacer(modifier = Modifier.size(25.dp))
+        Button(
+            onClick = { navigateToModifyInformationScreen },
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(73, 96, 94),
+                contentColor = Color(142, 244, 192)
+            )
+        ) {
+            Text("Modificar informació")
+        }
+
+        Spacer(modifier = Modifier.size(50.dp))
+        Text("Fer jocs per a calificar el teus reflexos, la vista...")
+        Spacer(modifier = Modifier.size(25.dp))
+        Button(
+            onClick = { navigateToGamesScreen },
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(73, 96, 94),
+                contentColor = Color(142, 244, 192)
+            )
+        ) {
+            Text("Fer tests")
+        }
+
+        Spacer(modifier = Modifier.size(50.dp))
+        Text("Veure els resultats de els tests")
+        Spacer(modifier = Modifier.size(25.dp))
+        Button(
+            onClick = { navigateToGamesResultsScreen },
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(73, 96, 94),
+                contentColor = Color(142, 244, 192)
+            )
+        ) {
+            Text("Veure els resultats")
+        }
+
+        Spacer(modifier = Modifier.size(50.dp))
+        Text("Recomenacions de dieta basades en la informació proporcionada i els resultats de els tests")
+        Spacer(modifier = Modifier.size(25.dp))
+        Button(
+            onClick = { navigateToDietesScreen },
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(73, 96, 94),
+                contentColor = Color(142, 244, 192)
+            )
+        ) {
+            Text("Veure recomenacions")
+        }
+
     }
 }
