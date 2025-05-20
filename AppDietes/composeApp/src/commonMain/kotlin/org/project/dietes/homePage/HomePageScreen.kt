@@ -2,11 +2,12 @@ package org.project.dietes.homePage
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -27,7 +28,9 @@ fun HomePageScreen(
     navigateToModifyInformationScreen: () -> Unit,
     navigateToGamesScreen: () -> Unit,
     navigateToGamesResultsScreen: () -> Unit,
-    navigateToDietesScreen: () -> Unit) {
+    navigateToAIDietesScreen: () -> Unit,
+    navigateToDietesScreen: () -> Unit
+    ) {
 
     val viewModel = viewModel { HomePageViewModel() }
 
@@ -35,6 +38,7 @@ fun HomePageScreen(
         navigateToModifyInformationScreen,
         navigateToGamesScreen,
         navigateToGamesResultsScreen,
+        navigateToAIDietesScreen,
         navigateToDietesScreen,
         viewModel.color1,
         viewModel.color3,
@@ -47,13 +51,14 @@ fun HomePageScreen(
     navigateToModifyInformationScreen: () -> Unit,
     navigateToGamesScreen: () -> Unit,
     navigateToGamesResultsScreen: () -> Unit,
+    navigateToAIDietesScreen: () -> Unit,
     navigateToDietesScreen: () -> Unit,
     color1: Color,
     color3: Color,
     color5: Color,
 ) {
 
-    Column(
+    LazyColumn(
         Modifier
             .fillMaxSize()
             .background(color = color5)
@@ -61,67 +66,84 @@ fun HomePageScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        Image(
-            painter = painterResource(Res.drawable.Logo),
-            contentDescription = null,
-            modifier = Modifier
-                .size(200.dp)
-        )
-
-        Spacer(modifier = Modifier.size(25.dp))
-        Text("Títol: Dietes i Tests", fontSize = 7.em, fontWeight = FontWeight.Bold)
-
-        Spacer(modifier = Modifier.size(50.dp))
-        Text("Afegir/modificar informació: edat, pes...")
-        Spacer(modifier = Modifier.size(25.dp))
-        Button(
-            onClick = { navigateToModifyInformationScreen },
-            colors = ButtonDefaults.buttonColors(
-                containerColor = color3,
-                contentColor = color1
+        item {
+            Spacer(modifier = Modifier.height(25.dp))
+            Image(
+                painter = painterResource(Res.drawable.Logo),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(200.dp)
             )
-        ) {
-            Text("Modificar informació")
-        }
 
-        Spacer(modifier = Modifier.size(50.dp))
-        Text("Fer jocs per a calificar el teus reflexos, la vista...")
-        Spacer(modifier = Modifier.size(25.dp))
-        Button(
-            onClick = { navigateToGamesScreen },
-            colors = ButtonDefaults.buttonColors(
-                containerColor = color3,
-                contentColor = color1
-            )
-        ) {
-            Text("Fer tests")
-        }
+            Spacer(modifier = Modifier.size(25.dp))
+            Text("Títol: Dietes i Tests", fontSize = 7.em, fontWeight = FontWeight.Bold)
 
-        Spacer(modifier = Modifier.size(50.dp))
-        Text("Veure els resultats de els tests")
-        Spacer(modifier = Modifier.size(25.dp))
-        Button(
-            onClick = { navigateToGamesResultsScreen },
-            colors = ButtonDefaults.buttonColors(
-                containerColor = color3,
-                contentColor = color1
-            )
-        ) {
-            Text("Veure els resultats")
-        }
+            Spacer(modifier = Modifier.size(50.dp))
+            Text("Afegir, modificar i consultar informació: edat, pes...")
+            Spacer(modifier = Modifier.size(25.dp))
+            Button(
+                onClick = { navigateToModifyInformationScreen },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = color3,
+                    contentColor = color1
+                )
+            ) {
+                Text("Modificar informació")
+            }
 
-        Spacer(modifier = Modifier.size(50.dp))
-        Text("Recomenacions de dieta basades en la informació proporcionada i els resultats de els tests")
-        Spacer(modifier = Modifier.size(25.dp))
-        Button(
-            onClick = { navigateToDietesScreen },
-            colors = ButtonDefaults.buttonColors(
-                containerColor = color3,
-                contentColor = color1
-            )
-        ) {
-            Text("Veure recomenacions")
-        }
+            Spacer(modifier = Modifier.size(50.dp))
+            Text("Fer jocs per a calificar el teus reflexos, la vista...")
+            Spacer(modifier = Modifier.size(25.dp))
+            Button(
+                onClick = { navigateToGamesScreen },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = color3,
+                    contentColor = color1
+                )
+            ) {
+                Text("Fer tests")
+            }
 
+            Spacer(modifier = Modifier.size(50.dp))
+            Text("Veure els resultats de els tests")
+            Spacer(modifier = Modifier.size(25.dp))
+            Button(
+                onClick = { navigateToGamesResultsScreen },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = color3,
+                    contentColor = color1
+                )
+            ) {
+                Text("Veure els resultats")
+            }
+
+            Spacer(modifier = Modifier.size(50.dp))
+            Text("Recomenacions, generades per IA, de dieta basades en la informació proporcionada i els resultats de els tests")
+            Spacer(modifier = Modifier.size(25.dp))
+            Button(
+                onClick = { navigateToAIDietesScreen },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = color3,
+                    contentColor = color1
+                )
+            ) {
+                Text("Veure recomenacions de l'IA")
+            }
+
+            Spacer(modifier = Modifier.size(50.dp))
+            Text("Recomenacions de dietes donades per metges")
+            Spacer(modifier = Modifier.size(25.dp))
+            Button(
+                onClick = { navigateToDietesScreen },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = color3,
+                    contentColor = color1
+                )
+            ) {
+                Text("Veure dietes de metges")
+            }
+
+            Spacer(modifier = Modifier.size(75.dp))
+        }
     }
 }
