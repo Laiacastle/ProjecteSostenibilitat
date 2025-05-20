@@ -131,7 +131,7 @@ fun HomePageScreen(
             }
 
             Spacer(modifier = Modifier.size(50.dp))
-            Text("Recomenacions de dietes donades per metges")
+            Text("Recomenacions i dietes donades per metges")
             Spacer(modifier = Modifier.size(25.dp))
             Button(
                 onClick = { navigateToDietesScreen },
@@ -140,7 +140,7 @@ fun HomePageScreen(
                     contentColor = color1
                 )
             ) {
-                Text("Veure dietes de metges")
+                Text("Veure dietes i recomenacions de metges")
             }
 
             Spacer(modifier = Modifier.size(75.dp))
