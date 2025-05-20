@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
+import androidx.lifecycle.viewmodel.compose.viewModel
 import appdietes.composeapp.generated.resources.Logo
 import appdietes.composeapp.generated.resources.Res
 import org.jetbrains.compose.resources.painterResource
@@ -26,13 +27,36 @@ fun HomePageScreen(
     navigateToModifyInformationScreen: () -> Unit,
     navigateToGamesScreen: () -> Unit,
     navigateToGamesResultsScreen: () -> Unit,
-    navigateToDietesScreen: () -> Unit
+    navigateToDietesScreen: () -> Unit) {
+
+    val viewModel = viewModel { HomePageViewModel() }
+
+    HomePageScreen(
+        navigateToModifyInformationScreen,
+        navigateToGamesScreen,
+        navigateToGamesResultsScreen,
+        navigateToDietesScreen,
+        viewModel.color1,
+        viewModel.color3,
+        viewModel.color5
+    )
+}
+
+@Composable
+fun HomePageScreen(
+    navigateToModifyInformationScreen: () -> Unit,
+    navigateToGamesScreen: () -> Unit,
+    navigateToGamesResultsScreen: () -> Unit,
+    navigateToDietesScreen: () -> Unit,
+    color1: Color,
+    color3: Color,
+    color5: Color,
 ) {
 
     Column(
         Modifier
             .fillMaxSize()
-            .background(color = Color(228, 213, 221))
+            .background(color = color5)
             .padding(50.dp, 0.dp, 75.dp, 0.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -53,8 +77,8 @@ fun HomePageScreen(
         Button(
             onClick = { navigateToModifyInformationScreen },
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(73, 96, 94),
-                contentColor = Color(142, 244, 192)
+                containerColor = color3,
+                contentColor = color1
             )
         ) {
             Text("Modificar informació")
@@ -66,8 +90,8 @@ fun HomePageScreen(
         Button(
             onClick = { navigateToGamesScreen },
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(73, 96, 94),
-                contentColor = Color(142, 244, 192)
+                containerColor = color3,
+                contentColor = color1
             )
         ) {
             Text("Fer tests")
@@ -79,8 +103,8 @@ fun HomePageScreen(
         Button(
             onClick = { navigateToGamesResultsScreen },
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(73, 96, 94),
-                contentColor = Color(142, 244, 192)
+                containerColor = color3,
+                contentColor = color1
             )
         ) {
             Text("Veure els resultats")
@@ -92,8 +116,8 @@ fun HomePageScreen(
         Button(
             onClick = { navigateToDietesScreen },
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(73, 96, 94),
-                contentColor = Color(142, 244, 192)
+                containerColor = color3,
+                contentColor = color1
             )
         ) {
             Text("Veure recomenacions")
