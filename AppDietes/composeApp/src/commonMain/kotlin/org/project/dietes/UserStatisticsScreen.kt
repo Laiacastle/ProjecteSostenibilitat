@@ -385,7 +385,6 @@ fun UserStatisticsScreen(){
         ){
             Text("Envia")
         }
-
         /*LazyColumn { // proves userData class mostrar dades inserides
             items(users){ user ->
                 Row {
