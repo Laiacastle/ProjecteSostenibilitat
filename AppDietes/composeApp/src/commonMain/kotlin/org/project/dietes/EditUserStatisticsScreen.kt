@@ -84,7 +84,7 @@ fun EditUserStatisticsScreen(
                 contentDescription = "logo"
             )
             Spacer(Modifier.width(10.dp))
-            Text("Information User", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+            Text("Edit User", fontSize = 30.sp, fontWeight = FontWeight.Bold)
         }
         Spacer(Modifier.height(10.dp))
         // name input
