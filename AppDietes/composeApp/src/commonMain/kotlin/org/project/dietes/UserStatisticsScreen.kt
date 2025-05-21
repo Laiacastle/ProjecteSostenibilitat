@@ -287,8 +287,7 @@ fun UserStatisticsScreen(){
         val assistiveElementColorSleep = if (sleepTimeError) {
             MaterialTheme.colors.error
         } else {
-            MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium)
-        }
+            MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium) }
         Text(
             text = assistiveElementTextSleep,
             color = assistiveElementColorSleep,
@@ -341,25 +340,33 @@ fun UserStatisticsScreen(){
                 sleepTimeError = sleepTime.isBlank()
                 ageError = age.isBlank()
 
-                // add user
-                users.add(
-                    UserData(
-                        idUser = 1, // generated Auto no fet
-                        name = name,
-                        lastName = lastName,
-                        email = email,
-                        weight = weight.toFloat(),
-                        exerciseDone = exerciseDone,
-                        sleepTime = sleepTime.toFloat(),
-                        age = age.toInt(),
+                if (!name.isBlank() and
+                    !lastName.isBlank() and
+                    !email.isBlank() and
+                    !weight.isBlank() and
+                    !exerciseDone.isBlank() and
+                    !sleepTime.isBlank() and
+                    !age.isBlank()) {
+                    // add user
+                    users.add(
+                        UserData(
+                            idUser = 1, // generated Auto no fet
+                            name = name,
+                            lastName = lastName,
+                            email = email,
+                            weight = weight.toFloat(),
+                            exerciseDone = exerciseDone,
+                            sleepTime = sleepTime.toFloat(),
+                            age = age.toInt(),
+                        )
                     )
-                )
+                }
             },
             colors = ButtonDefaults.textButtonColors(color1,color3)
         ){
             Text("Envia")
         }
-        /*LazyColumn { // proves userData class mostrar dades inserides
+        LazyColumn { // proves userData class mostrar dades inserides
             items(users){ user ->
                 Row {
                     Column {
@@ -373,7 +380,7 @@ fun UserStatisticsScreen(){
                     }
                 }
             }
-        }*/
+        }
     }
 }
 /*
