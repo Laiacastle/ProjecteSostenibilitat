@@ -7,11 +7,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
 //noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.ContentAlpha
@@ -29,7 +26,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -57,7 +53,7 @@ data class UserData(
     val sleepTime: Float,
     val age: Int
 )
-class UserDataViewModel : ViewModel(){
+class UsersDataViewModel : ViewModel(){
     val users = mutableStateListOf<UserData>()
 }
 fun isNumeric(toCheck: String): Boolean {
@@ -68,8 +64,8 @@ fun isDecimal(toCheck: String): Boolean {
     return toCheck.matches(regex)
 }
 @Composable
-fun UserStatisticsScreen(){
-    val users = UserDataViewModel().users
+fun CreateUserStatisticsScreen(){
+    val users = UsersDataViewModel().users
     var name by remember { mutableStateOf("") }
     var nameError by remember { mutableStateOf(false) }
     var lastName by remember { mutableStateOf("") }
@@ -369,7 +365,7 @@ fun UserStatisticsScreen(){
                     // add user
                     users.add(
                         UserData(
-                            idUser = 1, // generated Auto no fet
+                            idUser = 1, // generar id nou usuari o id de usuari existent
                             name = name,
                             lastName = lastName,
                             email = email,
@@ -379,6 +375,7 @@ fun UserStatisticsScreen(){
                             age = age.toInt(),
                         )
                     )
+
                 }
             },
             colors = ButtonDefaults.textButtonColors(color1,color3)

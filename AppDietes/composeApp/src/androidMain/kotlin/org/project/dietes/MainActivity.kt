@@ -16,7 +16,6 @@ class MainActivity : ComponentActivity() {
             //App()
             //GamesScreen()
             //Navigation()
-            UserStatisticsScreen()
         }
     }
 }
