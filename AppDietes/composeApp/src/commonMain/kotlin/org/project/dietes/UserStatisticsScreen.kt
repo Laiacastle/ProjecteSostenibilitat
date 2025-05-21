@@ -134,7 +134,6 @@ fun UserStatisticsScreen(){
             MaterialTheme.colors.error
         } else {
             MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium)
-           // color3
         }
         Text(
             text = assistiveElementText,
