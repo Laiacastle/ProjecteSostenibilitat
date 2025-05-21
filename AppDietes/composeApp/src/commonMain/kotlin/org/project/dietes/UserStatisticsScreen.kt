@@ -60,6 +60,13 @@ data class UserData(
 class UserDataViewModel : ViewModel(){
     val users = mutableStateListOf<UserData>()
 }
+fun isNumeric(toCheck: String): Boolean {
+    return toCheck.all { char -> char.isDigit() }
+}
+fun isDecimal(toCheck: String): Boolean {
+    val regex = "[0-9]+(\\.[0-9]+)?".toRegex()
+    return toCheck.matches(regex)
+}
 @Composable
 fun UserStatisticsScreen(){
     val users = UserDataViewModel().users
@@ -71,12 +78,15 @@ fun UserStatisticsScreen(){
     var emailError by remember { mutableStateOf(false) }
     var weight by remember { mutableStateOf("") }
     var weightError by remember { mutableStateOf(false) }
+    var weightErrorNum by remember { mutableStateOf(false) }
     var exerciseDone by remember { mutableStateOf("") }
     var exerciseDoneError by remember { mutableStateOf(false) }
     var sleepTime by remember { mutableStateOf("") }
     var sleepTimeError by remember { mutableStateOf(false) }
+    var sleepTimeErrorNum by remember { mutableStateOf(false) }
     var age by remember { mutableStateOf("") }
     var ageError by remember { mutableStateOf(false) }
+    var ageErrorNum by remember { mutableStateOf(false) }
 
     val color1 = Color(red = 0x8E, green = 0xF4, blue = 0xC0)
     val color2 = Color(red = 0x56, green = 0xA5, blue = 0x8B)
@@ -215,11 +225,12 @@ fun UserStatisticsScreen(){
                 focusedIndicatorColor = color2,
                 unfocusedIndicatorColor = color2,
             ),
-            isError = weightError,
+            isError = weightError or weightErrorNum,
             placeholder = {Text(text = "Enter your Weight")}
         )
-        val assistiveElementTextWeight = if (weightError) "Error: Obligatorio" else "*Obligatorio"
-        val assistiveElementColorWeight = if (weightError) {
+        val assistiveElementTextWeight = if (weightError) "Error: Obligatorio" else if (weightErrorNum) "Error: Tenen que ser numeros"
+        else "*Obligatorio"
+        val assistiveElementColorWeight = if (weightError or weightErrorNum) {
             MaterialTheme.colors.error
         } else {
             MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium)
@@ -280,11 +291,12 @@ fun UserStatisticsScreen(){
                 focusedIndicatorColor = color2,
                 unfocusedIndicatorColor = color2,
             ),
-            isError = sleepTimeError,
+            isError = sleepTimeError or sleepTimeErrorNum,
             placeholder = {Text(text = "Enter your Sleep Time")}
         )
-        val assistiveElementTextSleep = if (sleepTimeError) "Error: Obligatorio" else "*Obligatorio"
-        val assistiveElementColorSleep = if (sleepTimeError) {
+        val assistiveElementTextSleep = if (sleepTimeError) "Error: Obligatorio" else if (sleepTimeErrorNum) "Error: Tenen que ser numeros"
+        else "*Obligatorio"
+        val assistiveElementColorSleep = if (sleepTimeError or sleepTimeErrorNum) {
             MaterialTheme.colors.error
         } else {
             MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium) }
@@ -313,11 +325,12 @@ fun UserStatisticsScreen(){
                 focusedIndicatorColor = color2,
                 unfocusedIndicatorColor = color2,
             ),
-            isError = ageError,
+            isError = ageError or ageErrorNum,
             placeholder = {Text(text = "Enter your Age")}
         )
-        val assistiveElementTextAge = if (ageError) "Error: Obligatorio" else "*Obligatorio"
-        val assistiveElementColorAge = if (ageError) {
+        val assistiveElementTextAge = if (ageError) "Error: Obligatorio" else if (ageErrorNum) "Error: Tenen que ser numeros"
+        else "*Obligatorio"
+        val assistiveElementColorAge = if (ageError or ageErrorNum) {
             MaterialTheme.colors.error
         } else {
             MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium)
@@ -339,14 +352,21 @@ fun UserStatisticsScreen(){
                 exerciseDoneError = exerciseDone.isBlank()
                 sleepTimeError = sleepTime.isBlank()
                 ageError = age.isBlank()
+                weightErrorNum = !isDecimal(weight)
+                sleepTimeErrorNum = !isDecimal(sleepTime)
+                ageErrorNum = !isNumeric(age)
 
-                if (!name.isBlank() and
-                    !lastName.isBlank() and
-                    !email.isBlank() and
-                    !weight.isBlank() and
-                    !exerciseDone.isBlank() and
-                    !sleepTime.isBlank() and
-                    !age.isBlank()) {
+                if (!nameError and
+                    !lastNameError and
+                    !emailError and
+                    !weightError and
+                    !exerciseDoneError and
+                    !sleepTimeError and
+                    !ageError and
+                    isDecimal(weight) and
+                    isDecimal(sleepTime) and
+                    isNumeric(age)) {
+
                     // add user
                     users.add(
                         UserData(
@@ -366,7 +386,8 @@ fun UserStatisticsScreen(){
         ){
             Text("Envia")
         }
-        LazyColumn { // proves userData class mostrar dades inserides
+
+        /*LazyColumn { // proves userData class mostrar dades inserides
             items(users){ user ->
                 Row {
                     Column {
@@ -380,7 +401,7 @@ fun UserStatisticsScreen(){
                     }
                 }
             }
-        }
+        }*/
     }
 }
 /*
