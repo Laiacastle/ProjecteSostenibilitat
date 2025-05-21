@@ -10,9 +10,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
+//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.ContentAlpha
+//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.MaterialTheme
+//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.OutlinedTextField
+//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Cake
@@ -42,7 +46,6 @@ import org.jetbrains.compose.resources.painterResource
 fun EditUserStatisticsScreen(
     userId: Int,
     navViewModel: NavViewModel,
-    //onEditUser: (UserData) -> Unit,
     onCancel: () -> Unit,
     usersViewModel: UsersDataViewModel = viewModel()
 ){
@@ -368,21 +371,5 @@ fun EditUserStatisticsScreen(
                 Text("Cancela")
             }
         }
-
-        /*LazyColumn { // proves userData class mostrar dades inserides
-            items(users){ user ->
-                Row {
-                    Column {
-                        Text(user.name)
-                        Text(user.lastName)
-                        Text(user.email)
-                        Text(user.weight.toString())
-                        Text(user.exerciseDone)
-                        Text(user.sleepTime.toString())
-                        Text(user.age.toString())
-                    }
-                }
-            }
-        }*/
     }
 }

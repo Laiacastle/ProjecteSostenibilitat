@@ -28,7 +28,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Updater
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -430,8 +429,3 @@ fun CreateUserStatisticsScreen(
         }*/
     }
 }
-/*
- focusedIndicatorColor TextFieldColor color borde al seleccionar
-
-
- */
