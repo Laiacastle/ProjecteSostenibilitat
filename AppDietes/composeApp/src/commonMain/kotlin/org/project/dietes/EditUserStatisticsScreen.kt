@@ -47,21 +47,21 @@ fun EditUserStatisticsScreen(
     usersViewModel: UsersDataViewModel = viewModel()
 ){
     val user = usersViewModel.getUserById(userId) ?: return
-    var name by remember { mutableStateOf("") }
+    var name by remember { mutableStateOf(user.name) }
     var nameError by remember { mutableStateOf(false) }
-    var lastName by remember { mutableStateOf("") }
+    var lastName by remember { mutableStateOf(user.lastName) }
     var lastNameError by remember { mutableStateOf(false) }
-    var email by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf(user.email) }
     var emailError by remember { mutableStateOf(false) }
-    var weight by remember { mutableStateOf("") }
+    var weight by remember { mutableStateOf(user.weight.toString()) }
     var weightError by remember { mutableStateOf(false) }
     var weightErrorNum by remember { mutableStateOf(false) }
-    var exerciseDone by remember { mutableStateOf("") }
+    var exerciseDone by remember { mutableStateOf(user.exerciseDone) }
     var exerciseDoneError by remember { mutableStateOf(false) }
-    var sleepTime by remember { mutableStateOf("") }
+    var sleepTime by remember { mutableStateOf(user.sleepTime.toString()) }
     var sleepTimeError by remember { mutableStateOf(false) }
     var sleepTimeErrorNum by remember { mutableStateOf(false) }
-    var age by remember { mutableStateOf("") }
+    var age by remember { mutableStateOf(user.age.toString()) }
     var ageError by remember { mutableStateOf(false) }
     var ageErrorNum by remember { mutableStateOf(false) }
 
@@ -104,7 +104,7 @@ fun EditUserStatisticsScreen(
 
                 ),
             isError = nameError,
-            placeholder = {Text(user.name)}
+            placeholder = {Text(text = "Enter your name")}
         )
         val assistiveElementText = if (nameError) "Error: Obligatorio" else "*Obligatorio"
         val assistiveElementColor = if (nameError) {
@@ -136,7 +136,7 @@ fun EditUserStatisticsScreen(
                 unfocusedIndicatorColor = color2,
             ),
             isError = lastNameError,
-            placeholder = {Text(user.lastName)}
+            placeholder = {Text(text = "Enter your Last Name")}
         )
         val assistiveElementTextLastName = if (lastNameError) "Error: Obligatorio" else "*Obligatorio"
         val assistiveElementColorLastName = if (lastNameError) {
@@ -170,7 +170,7 @@ fun EditUserStatisticsScreen(
                 unfocusedIndicatorColor = color2,
             ),
             isError = emailError,
-            placeholder = { Text(user.email) }
+            placeholder = { Text(text = "Enter your e-mail") }
         )
         val assistiveElementTextEmail = if (emailError) "Error: Obligatorio" else "*Obligatorio"
         val assistiveElementColorEmail = if (emailError) {
@@ -202,7 +202,7 @@ fun EditUserStatisticsScreen(
                 unfocusedIndicatorColor = color2,
             ),
             isError = weightError or weightErrorNum,
-            placeholder = {Text(user.weight.toString())}
+            placeholder = {Text(text = "Enter your Weight")}
         )
         val assistiveElementTextWeight = if (weightError) "Error: Obligatorio" else if (weightErrorNum) "Error: Tenen que ser numeros"
         else "*Obligatorio"
@@ -236,7 +236,7 @@ fun EditUserStatisticsScreen(
             ),
             isError = exerciseDoneError,
             singleLine = true,
-            placeholder = {Text(user.exerciseDone)}
+            placeholder = {Text(text = "Enter your Exercise Done")}
         )
         val assistiveElementTextExercise = if (exerciseDoneError) "Error: Obligatorio" else "*Obligatorio"
         val assistiveElementColorExercise = if (exerciseDoneError) {
@@ -268,7 +268,7 @@ fun EditUserStatisticsScreen(
                 unfocusedIndicatorColor = color2,
             ),
             isError = sleepTimeError or sleepTimeErrorNum,
-            placeholder = {Text(user.sleepTime.toString())}
+            placeholder = {Text(text = "Enter your Sleep Time")}
         )
         val assistiveElementTextSleep = if (sleepTimeError) "Error: Obligatorio" else if (sleepTimeErrorNum) "Error: Tenen que ser numeros"
         else "*Obligatorio"
@@ -302,7 +302,7 @@ fun EditUserStatisticsScreen(
                 unfocusedIndicatorColor = color2,
             ),
             isError = ageError or ageErrorNum,
-            placeholder = {Text(user.age.toString())}
+            placeholder = {Text(text = "Enter your Age")}
         )
         val assistiveElementTextAge = if (ageError) "Error: Obligatorio" else if (ageErrorNum) "Error: Tenen que ser numeros"
         else "*Obligatorio"
@@ -360,9 +360,10 @@ fun EditUserStatisticsScreen(
             ){
                 Text("Envia")
             }
+            Spacer(Modifier.width(10.dp))
             Button(
                 onClick = {onCancel() },
-                colors = ButtonDefaults.textButtonColors(color1,color3)
+                colors = ButtonDefaults.textButtonColors(Color.Red,color3)
             ){
                 Text("Cancela")
             }

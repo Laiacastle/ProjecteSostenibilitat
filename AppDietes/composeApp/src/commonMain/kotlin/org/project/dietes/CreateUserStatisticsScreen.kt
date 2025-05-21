@@ -405,9 +405,10 @@ fun CreateUserStatisticsScreen(
             ){
                 Text("Envia")
             }
+            Spacer(Modifier.width(10.dp))
             Button(
                 onClick = { onCancel()  },
-                colors = ButtonDefaults.textButtonColors(color1,color3)
+                colors = ButtonDefaults.textButtonColors(Color.Red,color3)
             ){
                 Text("Cancel")
             }
