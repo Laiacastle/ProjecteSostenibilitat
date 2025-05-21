@@ -11,15 +11,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 
 @Composable
 fun ViewUserStatistics(
     userId: Int,
-    navViewModel: NavViewModel
+    navViewModel: NavViewModel,
+    usersViewModel: UsersDataViewModel = viewModel()
 ){
-    val users = UsersDataViewModel().users
-    val user = users[userId]
+    val user = usersViewModel.getUserById(userId) ?: return
     Column(
     ){
         Text(user.name)

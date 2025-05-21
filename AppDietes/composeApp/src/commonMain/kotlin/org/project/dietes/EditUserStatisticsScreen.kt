@@ -10,25 +10,19 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
-//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.ContentAlpha
-//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material3.Icon
-//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.OutlinedTextField
-//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Cake
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Updater
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -39,43 +33,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.ViewModel
-import appdietes.composeapp.generated.resources.Res
+import androidx.lifecycle.viewmodel.compose.viewModel
 import appdietes.composeapp.generated.resources.Logo
+import appdietes.composeapp.generated.resources.Res
 import org.jetbrains.compose.resources.painterResource
 
-data class UserData(
-    val idUser: Int,
-    val name: String,
-    val lastName: String,
-    val email: String,
-    val weight: Float,
-    val exerciseDone: String,
-    val sleepTime: Float,
-    val age: Int
-)
-class UsersDataViewModel : ViewModel(){
-    val users = mutableStateListOf<UserData>()
-
-    fun updateUser(updated: UserData){
-        val index = users.indexOfFirst { it.idUser == updated.idUser }
-        if (index != -1){
-            users[index] = updated
-        }
-    }
-    fun getUserById(id: Int): UserData? =
-        users.find { it.idUser == id }
-}
-fun isNumeric(toCheck: String): Boolean {
-    return toCheck.all { char -> char.isDigit() }
-}
-fun isDecimal(toCheck: String): Boolean {
-    val regex = "[0-9]+(\\.[0-9]+)?".toRegex()
-    return toCheck.matches(regex)
-}
 @Composable
-fun CreateUserStatisticsScreen(){
-    val users = UsersDataViewModel().users
+fun EditUserStatisticsScreen(
+    userId: Int,
+    navViewModel: NavViewModel,
+    usersViewModel: UsersDataViewModel = viewModel()
+){
+    val user = usersViewModel.getUserById(userId) ?: return
     var name by remember { mutableStateOf("") }
     var nameError by remember { mutableStateOf(false) }
     var lastName by remember { mutableStateOf("") }
@@ -131,9 +100,9 @@ fun CreateUserStatisticsScreen(){
                 focusedIndicatorColor = color2,
                 unfocusedIndicatorColor = color2,
 
-            ),
+                ),
             isError = nameError,
-            placeholder = {Text(text = "Enter your name")}
+            placeholder = {Text(user.name)}
         )
         val assistiveElementText = if (nameError) "Error: Obligatorio" else "*Obligatorio"
         val assistiveElementColor = if (nameError) {
@@ -165,7 +134,7 @@ fun CreateUserStatisticsScreen(){
                 unfocusedIndicatorColor = color2,
             ),
             isError = lastNameError,
-            placeholder = {Text(text = "Enter your Last Name")}
+            placeholder = {Text(user.lastName)}
         )
         val assistiveElementTextLastName = if (lastNameError) "Error: Obligatorio" else "*Obligatorio"
         val assistiveElementColorLastName = if (lastNameError) {
@@ -199,7 +168,7 @@ fun CreateUserStatisticsScreen(){
                 unfocusedIndicatorColor = color2,
             ),
             isError = emailError,
-            placeholder = { Text(text = "Enter your e-mail") }
+            placeholder = { Text(user.email) }
         )
         val assistiveElementTextEmail = if (emailError) "Error: Obligatorio" else "*Obligatorio"
         val assistiveElementColorEmail = if (emailError) {
@@ -231,7 +200,7 @@ fun CreateUserStatisticsScreen(){
                 unfocusedIndicatorColor = color2,
             ),
             isError = weightError or weightErrorNum,
-            placeholder = {Text(text = "Enter your Weight")}
+            placeholder = {Text(user.weight.toString())}
         )
         val assistiveElementTextWeight = if (weightError) "Error: Obligatorio" else if (weightErrorNum) "Error: Tenen que ser numeros"
         else "*Obligatorio"
@@ -265,7 +234,7 @@ fun CreateUserStatisticsScreen(){
             ),
             isError = exerciseDoneError,
             singleLine = true,
-            placeholder = {Text(text = "Enter your Exercise Done")}
+            placeholder = {Text(user.exerciseDone)}
         )
         val assistiveElementTextExercise = if (exerciseDoneError) "Error: Obligatorio" else "*Obligatorio"
         val assistiveElementColorExercise = if (exerciseDoneError) {
@@ -297,7 +266,7 @@ fun CreateUserStatisticsScreen(){
                 unfocusedIndicatorColor = color2,
             ),
             isError = sleepTimeError or sleepTimeErrorNum,
-            placeholder = {Text(text = "Enter your Sleep Time")}
+            placeholder = {Text(user.sleepTime.toString())}
         )
         val assistiveElementTextSleep = if (sleepTimeError) "Error: Obligatorio" else if (sleepTimeErrorNum) "Error: Tenen que ser numeros"
         else "*Obligatorio"
@@ -331,7 +300,7 @@ fun CreateUserStatisticsScreen(){
                 unfocusedIndicatorColor = color2,
             ),
             isError = ageError or ageErrorNum,
-            placeholder = {Text(text = "Enter your Age")}
+            placeholder = {Text(user.age.toString())}
         )
         val assistiveElementTextAge = if (ageError) "Error: Obligatorio" else if (ageErrorNum) "Error: Tenen que ser numeros"
         else "*Obligatorio"
@@ -372,21 +341,16 @@ fun CreateUserStatisticsScreen(){
                     isDecimal(sleepTime) and
                     isNumeric(age)) {
 
-                    // add user
-                    users.add(
-                        UserData(
-                            idUser = 1, // generar id nou usuari o id de usuari existent
-                            name = name,
-                            lastName = lastName,
-                            email = email,
-                            weight = weight.toFloat(),
-                            exerciseDone = exerciseDone,
-                            sleepTime = sleepTime.toFloat(),
-                            age = age.toInt(),
-                        )
-                    )
-
+                    usersViewModel.updateUser(user.copy(
+                        name = name,
+                        lastName = lastName,
+                        email = email,
+                        weight = weight.toFloat(),
+                        exerciseDone = exerciseDone,
+                        sleepTime = sleepTime.toFloat(),
+                        age = age.toInt(),))
                 }
+                navViewModel.navTo(Screen.Account)
             },
             colors = ButtonDefaults.textButtonColors(color1,color3)
         ){
@@ -409,8 +373,3 @@ fun CreateUserStatisticsScreen(){
         }*/
     }
 }
-/*
- focusedIndicatorColor TextFieldColor color borde al seleccionar
-
-
- */

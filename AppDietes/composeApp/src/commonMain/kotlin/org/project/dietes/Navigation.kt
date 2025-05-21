@@ -39,6 +39,7 @@ sealed interface Screen {
     data object Games : Screen
     data object Account : Screen
     data object CreateUser : Screen
+    data object EditUser : Screen
 }
 class NavViewModel : ViewModel(){
     val currentScreen = mutableStateOf<Screen>(Screen.Games)
@@ -131,6 +132,9 @@ fun Navigation(){
                         ViewUserStatistics(userId, navViewModel)
                     }        // Account Page
                     Screen.CreateUser -> CreateUserStatisticsScreen()
+                    Screen.EditUser -> navViewModel.selectUserId?.let { userId ->
+                        EditUserStatisticsScreen(userId, navViewModel)
+                    }
                     }
                 }
             }
