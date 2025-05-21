@@ -41,7 +41,7 @@ fun ViewUserStatistics(
         Button(
             onClick = {
                 navViewModel.selectUserId = user.idUser
-                //navViewModel.navTo()
+                navViewModel.navTo(Screen.EditUser)
             }
         ){
             Text("Modificar les dades")

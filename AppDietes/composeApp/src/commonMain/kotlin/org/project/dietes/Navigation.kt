@@ -90,6 +90,15 @@ fun Navigation(){
                     }
                 )
                 NavigationDrawerItem(
+                    label = { Text("Login") },
+                    selected = false,
+                    icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Account")},
+                    onClick = {
+                        navViewModel.navTo(Screen.CreateUser)
+                        scope.launch { drawerState.close() }
+                    }
+                )
+                NavigationDrawerItem(
                     label = { Text("Games") },
                     selected = false,
                     icon = {Icon(Icons.Default.Games, contentDescription = "Games")},
@@ -131,9 +140,20 @@ fun Navigation(){
                     Screen.Account -> navViewModel.selectUserId?.let { userId ->
                         ViewUserStatistics(userId, navViewModel)
                     }        // Account Page
-                    Screen.CreateUser -> CreateUserStatisticsScreen()
+                    Screen.CreateUser -> CreateUserStatisticsScreen(
+                        onAddUser = { user ->
+                            navViewModel.navTo(Screen.Account)
+                        },
+                        onCancel = {
+                            navViewModel.navTo(Screen.Games)
+                        }
+                    )
                     Screen.EditUser -> navViewModel.selectUserId?.let { userId ->
-                        EditUserStatisticsScreen(userId, navViewModel)
+                        EditUserStatisticsScreen(userId, navViewModel,
+                            onCancel = {
+                                navViewModel.navTo(Screen.Account)
+                            }
+                        )
                     }
                     }
                 }

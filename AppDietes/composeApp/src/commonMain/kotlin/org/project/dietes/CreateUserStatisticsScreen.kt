@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
 //noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.ContentAlpha
@@ -40,6 +42,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import appdietes.composeapp.generated.resources.Res
 import appdietes.composeapp.generated.resources.Logo
 import org.jetbrains.compose.resources.painterResource
@@ -74,8 +77,14 @@ fun isDecimal(toCheck: String): Boolean {
     return toCheck.matches(regex)
 }
 @Composable
-fun CreateUserStatisticsScreen(){
+fun CreateUserStatisticsScreen(
+    viewModel: UsersDataViewModel = viewModel(),
+    onAddUser: (UserData) -> Unit,
+    onCancel: () -> Unit,
+    navViewModel: NavViewModel = viewModel(),
+){
     val users = UsersDataViewModel().users
+    val userId = 1 // generar automaticament
     var name by remember { mutableStateOf("") }
     var nameError by remember { mutableStateOf(false) }
     var lastName by remember { mutableStateOf("") }
@@ -348,34 +357,34 @@ fun CreateUserStatisticsScreen(){
 
         Spacer(Modifier.height(20.dp))
 
-        Button(
-            onClick = {
-                nameError = name.isBlank()
-                lastNameError = lastName.isBlank()
-                emailError = email.isBlank()
-                weightError = weight.isBlank()
-                exerciseDoneError = exerciseDone.isBlank()
-                sleepTimeError = sleepTime.isBlank()
-                ageError = age.isBlank()
-                weightErrorNum = !isDecimal(weight)
-                sleepTimeErrorNum = !isDecimal(sleepTime)
-                ageErrorNum = !isNumeric(age)
+        Row{
+            Button(
+                onClick = {
+                    nameError = name.isBlank()
+                    lastNameError = lastName.isBlank()
+                    emailError = email.isBlank()
+                    weightError = weight.isBlank()
+                    exerciseDoneError = exerciseDone.isBlank()
+                    sleepTimeError = sleepTime.isBlank()
+                    ageError = age.isBlank()
+                    weightErrorNum = !isDecimal(weight)
+                    sleepTimeErrorNum = !isDecimal(sleepTime)
+                    ageErrorNum = !isNumeric(age)
 
-                if (!nameError and
-                    !lastNameError and
-                    !emailError and
-                    !weightError and
-                    !exerciseDoneError and
-                    !sleepTimeError and
-                    !ageError and
-                    isDecimal(weight) and
-                    isDecimal(sleepTime) and
-                    isNumeric(age)) {
+                    if (!nameError and
+                        !lastNameError and
+                        !emailError and
+                        !weightError and
+                        !exerciseDoneError and
+                        !sleepTimeError and
+                        !ageError and
+                        isDecimal(weight) and
+                        isDecimal(sleepTime) and
+                        isNumeric(age)) {
 
-                    // add user
-                    users.add(
-                        UserData(
-                            idUser = 1, // generar id nou usuari o id de usuari existent
+                        // add user
+                        val newUser = UserData(
+                            idUser = userId,
                             name = name,
                             lastName = lastName,
                             email = email,
@@ -384,13 +393,24 @@ fun CreateUserStatisticsScreen(){
                             sleepTime = sleepTime.toFloat(),
                             age = age.toInt(),
                         )
-                    )
+                        onAddUser(newUser)
+                        viewModel.users.add(newUser)
 
-                }
-            },
-            colors = ButtonDefaults.textButtonColors(color1,color3)
-        ){
-            Text("Envia")
+
+                        navViewModel.selectUserId = userId
+                        navViewModel.navTo(Screen.Account)
+                    }
+                },
+                colors = ButtonDefaults.textButtonColors(color1,color3)
+            ){
+                Text("Envia")
+            }
+            Button(
+                onClick = { onCancel()  },
+                colors = ButtonDefaults.textButtonColors(color1,color3)
+            ){
+                Text("Cancel")
+            }
         }
         /*LazyColumn { // proves userData class mostrar dades inserides
             items(users){ user ->
