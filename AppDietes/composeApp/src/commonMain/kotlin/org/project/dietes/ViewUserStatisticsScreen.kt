@@ -1,11 +1,13 @@
 package org.project.dietes
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
@@ -34,8 +36,7 @@ fun ViewUserStatistics(
     val color1 = Color(red = 0x8E, green = 0xF4, blue = 0xC0)
     val color3 = Color(red = 0x49, green = 0x60, blue = 0x5E)
     Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
+        modifier = Modifier.fillMaxSize().padding(start = 10.dp)
     ){
         Row(
             verticalAlignment = Alignment.CenterVertically
@@ -45,10 +46,12 @@ fun ViewUserStatistics(
                 painter = painterResource(Res.drawable.Logo),
                 contentDescription = "logo"
             )
-            Spacer(Modifier.width(10.dp))
-            androidx.compose.material3.Text("Information User", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+            Spacer(Modifier.width(15.dp))
+            androidx.compose.material3.Text(text = "Hola, ${user.name} ${user.lastName}", fontSize = 30.sp, fontWeight = FontWeight.Bold)
         }
-        Spacer(Modifier.height(10.dp))
+        Spacer(Modifier.height(15.dp))
+        Text(text = "Dades Usuari:", fontSize = 20.sp)
+        Spacer(Modifier.height(15.dp))
         Text(text = "Name: ${user.name}")
         Spacer(Modifier.height(10.dp))
         Text(text = "LastName: ${user.lastName}")

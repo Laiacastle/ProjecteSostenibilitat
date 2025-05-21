@@ -29,7 +29,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -40,41 +39,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import appdietes.composeapp.generated.resources.Res
 import appdietes.composeapp.generated.resources.Logo
 import org.jetbrains.compose.resources.painterResource
-
-data class UserData(
-    val idUser: Int,
-    val name: String,
-    val lastName: String,
-    val email: String,
-    val weight: Float,
-    val exerciseDone: String,
-    val sleepTime: Float,
-    val age: Int
-)
-class UsersDataViewModel : ViewModel(){
-    val users = mutableStateListOf<UserData>()
-
-    fun updateUser(updated: UserData){
-        val index = users.indexOfFirst { it.idUser == updated.idUser }
-        if (index != -1){
-            users[index] = updated
-        }
-    }
-    fun getUserById(id: Int): UserData? =
-        users.find { it.idUser == id }
-}
-fun isNumeric(toCheck: String): Boolean {
-    return toCheck.all { char -> char.isDigit() }
-}
-fun isDecimal(toCheck: String): Boolean {
-    val regex = "[0-9]+(\\.[0-9]+)?".toRegex()
-    return toCheck.matches(regex)
-}
 @Composable
 fun CreateUserStatisticsScreen(
     viewModel: UsersDataViewModel = viewModel(),

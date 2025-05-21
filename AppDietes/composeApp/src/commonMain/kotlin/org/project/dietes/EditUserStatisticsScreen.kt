@@ -354,7 +354,8 @@ fun EditUserStatisticsScreen(
                             weight = weight.toFloat(),
                             exerciseDone = exerciseDone,
                             sleepTime = sleepTime.toFloat(),
-                            age = age.toInt(),))
+                            age = age.toInt()
+                        ))
                     }
                     navViewModel.selectUserId = user.idUser
                     navViewModel.navTo(Screen.Account)
