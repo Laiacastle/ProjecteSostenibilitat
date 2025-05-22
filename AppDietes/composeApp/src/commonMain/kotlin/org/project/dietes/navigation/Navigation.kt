@@ -34,6 +34,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import appdietes.composeapp.generated.resources.Res
 import appdietes.composeapp.generated.resources.Logo
 import org.jetbrains.compose.resources.painterResource
+import org.project.dietes.CreateUserStatisticsScreen
+import org.project.dietes.EditUserStatisticsScreen
+import org.project.dietes.GamesScreen
+import org.project.dietes.UserLoginScreen
+import org.project.dietes.ViewUserStatistics
 import org.project.dietes.homePage.HomePageScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -96,6 +101,16 @@ fun Navigation(){
                         scope.launch { drawerState.close() }
                     }
                 )
+                NavigationDrawerItem(
+
+                    label = { Text("Inicia Sesio") },
+                    selected = false,
+                    icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Account")},
+                    onClick = {
+                        navViewModel.navTo(Screen.LoginUser)
+                        scope.launch { drawerState.close() }
+                    }
+                )
             }
         },
         drawerState = drawerState,
@@ -131,26 +146,31 @@ fun Navigation(){
                         navigateToAIDietesScreen = {},
                         navigateToDietesScreen = {}
                     )
-                    Screen.Games -> _root_ide_package_.org.project.dietes.GamesScreen()
+                    Screen.Games -> GamesScreen()
                     Screen.Account -> navViewModel.selectUserId?.let { userId ->
-                        _root_ide_package_.org.project.dietes.ViewUserStatistics(userId, navViewModel)
+                        ViewUserStatistics(userId, navViewModel)
                     }
-                    Screen.CreateUser -> _root_ide_package_.org.project.dietes.CreateUserStatisticsScreen(
+                    Screen.CreateUser -> CreateUserStatisticsScreen(
                         onAddUser = { user ->
                             navViewModel.navTo(Screen.Account)
                         },
                         onCancel = {
-                            navViewModel.navTo(Screen.Games)
+                            navViewModel.navTo(Screen.Home)
                         }
                     )
                     Screen.EditUser -> navViewModel.selectUserId?.let { userId ->
-                        _root_ide_package_.org.project.dietes.EditUserStatisticsScreen(
+                        EditUserStatisticsScreen(
                             userId, navViewModel,
                             onCancel = {
                                 navViewModel.navTo(Screen.Account)
                             }
                         )
                     }
+                    Screen.LoginUser -> UserLoginScreen(
+                        onCancel = {
+                            navViewModel.navTo(Screen.Home)
+                        }
+                    )
                 }
             }
         }

@@ -6,4 +6,5 @@ sealed interface Screen {
     data object Account : Screen
     data object CreateUser : Screen
     data object EditUser : Screen
+    data object LoginUser : Screen
 }
