@@ -20,7 +20,6 @@ import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.InternalComposeApi
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,7 +31,7 @@ import appdietes.composeapp.generated.resources.Logo
 import org.jetbrains.compose.resources.painterResource
 import org.project.dietes.homePage.HomePageScreen
 
-@OptIn(InternalComposeApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Navigation(){
     val navViewModel = viewModel { NavViewModel() }
@@ -42,7 +41,7 @@ fun Navigation(){
 
     ModalNavigationDrawer(
         drawerContent = {
-            ModalDrawerSheet() {
+            ModalDrawerSheet {
                 Row(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -56,7 +55,7 @@ fun Navigation(){
                     Text("Menu")
                 }
                 NavigationDrawerItem(
-                    label = { Text("HomePage") },
+                    label = { Text("Home Page") },
                     selected = false,
                     icon = { Icon(Icons.Default.Home, contentDescription = "Home")},
                     onClick = {
@@ -65,6 +64,7 @@ fun Navigation(){
                     }
                 )
                 NavigationDrawerItem(
+
                     label = { Text("Account") },
                     selected = false,
                     icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Account")},
@@ -95,11 +95,11 @@ fun Navigation(){
         },
         drawerState = drawerState,
         gesturesEnabled = false
-    ){
+    ) {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = {Text("Menu")},
+                    title = { Text("Menu") },
                     navigationIcon = {
                         IconButton(onClick = {
                             scope.launch {
@@ -116,12 +116,12 @@ fun Navigation(){
                     }
                 )
             }
-        ){ padding ->
-            Box(modifier = Modifier.padding(padding)){
+        ) { padding ->
+            Box(modifier = Modifier.padding(padding)) {
                 when (currentScreen) {
                     Screen.Home -> HomePageScreen(
-                        navigateToModifyInformationScreen = {navViewModel.navTo(Screen.EditUser)},
-                        navigateToGamesScreen = {navViewModel.navTo(Screen.Games)},
+                        navigateToModifyInformationScreen = { navViewModel.navTo(Screen.EditUser) },
+                        navigateToGamesScreen = { navViewModel.navTo(Screen.Games) },
                         navigateToGamesResultsScreen = {},
                         navigateToAIDietesScreen = {},
                         navigateToDietesScreen = {}
@@ -130,6 +130,7 @@ fun Navigation(){
                     Screen.Account -> navViewModel.selectUserId?.let { userId ->
                         _root_ide_package_.org.project.dietes.ViewUserStatistics(userId, navViewModel)
                     }
+
                     Screen.CreateUser -> _root_ide_package_.org.project.dietes.CreateUserStatisticsScreen(
                         onAddUser = { user ->
                             navViewModel.navTo(Screen.Account)
@@ -138,6 +139,7 @@ fun Navigation(){
                             navViewModel.navTo(Screen.Games)
                         }
                     )
+
                     Screen.EditUser -> navViewModel.selectUserId?.let { userId ->
                         _root_ide_package_.org.project.dietes.EditUserStatisticsScreen(
                             userId, navViewModel,
