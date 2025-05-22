@@ -1,5 +1,6 @@
-package org.project.dietes
+package org.project.dietes.gamesScreen
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -17,42 +18,27 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 
-data class GameData(
-    val name: String,
-    val number: Int,
-    val description: String,
-    val imageUrl: String,
-)
-class GamesViewModel : ViewModel() {
-    val gamesD = mutableStateListOf<GameData>()
-    init {
-        gamesD.addAll(
-            listOf(
-                GameData(name = "joc1", number = 1, description = "prova", imageUrl = ""),
-                GameData(name = "joc2", number = 5, description = "prova433", imageUrl = ""),
-                GameData(name = "joc3", number = 19, description = "prova54", imageUrl = ""),
-            )
-        )
-    }
+@Composable
+fun GamesScreen() {
+    val viewModel  = viewModel { GamesViewModel() }
+    GamesScreen(viewModel.gamesD, viewModel.color1, viewModel.color2, viewModel.color3, viewModel.color4, viewModel.color5)
 }
 
 @Composable
-fun GamesScreen(){
-    val games = GamesViewModel().gamesD
-    val color1 = Color(red = 0x8E, green = 0xF4, blue = 0xC0)
-    val color2 = Color(red = 0x56, green = 0xA5, blue = 0x8B)
-    val color3 = Color(red = 0x49, green = 0x60, blue = 0x5E)
-    val color4 = Color(red = 0xB4, green = 0x84, blue = 0x80)
-    val color5 = Color(red = 0xE4, green = 0xD5, blue = 0xDD)
+fun GamesScreen(games: List<GameData>, color1 : Color, color2 : Color, color3 : Color, color4 : Color, color5 : Color) {
+
     Column(
-        Modifier.fillMaxSize(),
+        Modifier
+            .fillMaxSize()
+            .background(color5)
+        ,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
 
-        Spacer(Modifier.height(50.dp))
-        Text("Games", fontSize = 30.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center, color = Color.Black)
+        Spacer(Modifier.height(40.dp))
+        Text("Jocs", fontSize = 30.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center, color = Color.Black)
 
         Spacer(Modifier.height(20.dp))
         LazyColumn {
@@ -70,7 +56,8 @@ fun GamesScreen(){
                         horizontalArrangement = Arrangement.Center,
                     ){
                     Column(
-                        modifier = Modifier.padding(20.dp).align(Alignment.CenterVertically)
+                        modifier = Modifier.padding(20.dp).align(Alignment.CenterVertically),
+                        horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
                         Text(
                             text = game.name,
@@ -82,7 +69,7 @@ fun GamesScreen(){
                         Spacer(Modifier.height(20.dp))
                         Button(
                             onClick = {},
-                            colors = ButtonDefaults.textButtonColors(color1,color2), // prova colors
+                            colors = ButtonDefaults.textButtonColors(color3,color1), // prova colors
                         ){
                             Text("Jugar")
                         }
