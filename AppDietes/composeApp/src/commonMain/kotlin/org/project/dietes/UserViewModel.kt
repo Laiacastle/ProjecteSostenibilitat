@@ -28,14 +28,14 @@ data class UserData(
     val password: String
 )
 class UsersDataViewModel : ViewModel(){
-    /*var users by mutableStateOf<List<UserData>?>(null)
+    var users by mutableStateOf<List<UserData>?>(null)
     init {
         viewModelScope.launch(Dispatchers.Default){
             users = DietaApi.listUsers()
         }
-    }*/
+    }
     // funcio update i add user no va con con StateOf
-    val users = mutableStateListOf<UserData>()
+    //val users = mutableStateListOf<UserData>()
 
     /*fun updateUser(updated: UserData){
         val index = users?.indexOfFirst { it.idUser == updated.idUser }
