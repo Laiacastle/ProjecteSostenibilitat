@@ -1,47 +1,76 @@
 package org.project.dietes
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Button
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
+import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import appdietes.composeapp.generated.resources.Logo
+import appdietes.composeapp.generated.resources.Res
+import org.jetbrains.compose.resources.painterResource
 
 
 @Composable
 fun ViewUserStatistics(
     userId: Int,
-    navViewModel: NavViewModel
+    navViewModel: NavViewModel,
+    usersViewModel: UsersDataViewModel = viewModel()
 ){
-    val users = UsersDataViewModel().users
-    val user = users[userId]
+    val user = usersViewModel.getUserById(userId) ?: return
+    val color1 = Color(red = 0x8E, green = 0xF4, blue = 0xC0)
+    val color3 = Color(red = 0x49, green = 0x60, blue = 0x5E)
     Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
     ){
-        Text(user.name)
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Image(
+                modifier = Modifier.size(40.dp),
+                painter = painterResource(Res.drawable.Logo),
+                contentDescription = "logo"
+            )
+            Spacer(Modifier.width(10.dp))
+            androidx.compose.material3.Text("Information User", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+        }
         Spacer(Modifier.height(10.dp))
-        Text(user.lastName)
+        Text(text = "Name: ${user.name}")
         Spacer(Modifier.height(10.dp))
-        Text(user.email)
+        Text(text = "LastName: ${user.lastName}")
         Spacer(Modifier.height(10.dp))
-        Text(user.weight.toString())
+        Text(text = "Email: ${user.email}")
         Spacer(Modifier.height(10.dp))
-        Text(user.exerciseDone)
+        Text(text = "Weight: ${user.weight.toString()}")
         Spacer(Modifier.height(10.dp))
-        Text(user.sleepTime.toString())
+        Text(text = "Exercise Done: ${user.exerciseDone}")
         Spacer(Modifier.height(10.dp))
-        Text(user.age.toString())
+        Text(text = "Sleep Time: ${user.sleepTime.toString()}")
         Spacer(Modifier.height(10.dp))
+        Text(text = "Age: ${user.age.toString()}")
+        Spacer(Modifier.height(15.dp))
 
         Button(
             onClick = {
                 navViewModel.selectUserId = user.idUser
-                //navViewModel.navTo()
-            }
+                navViewModel.navTo(Screen.EditUser)
+            },
+            colors = ButtonDefaults.textButtonColors(color1,color3)
+
         ){
             Text("Modificar les dades")
         }

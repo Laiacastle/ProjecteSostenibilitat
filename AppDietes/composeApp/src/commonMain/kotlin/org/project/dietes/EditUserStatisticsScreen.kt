@@ -9,14 +9,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
 //noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.ContentAlpha
 //noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material3.Icon
 //noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.OutlinedTextField
 //noinspection UsingMaterialAndMaterial3Libraries
@@ -26,10 +23,10 @@ import androidx.compose.material.icons.filled.Cake
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -40,65 +37,34 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
-import appdietes.composeapp.generated.resources.Res
 import appdietes.composeapp.generated.resources.Logo
+import appdietes.composeapp.generated.resources.Res
 import org.jetbrains.compose.resources.painterResource
 
-data class UserData(
-    val idUser: Int,
-    val name: String,
-    val lastName: String,
-    val email: String,
-    val weight: Float,
-    val exerciseDone: String,
-    val sleepTime: Float,
-    val age: Int
-)
-class UsersDataViewModel : ViewModel(){
-    val users = mutableStateListOf<UserData>()
-
-    fun updateUser(updated: UserData){
-        val index = users.indexOfFirst { it.idUser == updated.idUser }
-        if (index != -1){
-            users[index] = updated
-        }
-    }
-    fun getUserById(id: Int): UserData? =
-        users.find { it.idUser == id }
-}
-fun isNumeric(toCheck: String): Boolean {
-    return toCheck.all { char -> char.isDigit() }
-}
-fun isDecimal(toCheck: String): Boolean {
-    val regex = "[0-9]+(\\.[0-9]+)?".toRegex()
-    return toCheck.matches(regex)
-}
 @Composable
-fun CreateUserStatisticsScreen(
-    viewModel: UsersDataViewModel = viewModel(),
-    onAddUser: (UserData) -> Unit,
+fun EditUserStatisticsScreen(
+    userId: Int,
+    navViewModel: NavViewModel,
     onCancel: () -> Unit,
-    navViewModel: NavViewModel = viewModel(),
+    usersViewModel: UsersDataViewModel = viewModel()
 ){
-    val users = UsersDataViewModel().users
-    val userId = 1 // generar automaticament
-    var name by remember { mutableStateOf("") }
+    val user = usersViewModel.getUserById(userId) ?: return
+    var name by remember { mutableStateOf(user.name) }
     var nameError by remember { mutableStateOf(false) }
-    var lastName by remember { mutableStateOf("") }
+    var lastName by remember { mutableStateOf(user.lastName) }
     var lastNameError by remember { mutableStateOf(false) }
-    var email by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf(user.email) }
     var emailError by remember { mutableStateOf(false) }
-    var weight by remember { mutableStateOf("") }
+    var weight by remember { mutableStateOf(user.weight.toString()) }
     var weightError by remember { mutableStateOf(false) }
     var weightErrorNum by remember { mutableStateOf(false) }
-    var exerciseDone by remember { mutableStateOf("") }
+    var exerciseDone by remember { mutableStateOf(user.exerciseDone) }
     var exerciseDoneError by remember { mutableStateOf(false) }
-    var sleepTime by remember { mutableStateOf("") }
+    var sleepTime by remember { mutableStateOf(user.sleepTime.toString()) }
     var sleepTimeError by remember { mutableStateOf(false) }
     var sleepTimeErrorNum by remember { mutableStateOf(false) }
-    var age by remember { mutableStateOf("") }
+    var age by remember { mutableStateOf(user.age.toString()) }
     var ageError by remember { mutableStateOf(false) }
     var ageErrorNum by remember { mutableStateOf(false) }
 
@@ -121,7 +87,7 @@ fun CreateUserStatisticsScreen(
                 contentDescription = "logo"
             )
             Spacer(Modifier.width(10.dp))
-            Text("Create User", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+            Text("Edit User", fontSize = 30.sp, fontWeight = FontWeight.Bold)
         }
         Spacer(Modifier.height(10.dp))
         // name input
@@ -139,7 +105,7 @@ fun CreateUserStatisticsScreen(
                 focusedIndicatorColor = color2,
                 unfocusedIndicatorColor = color2,
 
-            ),
+                ),
             isError = nameError,
             placeholder = {Text(text = "Enter your name")}
         )
@@ -356,7 +322,7 @@ fun CreateUserStatisticsScreen(
 
         Spacer(Modifier.height(20.dp))
 
-        Row{
+        Row {
             Button(
                 onClick = {
                     nameError = name.isBlank()
@@ -381,24 +347,17 @@ fun CreateUserStatisticsScreen(
                         isDecimal(sleepTime) and
                         isNumeric(age)) {
 
-                        // add user
-                        val newUser = UserData(
-                            idUser = userId,
+                        usersViewModel.updateUser(user.copy(
                             name = name,
                             lastName = lastName,
                             email = email,
                             weight = weight.toFloat(),
                             exerciseDone = exerciseDone,
                             sleepTime = sleepTime.toFloat(),
-                            age = age.toInt(),
-                        )
-                        onAddUser(newUser)
-                        viewModel.users.add(newUser)
-
-
-                        navViewModel.selectUserId = userId
-                        navViewModel.navTo(Screen.Account)
+                            age = age.toInt(),))
                     }
+                    navViewModel.selectUserId = user.idUser
+                    navViewModel.navTo(Screen.Account)
                 },
                 colors = ButtonDefaults.textButtonColors(color1,color3)
             ){
@@ -406,26 +365,11 @@ fun CreateUserStatisticsScreen(
             }
             Spacer(Modifier.width(10.dp))
             Button(
-                onClick = { onCancel()  },
+                onClick = {onCancel() },
                 colors = ButtonDefaults.textButtonColors(Color.Red,color3)
             ){
-                Text("Cancel")
+                Text("Cancela")
             }
         }
-        /*LazyColumn { // proves userData class mostrar dades inserides
-            items(users){ user ->
-                Row {
-                    Column {
-                        Text(user.name)
-                        Text(user.lastName)
-                        Text(user.email)
-                        Text(user.weight.toString())
-                        Text(user.exerciseDone)
-                        Text(user.sleepTime.toString())
-                        Text(user.age.toString())
-                    }
-                }
-            }
-        }*/
     }
 }
