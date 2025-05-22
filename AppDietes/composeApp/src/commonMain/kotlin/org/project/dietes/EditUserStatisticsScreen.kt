@@ -403,7 +403,7 @@ fun EditUserStatisticsScreen(
                         isDecimal(sleepTime) and
                         isNumeric(age)) {
 
-                        usersViewModel.updateUser(user.copy(
+                        usersViewModel.updateUser(user.copy( // no va funcio updateUser con api
                             name = name,
                             lastName = lastName,
                             email = email,
