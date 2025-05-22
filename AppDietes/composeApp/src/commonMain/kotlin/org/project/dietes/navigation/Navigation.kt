@@ -20,10 +20,15 @@ import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.InternalComposeApi
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.launch
 import androidx.lifecycle.viewmodel.compose.viewModel
 import appdietes.composeapp.generated.resources.Res
@@ -70,7 +75,7 @@ fun Navigation(){
                 )
                 NavigationDrawerItem(
 
-                    label = { Text("Conte") },
+                    label = { Text("Compte") },
                     selected = false,
                     icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Account")},
                     onClick = {
@@ -79,7 +84,7 @@ fun Navigation(){
                     }
                 )
                 NavigationDrawerItem(
-                    label = { Text("Iniciar Sessió") },
+                    label = { Text("Crear Compte") },
                     selected = false,
                     icon = { Icon(Icons.Default.PersonAddAlt1, contentDescription = "Account")},
                     onClick = {
@@ -130,13 +135,16 @@ fun Navigation(){
                         navigateToGamesResultsScreen = {},
                         navigateToAIDietesScreen = {},
                         navigateToDietesScreen = {}
+
                     ) // Home Page
                     Screen.Games -> GamesScreen()
+
                     Screen.Account -> navViewModel.selectUserId?.let { userId ->
                         ViewUserStatistics(userId, navViewModel)
                     }
 
                     Screen.CreateUser -> CreateUserStatisticsScreen(
+
                         onAddUser = { user ->
                             navViewModel.navTo(Screen.Account)
                         },
@@ -144,7 +152,6 @@ fun Navigation(){
                             navViewModel.navTo(Screen.Games)
                         }
                     )
-
                     Screen.EditUser -> navViewModel.selectUserId?.let { userId ->
                         EditUserStatisticsScreen(
                             userId, navViewModel,
