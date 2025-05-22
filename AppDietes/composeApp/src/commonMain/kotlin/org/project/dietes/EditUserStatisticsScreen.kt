@@ -109,7 +109,7 @@ fun EditUserStatisticsScreen(
                 nameError = false
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-            label = {Text(text = "Name")},
+            label = {Text(text = "Nom")},
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
                 textColor = Color.Black,
@@ -118,9 +118,9 @@ fun EditUserStatisticsScreen(
 
                 ),
             isError = nameError,
-            placeholder = {Text(text = "Enter your name")}
+            placeholder = {Text(text = "Introdueix el teu nom")}
         )
-        val assistiveElementText = if (nameError) "Error: Obligatorio" else "*Obligatorio"
+        val assistiveElementText = if (nameError) "Error: Obligatori" else "*Obligatori"
         val assistiveElementColor = if (nameError) {
             MaterialTheme.colors.error
         } else {
@@ -142,7 +142,7 @@ fun EditUserStatisticsScreen(
                 lastNameError = false
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-            label = {Text(text = "Last Name")},
+            label = {Text(text = "Cognoms")},
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
                 textColor = Color.Black,
@@ -150,9 +150,9 @@ fun EditUserStatisticsScreen(
                 unfocusedIndicatorColor = color2,
             ),
             isError = lastNameError,
-            placeholder = {Text(text = "Enter your Last Name")}
+            placeholder = {Text(text = "Introdueix el teu cognom")}
         )
-        val assistiveElementTextLastName = if (lastNameError) "Error: Obligatorio" else "*Obligatorio"
+        val assistiveElementTextLastName = if (lastNameError) "Error: Obligatori" else "*Obligatori"
         val assistiveElementColorLastName = if (lastNameError) {
             MaterialTheme.colors.error
         } else {
@@ -176,7 +176,7 @@ fun EditUserStatisticsScreen(
                 emailError = false
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-            label = { Text(text = "Email address") },
+            label = { Text(text = "Adreça Electrònica") },
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
                 textColor = Color.Black,
@@ -184,9 +184,9 @@ fun EditUserStatisticsScreen(
                 unfocusedIndicatorColor = color2,
             ),
             isError = emailError,
-            placeholder = { Text(text = "Enter your e-mail") }
+            placeholder = { Text(text = "Introdueix el teu correu electronic") }
         )
-        val assistiveElementTextEmail = if (emailError) "Error: Obligatorio" else "*Obligatorio"
+        val assistiveElementTextEmail = if (emailError) "Error: Obligatori" else "*Obligatori"
         val assistiveElementColorEmail = if (emailError) {
             MaterialTheme.colors.error
         } else {
@@ -208,7 +208,7 @@ fun EditUserStatisticsScreen(
                 weightError = false
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
-            label = {Text(text = "Weight")},
+            label = {Text(text = "Pes")},
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
                 textColor = Color.Black,
@@ -216,10 +216,10 @@ fun EditUserStatisticsScreen(
                 unfocusedIndicatorColor = color2,
             ),
             isError = weightError or weightErrorNum,
-            placeholder = {Text(text = "Enter your Weight")}
+            placeholder = {Text(text = "Introdueix el teu pes")}
         )
-        val assistiveElementTextWeight = if (weightError) "Error: Obligatorio" else if (weightErrorNum) "Error: Tenen que ser numeros"
-        else "*Obligatorio"
+        val assistiveElementTextWeight = if (weightError) "Error: Obligatori" else if (weightErrorNum) "Error: Tenen que ser numeros"
+        else "*Obligatori"
         val assistiveElementColorWeight = if (weightError or weightErrorNum) {
             MaterialTheme.colors.error
         } else {
@@ -241,7 +241,7 @@ fun EditUserStatisticsScreen(
                 exerciseDoneError = false
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-            label = {Text(text = "Exercise Done")},
+            label = {Text(text = "Exercici Fet")},
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
                 textColor = Color.Black,
@@ -250,9 +250,9 @@ fun EditUserStatisticsScreen(
             ),
             isError = exerciseDoneError,
             singleLine = true,
-            placeholder = {Text(text = "Enter your Exercise Done")}
+            placeholder = {Text(text = "Introdueix el exercici")}
         )
-        val assistiveElementTextExercise = if (exerciseDoneError) "Error: Obligatorio" else "*Obligatorio"
+        val assistiveElementTextExercise = if (exerciseDoneError) "Error: Obligatori" else "*Obligatori"
         val assistiveElementColorExercise = if (exerciseDoneError) {
             MaterialTheme.colors.error
         } else {
@@ -274,7 +274,7 @@ fun EditUserStatisticsScreen(
                 sleepTimeError = false
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
-            label = {Text(text = "Sleep Time")},
+            label = {Text(text = "Horas de Son")},
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
                 textColor = Color.Black,
@@ -282,10 +282,10 @@ fun EditUserStatisticsScreen(
                 unfocusedIndicatorColor = color2,
             ),
             isError = sleepTimeError or sleepTimeErrorNum,
-            placeholder = {Text(text = "Enter your Sleep Time")}
+            placeholder = {Text(text = "Introdueix les hores de són")}
         )
-        val assistiveElementTextSleep = if (sleepTimeError) "Error: Obligatorio" else if (sleepTimeErrorNum) "Error: Tenen que ser numeros"
-        else "*Obligatorio"
+        val assistiveElementTextSleep = if (sleepTimeError) "Error: Obligatori" else if (sleepTimeErrorNum) "Error: Tenen que ser numeros"
+        else "*Obligatori"
         val assistiveElementColorSleep = if (sleepTimeError or sleepTimeErrorNum) {
             MaterialTheme.colors.error
         } else {
@@ -308,7 +308,7 @@ fun EditUserStatisticsScreen(
                 ageError = false
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            label = {Text(text = "Age")},
+            label = {Text(text = "Edat")},
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
                 textColor = Color.Black,
@@ -316,10 +316,10 @@ fun EditUserStatisticsScreen(
                 unfocusedIndicatorColor = color2,
             ),
             isError = ageError or ageErrorNum,
-            placeholder = {Text(text = "Enter your Age")}
+            placeholder = {Text(text = "Introdueix la teva edat")}
         )
-        val assistiveElementTextAge = if (ageError) "Error: Obligatorio" else if (ageErrorNum) "Error: Tenen que ser numeros"
-        else "*Obligatorio"
+        val assistiveElementTextAge = if (ageError) "Error: Obligatori" else if (ageErrorNum) "Error: Tenen que ser numeros"
+        else "*Obligatori"
         val assistiveElementColorAge = if (ageError or ageErrorNum) {
             MaterialTheme.colors.error
         } else {
@@ -352,7 +352,7 @@ fun EditUserStatisticsScreen(
                 unfocusedIndicatorColor = color2,
             ),
             isError = passwordError,
-            placeholder = { Text(text = "Enter your Password") },
+            placeholder = { Text(text = "Introdueix la teva contrasenya") },
             visualTransformation =
                 if (hidden) PasswordVisualTransformation() else VisualTransformation.None,
             trailingIcon = {
@@ -426,7 +426,7 @@ fun EditUserStatisticsScreen(
                 onClick = {onCancel() },
                 colors = ButtonDefaults.textButtonColors(Color.Red,color3)
             ){
-                Text("Cancela")
+                Text("Cancel·la")
             }
         }
     }

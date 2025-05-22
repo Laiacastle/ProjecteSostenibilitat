@@ -104,7 +104,7 @@ fun Navigation(){
                 )
                 NavigationDrawerItem(
 
-                    label = { Text("Inicia Sesio") },
+                    label = { Text("Inicia Sessió") },
                     selected = false,
                     icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Account")},
                     onClick = {
