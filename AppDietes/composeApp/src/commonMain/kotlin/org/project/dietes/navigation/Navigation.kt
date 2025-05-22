@@ -1,4 +1,4 @@
-package org.project.dietes
+package org.project.dietes.navigation
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -21,34 +21,16 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.InternalComposeApi
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.launch
 import androidx.lifecycle.viewmodel.compose.viewModel
 import appdietes.composeapp.generated.resources.Res
 import appdietes.composeapp.generated.resources.Logo
 import org.jetbrains.compose.resources.painterResource
 import org.project.dietes.homePage.HomePageScreen
-
-sealed interface Screen {
-    data object Home : Screen
-    data object Games : Screen
-    data object Account : Screen
-    data object CreateUser : Screen
-    data object EditUser : Screen
-}
-class NavViewModel : ViewModel(){
-    val currentScreen = mutableStateOf<Screen>(Screen.Home)
-    var selectUserId by mutableStateOf<Int?>(null)
-    fun navTo(screen: Screen) {currentScreen.value = screen}
-}
-
 
 @OptIn(InternalComposeApi::class, ExperimentalMaterial3Api::class)
 @Composable
@@ -144,11 +126,11 @@ fun Navigation(){
                         navigateToAIDietesScreen = {},
                         navigateToDietesScreen = {}
                     ) // Home Page
-                    Screen.Games -> GamesScreen()
+                    Screen.Games -> _root_ide_package_.org.project.dietes.GamesScreen()
                     Screen.Account -> navViewModel.selectUserId?.let { userId ->
-                        ViewUserStatistics(userId, navViewModel)
+                        _root_ide_package_.org.project.dietes.ViewUserStatistics(userId, navViewModel)
                     }
-                    Screen.CreateUser -> CreateUserStatisticsScreen(
+                    Screen.CreateUser -> _root_ide_package_.org.project.dietes.CreateUserStatisticsScreen(
                         onAddUser = { user ->
                             navViewModel.navTo(Screen.Account)
                         },
@@ -157,7 +139,8 @@ fun Navigation(){
                         }
                     )
                     Screen.EditUser -> navViewModel.selectUserId?.let { userId ->
-                        EditUserStatisticsScreen(userId, navViewModel,
+                        _root_ide_package_.org.project.dietes.EditUserStatisticsScreen(
+                            userId, navViewModel,
                             onCancel = {
                                 navViewModel.navTo(Screen.Account)
                             }
