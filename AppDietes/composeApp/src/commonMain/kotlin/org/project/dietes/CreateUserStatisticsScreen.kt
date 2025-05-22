@@ -18,8 +18,10 @@ import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Cake
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,11 +33,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import appdietes.composeapp.generated.resources.Res
 import appdietes.composeapp.generated.resources.Logo
+import appdietes.composeapp.generated.resources.eye_off_outline
+import appdietes.composeapp.generated.resources.eye_outline
 import org.jetbrains.compose.resources.painterResource
 import org.project.dietes.navigation.NavViewModel
 import org.project.dietes.navigation.Screen
@@ -66,6 +72,9 @@ fun CreateUserStatisticsScreen(
     var age by remember { mutableStateOf("") }
     var ageError by remember { mutableStateOf(false) }
     var ageErrorNum by remember { mutableStateOf(false) }
+    var password by remember { mutableStateOf("") }
+    var hidden by remember { mutableStateOf(true) }
+    var passwordError by remember { mutableStateOf(false) }
 
     val color1 = Color(red = 0x8E, green = 0xF4, blue = 0xC0)
     val color2 = Color(red = 0x56, green = 0xA5, blue = 0x8B)
@@ -321,6 +330,55 @@ fun CreateUserStatisticsScreen(
 
         Spacer(Modifier.height(20.dp))
 
+        // password input
+        OutlinedTextField(
+            value = password,
+            onValueChange = { password = it
+                passwordError = false},
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Lock,
+                    contentDescription = null
+                )
+            },
+            label = { Text("Contraseña") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            singleLine = true,
+            colors = TextFieldDefaults.textFieldColors(
+                backgroundColor = Color.White,
+                textColor = Color.Black,
+                focusedIndicatorColor = color2,
+                unfocusedIndicatorColor = color2,
+            ),
+            isError = passwordError,
+            placeholder = { Text(text = "Enter your Password") },
+            visualTransformation =
+                if (hidden) PasswordVisualTransformation() else VisualTransformation.None,
+            trailingIcon = {
+                IconButton(onClick = { hidden = !hidden }) {
+                    val vector = painterResource(
+                        if (hidden) Res.drawable.eye_outline
+                        else Res.drawable.eye_off_outline
+                    )
+                    val description = if (hidden) "Ocultar contraseña" else "Revelar contraseña"
+                    Icon(painter = vector, contentDescription = description)
+                }
+            }
+        )
+        val assistiveElementTextPassword = if (passwordError) "Error: Obligatorio" else "*Obligatorio"
+        val assistiveElementColorPassword = if (passwordError) {
+            MaterialTheme.colors.error
+        } else {
+            MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium)
+        }
+        Text(
+            text = assistiveElementTextPassword,
+            color = assistiveElementColorPassword,
+            style = MaterialTheme.typography.caption,
+        )
+
+        Spacer(Modifier.height(20.dp))
+
         Row{
             Button(
                 onClick = {
@@ -342,6 +400,7 @@ fun CreateUserStatisticsScreen(
                         !exerciseDoneError and
                         !sleepTimeError and
                         !ageError and
+                        !passwordError and
                         isDecimal(weight) and
                         isDecimal(sleepTime) and
                         isNumeric(age)) {
@@ -356,6 +415,7 @@ fun CreateUserStatisticsScreen(
                             exerciseDone = exerciseDone,
                             sleepTime = sleepTime.toFloat(),
                             age = age.toInt(),
+                            password = password
                         )
                         onAddUser(newUser)
                         viewModel.users.add(newUser)

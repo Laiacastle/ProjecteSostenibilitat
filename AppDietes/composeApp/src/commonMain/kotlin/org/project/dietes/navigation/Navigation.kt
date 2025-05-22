@@ -36,6 +36,7 @@ import appdietes.composeapp.generated.resources.Logo
 import org.jetbrains.compose.resources.painterResource
 import org.project.dietes.CreateUserStatisticsScreen
 import org.project.dietes.EditUserStatisticsScreen
+import org.project.dietes.UserLoginScreen
 import org.project.dietes.ViewUserStatistics
 import org.project.dietes.gamesScreen.GamesScreen
 import org.project.dietes.homePage.HomePageScreen
@@ -101,6 +102,16 @@ fun Navigation(){
                         scope.launch { drawerState.close() }
                     }
                 )
+                NavigationDrawerItem(
+
+                    label = { Text("Inicia Sesio") },
+                    selected = false,
+                    icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Account")},
+                    onClick = {
+                        navViewModel.navTo(Screen.LoginUser)
+                        scope.launch { drawerState.close() }
+                    }
+                )
             }
         },
         drawerState = drawerState,
@@ -135,7 +146,6 @@ fun Navigation(){
                         navigateToGamesResultsScreen = {},
                         navigateToAIDietesScreen = {},
                         navigateToDietesScreen = {}
-
                     ) // Home Page
                     Screen.Games -> GamesScreen()
 
@@ -144,12 +154,11 @@ fun Navigation(){
                     }
 
                     Screen.CreateUser -> CreateUserStatisticsScreen(
-
                         onAddUser = { user ->
                             navViewModel.navTo(Screen.Account)
                         },
                         onCancel = {
-                            navViewModel.navTo(Screen.Games)
+                            navViewModel.navTo(Screen.Home)
                         }
                     )
                     Screen.EditUser -> navViewModel.selectUserId?.let { userId ->
@@ -160,6 +169,11 @@ fun Navigation(){
                             }
                         )
                     }
+                    Screen.LoginUser -> UserLoginScreen(
+                        onCancel = {
+                            navViewModel.navTo(Screen.Home)
+                        }
+                    )
                 }
             }
         }

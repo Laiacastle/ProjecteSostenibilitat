@@ -11,7 +11,8 @@ data class UserData(
     val weight: Float,
     val exerciseDone: String,
     val sleepTime: Float,
-    val age: Int
+    val age: Int,
+    val password: String
 )
 class UsersDataViewModel : ViewModel(){
     val users = mutableStateListOf<UserData>()
