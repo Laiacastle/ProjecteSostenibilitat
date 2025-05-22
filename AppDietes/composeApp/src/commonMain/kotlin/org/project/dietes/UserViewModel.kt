@@ -27,6 +27,9 @@ class UsersDataViewModel : ViewModel(){
     }
     fun getUserById(id: Int): UserData? =
         users.find { it.idUser == id }
+
+    fun getUserByEmail(email: String): UserData? =
+        users.find { it.email == email }
 }
 fun isNumeric(toCheck: String): Boolean {
     return toCheck.all { char -> char.isDigit() }
