@@ -20,8 +20,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.InternalComposeApi
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -36,9 +38,11 @@ sealed interface Screen {
     data object Home : Screen
     data object Games : Screen
     data object Account : Screen
+    data object CreateUser : Screen
 }
 class NavViewModel : ViewModel(){
     val currentScreen = mutableStateOf<Screen>(Screen.Games)
+    var selectUserId by mutableStateOf<Int?>(null)
     fun navTo(screen: Screen) {currentScreen.value = screen}
 }
 
@@ -123,12 +127,15 @@ fun Navigation(){
                 when (currentScreen) {
                     Screen.Home -> HomePage() // Home Page
                     Screen.Games -> GamesScreen()
-                    Screen.Account -> AccountScreen() // Account Page
+                    Screen.Account -> navViewModel.selectUserId?.let { userId ->
+                        ViewUserStatistics(userId, navViewModel)
+                    }        // Account Page
+                    Screen.CreateUser -> CreateUserStatisticsScreen()
+                    }
                 }
             }
         }
     }
-}
 
 @Composable
 fun AccountScreen() {

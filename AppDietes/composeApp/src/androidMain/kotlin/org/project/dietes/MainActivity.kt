@@ -15,7 +15,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             //App()
             //GamesScreen()
-            Navigation()
+            //Navigation()
         }
     }
 }
