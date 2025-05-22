@@ -17,6 +17,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.iosX64Test.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.iosX64Test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.nativeMain.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.nativeMain.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.nativeTest.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.nativeTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.main.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ProjecteSostenibilitat.iml" filepath="$PROJECT_DIR$/.idea/ProjecteSostenibilitat.iml" />
     </modules>
   </component>

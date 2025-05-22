@@ -1,7 +1,6 @@
 package org.project.dietes
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -49,7 +48,7 @@ fun ViewUserStatistics(
                 contentDescription = "logo"
             )
             Spacer(Modifier.width(15.dp))
-            androidx.compose.material3.Text(text = "Hola, ${user.name} ${user.lastName}", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+            Text(text = "Hola, ${user.name} ${user.lastName}", fontSize = 30.sp, fontWeight = FontWeight.Bold)
         }
         Spacer(Modifier.height(15.dp))
         Text(text = "Dades Usuari:", fontSize = 20.sp)

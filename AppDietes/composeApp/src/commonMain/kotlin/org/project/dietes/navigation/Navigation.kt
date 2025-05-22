@@ -34,11 +34,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import appdietes.composeapp.generated.resources.Res
 import appdietes.composeapp.generated.resources.Logo
 import org.jetbrains.compose.resources.painterResource
+import org.project.dietes.homePage.HomePageScreen
 
-
-
-
-@OptIn(InternalComposeApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Navigation(){
     val navViewModel = viewModel { NavViewModel() }
@@ -48,7 +46,7 @@ fun Navigation(){
 
     ModalNavigationDrawer(
         drawerContent = {
-            ModalDrawerSheet() {
+            ModalDrawerSheet {
                 Row(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -62,7 +60,7 @@ fun Navigation(){
                     Text("Menu")
                 }
                 NavigationDrawerItem(
-                    label = { Text("HomePage") },
+                    label = { Text("Inici") },
                     selected = false,
                     icon = { Icon(Icons.Default.Home, contentDescription = "Home")},
                     onClick = {
@@ -71,7 +69,8 @@ fun Navigation(){
                     }
                 )
                 NavigationDrawerItem(
-                    label = { Text("Account") },
+
+                    label = { Text("Compte") },
                     selected = false,
                     icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Account")},
                     onClick = {
@@ -80,7 +79,7 @@ fun Navigation(){
                     }
                 )
                 NavigationDrawerItem(
-                    label = { Text("CrearCompte") },
+                    label = { Text("Crear Compte") },
                     selected = false,
                     icon = { Icon(Icons.Default.PersonAddAlt1, contentDescription = "Account")},
                     onClick = {
@@ -89,7 +88,7 @@ fun Navigation(){
                     }
                 )
                 NavigationDrawerItem(
-                    label = { Text("Games") },
+                    label = { Text("Jocs") },
                     selected = false,
                     icon = {Icon(Icons.Default.Games, contentDescription = "Games")},
                     onClick = {
@@ -101,11 +100,11 @@ fun Navigation(){
         },
         drawerState = drawerState,
         gesturesEnabled = false
-    ){
+    ) {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = {Text("Menu")},
+                    title = { Text("Menu") },
                     navigationIcon = {
                         IconButton(onClick = {
                             scope.launch {
@@ -122,10 +121,16 @@ fun Navigation(){
                     }
                 )
             }
-        ){ padding ->
-            Box(modifier = Modifier.padding(padding)){
+        ) { padding ->
+            Box(modifier = Modifier.padding(padding)) {
                 when (currentScreen) {
-                    Screen.Home -> HomePage() // Home Page
+                    Screen.Home -> HomePageScreen(
+                        navigateToModifyInformationScreen = { navViewModel.navTo(Screen.EditUser) },
+                        navigateToGamesScreen = { navViewModel.navTo(Screen.Games) },
+                        navigateToGamesResultsScreen = {},
+                        navigateToAIDietesScreen = {},
+                        navigateToDietesScreen = {}
+                    )
                     Screen.Games -> _root_ide_package_.org.project.dietes.GamesScreen()
                     Screen.Account -> navViewModel.selectUserId?.let { userId ->
                         _root_ide_package_.org.project.dietes.ViewUserStatistics(userId, navViewModel)
@@ -150,8 +155,4 @@ fun Navigation(){
             }
         }
     }
-}
-@Composable
-fun HomePage() {
-    TODO("Not yet implemented")
 }
