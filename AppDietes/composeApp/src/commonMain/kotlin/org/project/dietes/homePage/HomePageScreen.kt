@@ -82,7 +82,7 @@ fun HomePageScreen(
             Text("Afegir, modificar i consultar informació: edat, pes...")
             Spacer(modifier = Modifier.size(25.dp))
             Button(
-                onClick = { navigateToModifyInformationScreen },
+                onClick = { navigateToModifyInformationScreen() },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = color3,
                     contentColor = color1
@@ -95,7 +95,7 @@ fun HomePageScreen(
             Text("Fer jocs per a calificar el teus reflexos, la vista...")
             Spacer(modifier = Modifier.size(25.dp))
             Button(
-                onClick = { navigateToGamesScreen },
+                onClick = { navigateToGamesScreen() },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = color3,
                     contentColor = color1
@@ -108,7 +108,7 @@ fun HomePageScreen(
             Text("Veure els resultats de els tests")
             Spacer(modifier = Modifier.size(25.dp))
             Button(
-                onClick = { navigateToGamesResultsScreen },
+                onClick = { navigateToGamesResultsScreen() },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = color3,
                     contentColor = color1
@@ -121,7 +121,7 @@ fun HomePageScreen(
             Text("Recomenacions, generades per IA, de dieta basades en la informació proporcionada i els resultats de els tests")
             Spacer(modifier = Modifier.size(25.dp))
             Button(
-                onClick = { navigateToAIDietesScreen },
+                onClick = { navigateToAIDietesScreen() },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = color3,
                     contentColor = color1
@@ -134,13 +134,13 @@ fun HomePageScreen(
             Text("Recomenacions i dietes donades per metges")
             Spacer(modifier = Modifier.size(25.dp))
             Button(
-                onClick = { navigateToDietesScreen },
+                onClick = { navigateToDietesScreen() },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = color3,
                     contentColor = color1
                 )
             ) {
-                Text("Veure dietes i recomenacions de metges")
+                Text("Veure dietes de metges")
             }
 
             Spacer(modifier = Modifier.size(75.dp))

@@ -1,4 +1,3 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -82,6 +81,7 @@ android {
 
 dependencies {
     implementation("androidx.compose.runtime:runtime-android:1.8.1")
+    implementation("androidx.navigation:navigation-compose-jvmstubs:2.9.0")
     debugImplementation(compose.uiTooling)
 }
 
