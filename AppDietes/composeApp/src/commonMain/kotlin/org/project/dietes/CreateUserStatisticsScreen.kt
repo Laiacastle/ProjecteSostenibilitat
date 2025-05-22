@@ -95,9 +95,9 @@ fun CreateUserStatisticsScreen(
                 contentDescription = "logo"
             )
             Spacer(Modifier.width(10.dp))
-            Text("Create User", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+            Text("Crear Usuari", fontSize = 30.sp, fontWeight = FontWeight.Bold)
         }
-        Spacer(Modifier.height(10.dp))
+        //Spacer(Modifier.height(10.dp))
         // name input
         OutlinedTextField(
             value = name,
@@ -106,7 +106,7 @@ fun CreateUserStatisticsScreen(
                 nameError = false
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-            label = {Text(text = "Name")},
+            label = {Text(text = "Nom")},
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
                 textColor = Color.Black,
@@ -115,9 +115,9 @@ fun CreateUserStatisticsScreen(
 
             ),
             isError = nameError,
-            placeholder = {Text(text = "Enter your name")}
+            placeholder = {Text(text = "Introdueix el teu nom")}
         )
-        val assistiveElementText = if (nameError) "Error: Obligatorio" else "*Obligatorio"
+        val assistiveElementText = if (nameError) "Error: Obligatori" else "*Obligatori"
         val assistiveElementColor = if (nameError) {
             MaterialTheme.colors.error
         } else {
@@ -129,7 +129,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
 
         // lastname input
         OutlinedTextField(
@@ -139,7 +139,7 @@ fun CreateUserStatisticsScreen(
                 lastNameError = false
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-            label = {Text(text = "Last Name")},
+            label = {Text(text = "Cognoms")},
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
                 textColor = Color.Black,
@@ -147,9 +147,9 @@ fun CreateUserStatisticsScreen(
                 unfocusedIndicatorColor = color2,
             ),
             isError = lastNameError,
-            placeholder = {Text(text = "Enter your Last Name")}
+            placeholder = {Text(text = "Introdueix el teu cognom")}
         )
-        val assistiveElementTextLastName = if (lastNameError) "Error: Obligatorio" else "*Obligatorio"
+        val assistiveElementTextLastName = if (lastNameError) "Error: Obligatori" else "*Obligatori"
         val assistiveElementColorLastName = if (lastNameError) {
             MaterialTheme.colors.error
         } else {
@@ -161,7 +161,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
 
         // email input
         OutlinedTextField(
@@ -173,7 +173,7 @@ fun CreateUserStatisticsScreen(
                 emailError = false
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-            label = { Text(text = "Email address") },
+            label = { Text(text = "Adreça Electrònica") },
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
                 textColor = Color.Black,
@@ -181,9 +181,9 @@ fun CreateUserStatisticsScreen(
                 unfocusedIndicatorColor = color2,
             ),
             isError = emailError,
-            placeholder = { Text(text = "Enter your e-mail") }
+            placeholder = { Text(text = "Introdueix el teu correu electronic") }
         )
-        val assistiveElementTextEmail = if (emailError) "Error: Obligatorio" else "*Obligatorio"
+        val assistiveElementTextEmail = if (emailError) "Error: Obligatori" else "*Obligatori"
         val assistiveElementColorEmail = if (emailError) {
             MaterialTheme.colors.error
         } else {
@@ -195,7 +195,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
 
         // weight input
         OutlinedTextField(
@@ -205,7 +205,7 @@ fun CreateUserStatisticsScreen(
                 weightError = false
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
-            label = {Text(text = "Weight")},
+            label = {Text(text = "Pes")},
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
                 textColor = Color.Black,
@@ -213,10 +213,10 @@ fun CreateUserStatisticsScreen(
                 unfocusedIndicatorColor = color2,
             ),
             isError = weightError or weightErrorNum,
-            placeholder = {Text(text = "Enter your Weight")}
+            placeholder = {Text(text = "Introdueix el teu pes")}
         )
-        val assistiveElementTextWeight = if (weightError) "Error: Obligatorio" else if (weightErrorNum) "Error: Tenen que ser numeros"
-        else "*Obligatorio"
+        val assistiveElementTextWeight = if (weightError) "Error: Obligatori" else if (weightErrorNum) "Error: Tenen que ser numeros"
+        else "*Obligatori"
         val assistiveElementColorWeight = if (weightError or weightErrorNum) {
             MaterialTheme.colors.error
         } else {
@@ -228,7 +228,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
 
         // exerciseDone input
         OutlinedTextField(
@@ -238,7 +238,7 @@ fun CreateUserStatisticsScreen(
                 exerciseDoneError = false
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-            label = {Text(text = "Exercise Done")},
+            label = {Text(text = "Exercici Fet")},
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
                 textColor = Color.Black,
@@ -247,9 +247,9 @@ fun CreateUserStatisticsScreen(
             ),
             isError = exerciseDoneError,
             singleLine = true,
-            placeholder = {Text(text = "Enter your Exercise Done")}
+            placeholder = {Text(text = "Introdueix el exercici")}
         )
-        val assistiveElementTextExercise = if (exerciseDoneError) "Error: Obligatorio" else "*Obligatorio"
+        val assistiveElementTextExercise = if (exerciseDoneError) "Error: Obligatori" else "*Obligatori"
         val assistiveElementColorExercise = if (exerciseDoneError) {
             MaterialTheme.colors.error
         } else {
@@ -261,7 +261,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
 
         // sleepTime input
         OutlinedTextField(
@@ -271,7 +271,7 @@ fun CreateUserStatisticsScreen(
                 sleepTimeError = false
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
-            label = {Text(text = "Sleep Time")},
+            label = {Text(text = "Horas de Son")},
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
                 textColor = Color.Black,
@@ -279,10 +279,10 @@ fun CreateUserStatisticsScreen(
                 unfocusedIndicatorColor = color2,
             ),
             isError = sleepTimeError or sleepTimeErrorNum,
-            placeholder = {Text(text = "Enter your Sleep Time")}
+            placeholder = {Text(text = "Introdueix les hores de són")}
         )
-        val assistiveElementTextSleep = if (sleepTimeError) "Error: Obligatorio" else if (sleepTimeErrorNum) "Error: Tenen que ser numeros"
-        else "*Obligatorio"
+        val assistiveElementTextSleep = if (sleepTimeError) "Error: Obligatori" else if (sleepTimeErrorNum) "Error: Tenen que ser numeros"
+        else "*Obligatori"
         val assistiveElementColorSleep = if (sleepTimeError or sleepTimeErrorNum) {
             MaterialTheme.colors.error
         } else {
@@ -293,7 +293,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
 
         // age input
         OutlinedTextField(
@@ -305,7 +305,7 @@ fun CreateUserStatisticsScreen(
                 ageError = false
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            label = {Text(text = "Age")},
+            label = {Text(text = "Edat")},
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
                 textColor = Color.Black,
@@ -313,10 +313,10 @@ fun CreateUserStatisticsScreen(
                 unfocusedIndicatorColor = color2,
             ),
             isError = ageError or ageErrorNum,
-            placeholder = {Text(text = "Enter your Age")}
+            placeholder = {Text(text = "Introdueix la teva edat")}
         )
-        val assistiveElementTextAge = if (ageError) "Error: Obligatorio" else if (ageErrorNum) "Error: Tenen que ser numeros"
-        else "*Obligatorio"
+        val assistiveElementTextAge = if (ageError) "Error: Obligatori" else if (ageErrorNum) "Error: Tenen que ser numeros"
+        else "*Obligatori"
         val assistiveElementColorAge = if (ageError or ageErrorNum) {
             MaterialTheme.colors.error
         } else {
@@ -328,7 +328,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
 
         // password input
         OutlinedTextField(
@@ -341,7 +341,7 @@ fun CreateUserStatisticsScreen(
                     contentDescription = null
                 )
             },
-            label = { Text("Contraseña") },
+            label = { Text("Contrasenya") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             singleLine = true,
             colors = TextFieldDefaults.textFieldColors(
@@ -351,7 +351,7 @@ fun CreateUserStatisticsScreen(
                 unfocusedIndicatorColor = color2,
             ),
             isError = passwordError,
-            placeholder = { Text(text = "Enter your Password") },
+            placeholder = { Text(text = "Introdueix la teva contrasenya") },
             visualTransformation =
                 if (hidden) PasswordVisualTransformation() else VisualTransformation.None,
             trailingIcon = {
@@ -360,12 +360,12 @@ fun CreateUserStatisticsScreen(
                         if (hidden) Res.drawable.eye_outline
                         else Res.drawable.eye_off_outline
                     )
-                    val description = if (hidden) "Ocultar contraseña" else "Revelar contraseña"
+                    val description = if (hidden) "Ocultar contrasenya" else "Revelar contrasenya"
                     Icon(painter = vector, contentDescription = description)
                 }
             }
         )
-        val assistiveElementTextPassword = if (passwordError) "Error: Obligatorio" else "*Obligatorio"
+        val assistiveElementTextPassword = if (passwordError) "Error: Obligatori" else "*Obligatori"
         val assistiveElementColorPassword = if (passwordError) {
             MaterialTheme.colors.error
         } else {
@@ -377,7 +377,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
 
         Row{
             Button(
@@ -389,6 +389,7 @@ fun CreateUserStatisticsScreen(
                     exerciseDoneError = exerciseDone.isBlank()
                     sleepTimeError = sleepTime.isBlank()
                     ageError = age.isBlank()
+                    passwordError = password.isBlank()
                     weightErrorNum = !isDecimal(weight)
                     sleepTimeErrorNum = !isDecimal(sleepTime)
                     ageErrorNum = !isNumeric(age)

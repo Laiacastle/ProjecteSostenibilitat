@@ -284,8 +284,8 @@ fun EditUserStatisticsScreen(
             isError = sleepTimeError or sleepTimeErrorNum,
             placeholder = {Text(text = "Enter your Sleep Time")}
         )
-        val assistiveElementTextSleep = if (sleepTimeError) "Error: Obligatorio" else if (sleepTimeErrorNum) "Error: Tenen que ser numeros"
-        else "*Obligatorio"
+        val assistiveElementTextSleep = if (sleepTimeError) "Error: Obligatori" else if (sleepTimeErrorNum) "Error: Tenen que ser numeros"
+        else "*Obligatori"
         val assistiveElementColorSleep = if (sleepTimeError or sleepTimeErrorNum) {
             MaterialTheme.colors.error
         } else {
@@ -352,7 +352,7 @@ fun EditUserStatisticsScreen(
                 unfocusedIndicatorColor = color2,
             ),
             isError = passwordError,
-            placeholder = { Text(text = "Enter your Password") },
+            placeholder = { Text(text = "Introdueix la teva contrasenya") },
             visualTransformation =
                 if (hidden) PasswordVisualTransformation() else VisualTransformation.None,
             trailingIcon = {
