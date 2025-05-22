@@ -34,11 +34,16 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import appdietes.composeapp.generated.resources.Res
 import appdietes.composeapp.generated.resources.Logo
 import org.jetbrains.compose.resources.painterResource
+import org.project.dietes.CreateUserStatisticsScreen
+import org.project.dietes.EditUserStatisticsScreen
+import org.project.dietes.ViewUserStatistics
+import org.project.dietes.gamesScreen.GamesScreen
 import org.project.dietes.homePage.HomePageScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Navigation(){
+
     val navViewModel = viewModel { NavViewModel() }
     val currentScreen = navViewModel.currentScreen.value
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
@@ -130,12 +135,16 @@ fun Navigation(){
                         navigateToGamesResultsScreen = {},
                         navigateToAIDietesScreen = {},
                         navigateToDietesScreen = {}
-                    )
-                    Screen.Games -> _root_ide_package_.org.project.dietes.GamesScreen()
+
+                    ) // Home Page
+                    Screen.Games -> GamesScreen()
+
                     Screen.Account -> navViewModel.selectUserId?.let { userId ->
-                        _root_ide_package_.org.project.dietes.ViewUserStatistics(userId, navViewModel)
+                        ViewUserStatistics(userId, navViewModel)
                     }
-                    Screen.CreateUser -> _root_ide_package_.org.project.dietes.CreateUserStatisticsScreen(
+
+                    Screen.CreateUser -> CreateUserStatisticsScreen(
+
                         onAddUser = { user ->
                             navViewModel.navTo(Screen.Account)
                         },
@@ -144,7 +153,7 @@ fun Navigation(){
                         }
                     )
                     Screen.EditUser -> navViewModel.selectUserId?.let { userId ->
-                        _root_ide_package_.org.project.dietes.EditUserStatisticsScreen(
+                        EditUserStatisticsScreen(
                             userId, navViewModel,
                             onCancel = {
                                 navViewModel.navTo(Screen.Account)
