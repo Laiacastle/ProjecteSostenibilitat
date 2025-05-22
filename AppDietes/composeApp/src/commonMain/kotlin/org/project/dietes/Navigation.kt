@@ -34,6 +34,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import appdietes.composeapp.generated.resources.Res
 import appdietes.composeapp.generated.resources.Logo
 import org.jetbrains.compose.resources.painterResource
+import org.project.dietes.homePage.HomePageScreen
 
 sealed interface Screen {
     data object Home : Screen
@@ -43,7 +44,7 @@ sealed interface Screen {
     data object EditUser : Screen
 }
 class NavViewModel : ViewModel(){
-    val currentScreen = mutableStateOf<Screen>(Screen.Games)
+    val currentScreen = mutableStateOf<Screen>(Screen.Home)
     var selectUserId by mutableStateOf<Int?>(null)
     fun navTo(screen: Screen) {currentScreen.value = screen}
 }
@@ -136,7 +137,13 @@ fun Navigation(){
         ){ padding ->
             Box(modifier = Modifier.padding(padding)){
                 when (currentScreen) {
-                    Screen.Home -> HomePage() // Home Page
+                    Screen.Home -> HomePageScreen(
+                        navigateToModifyInformationScreen = {navViewModel.navTo(Screen.EditUser)},
+                        navigateToGamesScreen = {navViewModel.navTo(Screen.Games)},
+                        navigateToGamesResultsScreen = {},
+                        navigateToAIDietesScreen = {},
+                        navigateToDietesScreen = {}
+                    ) // Home Page
                     Screen.Games -> GamesScreen()
                     Screen.Account -> navViewModel.selectUserId?.let { userId ->
                         ViewUserStatistics(userId, navViewModel)
@@ -160,8 +167,4 @@ fun Navigation(){
             }
         }
     }
-}
-@Composable
-fun HomePage() {
-    TODO("Not yet implemented")
 }
