@@ -12,6 +12,7 @@ import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Games
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.PersonAddAlt1
 import androidx.compose.material3.*
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
@@ -92,7 +93,7 @@ fun Navigation(){
                 NavigationDrawerItem(
                     label = { Text("Login") },
                     selected = false,
-                    icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Account")},
+                    icon = { Icon(Icons.Default.PersonAddAlt1, contentDescription = "Account")},
                     onClick = {
                         navViewModel.navTo(Screen.CreateUser)
                         scope.launch { drawerState.close() }
@@ -139,7 +140,7 @@ fun Navigation(){
                     Screen.Games -> GamesScreen()
                     Screen.Account -> navViewModel.selectUserId?.let { userId ->
                         ViewUserStatistics(userId, navViewModel)
-                    }        // Account Page
+                    }
                     Screen.CreateUser -> CreateUserStatisticsScreen(
                         onAddUser = { user ->
                             navViewModel.navTo(Screen.Account)
@@ -155,17 +156,11 @@ fun Navigation(){
                             }
                         )
                     }
-                    }
                 }
             }
         }
     }
-
-@Composable
-fun AccountScreen() {
-    TODO("Not yet implemented")
 }
-
 @Composable
 fun HomePage() {
     TODO("Not yet implemented")
