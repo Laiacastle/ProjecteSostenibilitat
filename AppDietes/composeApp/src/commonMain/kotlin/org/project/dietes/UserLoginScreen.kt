@@ -75,7 +75,7 @@ fun UserLoginScreen(
                 contentDescription = "logo"
             )
             Spacer(Modifier.width(10.dp))
-            Text("Login", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+            Text("Inicia Sessió", fontSize = 30.sp, fontWeight = FontWeight.Bold)
         }
 
         Spacer(Modifier.height(10.dp))
@@ -93,7 +93,7 @@ fun UserLoginScreen(
                 dadesError = false
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-            label = { Text(text = "Email address") },
+            label = { Text(text = "Adreça Electrònica") },
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
                 textColor = Color.Black,
@@ -101,7 +101,7 @@ fun UserLoginScreen(
                 unfocusedIndicatorColor = color2,
             ),
             isError = dadesError,
-            placeholder = { Text(text = "Enter your e-mail") }
+            placeholder = { Text(text = "Introdueix el teu correu electronic") }
         )
 
         Spacer(Modifier.height(10.dp))
@@ -126,7 +126,7 @@ fun UserLoginScreen(
                 unfocusedIndicatorColor = color2,
             ),
             isError = dadesError,
-            placeholder = { Text(text = "Enter your Password") },
+            placeholder = { Text(text = "Introdueix la teva contrasenya") },
             visualTransformation =
                 if (hidden) PasswordVisualTransformation() else VisualTransformation.None,
             trailingIcon = {
@@ -157,15 +157,15 @@ fun UserLoginScreen(
                 },
                 colors = ButtonDefaults.textButtonColors(color1,color3)
             ){
-                Text("Login")
+                Text("Inicia Sessió")
             }
             Spacer(Modifier.width(10.dp))
-            /*Button(
+            Button(
                 onClick = {onCancel() },
                 colors = ButtonDefaults.textButtonColors(Color.Red,color3)
             ){
-                Text("Cancela")
-            }*/
+                Text("Cancel·la")
+            }
         }
     }
 }

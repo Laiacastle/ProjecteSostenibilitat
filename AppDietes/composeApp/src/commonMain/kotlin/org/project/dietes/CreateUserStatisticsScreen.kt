@@ -435,7 +435,7 @@ fun CreateUserStatisticsScreen(
                 onClick = { onCancel()  },
                 colors = ButtonDefaults.textButtonColors(Color.Red,color3)
             ){
-                Text("Cancel")
+                Text("Cancel·la")
             }
         }
         /*LazyColumn { // proves userData class mostrar dades inserides
