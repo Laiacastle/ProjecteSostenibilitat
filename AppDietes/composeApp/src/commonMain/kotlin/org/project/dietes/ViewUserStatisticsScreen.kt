@@ -24,6 +24,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import appdietes.composeapp.generated.resources.Logo
 import appdietes.composeapp.generated.resources.Res
 import org.jetbrains.compose.resources.painterResource
+import org.project.dietes.navigation.NavViewModel
+import org.project.dietes.navigation.Screen
 
 
 @Composable
