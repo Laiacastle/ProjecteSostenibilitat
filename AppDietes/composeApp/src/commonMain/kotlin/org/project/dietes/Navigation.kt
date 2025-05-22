@@ -91,7 +91,7 @@ fun Navigation(){
                     }
                 )
                 NavigationDrawerItem(
-                    label = { Text("Login") },
+                    label = { Text("CrearCompte") },
                     selected = false,
                     icon = { Icon(Icons.Default.PersonAddAlt1, contentDescription = "Account")},
                     onClick = {
