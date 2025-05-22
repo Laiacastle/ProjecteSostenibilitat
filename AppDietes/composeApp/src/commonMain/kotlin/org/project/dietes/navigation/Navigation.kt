@@ -55,7 +55,7 @@ fun Navigation(){
                     Text("Menu")
                 }
                 NavigationDrawerItem(
-                    label = { Text("Home Page") },
+                    label = { Text("Inici") },
                     selected = false,
                     icon = { Icon(Icons.Default.Home, contentDescription = "Home")},
                     onClick = {
@@ -65,7 +65,7 @@ fun Navigation(){
                 )
                 NavigationDrawerItem(
 
-                    label = { Text("Account") },
+                    label = { Text("Conte") },
                     selected = false,
                     icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Account")},
                     onClick = {
@@ -74,7 +74,7 @@ fun Navigation(){
                     }
                 )
                 NavigationDrawerItem(
-                    label = { Text("Login") },
+                    label = { Text("Iniciar Sessió") },
                     selected = false,
                     icon = { Icon(Icons.Default.PersonAddAlt1, contentDescription = "Account")},
                     onClick = {
@@ -83,7 +83,7 @@ fun Navigation(){
                     }
                 )
                 NavigationDrawerItem(
-                    label = { Text("Games") },
+                    label = { Text("Jocs") },
                     selected = false,
                     icon = {Icon(Icons.Default.Games, contentDescription = "Games")},
                     onClick = {
