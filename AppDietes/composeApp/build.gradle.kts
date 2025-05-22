@@ -37,12 +37,18 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
+            implementation(compose.material)
+            implementation(compose.materialIconsExtended)
             implementation(compose.material3)
+
+            implementation("io.coil-kt.coil3:coil-compose:3.0.0")
+            implementation("io.coil-kt.coil3:coil-network-ktor3:3.0.0")
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.9.0-beta01")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -78,6 +84,7 @@ android {
 }
 
 dependencies {
+    implementation("androidx.compose.runtime:runtime-android:1.8.1")
     debugImplementation(compose.uiTooling)
 }
 
