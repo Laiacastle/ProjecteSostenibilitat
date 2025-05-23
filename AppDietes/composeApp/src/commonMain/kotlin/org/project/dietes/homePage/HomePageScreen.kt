@@ -16,15 +16,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
-import androidx.lifecycle.viewmodel.compose.viewModel
 import appdietes.composeapp.generated.resources.Logo
 import appdietes.composeapp.generated.resources.Res
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun HomePageScreen(
+    navigateToCreateUserScreen: () -> Unit,
+    navigateToLogInScreen: () -> Unit,
+    navigateToVewStatisticsScreen: () -> Unit,
     navigateToModifyInformationScreen: () -> Unit,
     navigateToGamesScreen: () -> Unit,
     navigateToGamesResultsScreen: () -> Unit,
@@ -32,22 +35,32 @@ fun HomePageScreen(
     navigateToDietesScreen: () -> Unit
     ) {
 
-    val viewModel = viewModel { HomePageViewModel() }
+    val color1 = Color(142,244,192)
+    val color2 = Color(86,165,139)
+    val color3 = Color(73,96,94)
+    val color4 = Color(180,232,128)
+    val color5 = Color(228,213,221)
 
     HomePageScreen(
+        navigateToCreateUserScreen,
+        navigateToLogInScreen,
+        navigateToVewStatisticsScreen,
         navigateToModifyInformationScreen,
         navigateToGamesScreen,
         navigateToGamesResultsScreen,
         navigateToAIDietesScreen,
         navigateToDietesScreen,
-        viewModel.color1,
-        viewModel.color3,
-        viewModel.color5
+        color1,
+        color3,
+        color5
     )
 }
 
 @Composable
 fun HomePageScreen(
+    navigateToCreateUserScreen: () -> Unit,
+    navigateToLogInScreen: () -> Unit,
+    navigateToVewStatisticsScreen: () -> Unit,
     navigateToModifyInformationScreen: () -> Unit,
     navigateToGamesScreen: () -> Unit,
     navigateToGamesResultsScreen: () -> Unit,
@@ -79,7 +92,46 @@ fun HomePageScreen(
             Text("Títol: Dietes i Tests", fontSize = 7.em, fontWeight = FontWeight.Bold)
 
             Spacer(modifier = Modifier.size(50.dp))
-            Text("Afegir, modificar i consultar informació: edat, pes...")
+            Text("Crear usuari")
+            Spacer(modifier = Modifier.size(25.dp))
+            Button(
+                onClick = { navigateToCreateUserScreen() },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = color3,
+                    contentColor = color1
+                )
+            ) {
+                Text("Crear usuari")
+            }
+
+            Spacer(modifier = Modifier.size(50.dp))
+            Text("Iniciar sessió en el teu compte")
+            Spacer(modifier = Modifier.size(25.dp))
+            Button(
+                onClick = { navigateToLogInScreen() },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = color3,
+                    contentColor = color1
+                )
+            ) {
+                Text("Iniciar Sessió")
+            }
+
+            Spacer(modifier = Modifier.size(50.dp))
+            Text("Consultar informació de l'usuari")
+            Spacer(modifier = Modifier.size(25.dp))
+            Button(
+                onClick = { navigateToVewStatisticsScreen() },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = color3,
+                    contentColor = color1
+                )
+            ) {
+                Text("Consultar informació")
+            }
+
+            Spacer(modifier = Modifier.size(50.dp))
+            Text("Afegir o modificar informació de l'usuari")
             Spacer(modifier = Modifier.size(25.dp))
             Button(
                 onClick = { navigateToModifyInformationScreen() },
@@ -118,7 +170,7 @@ fun HomePageScreen(
             }
 
             Spacer(modifier = Modifier.size(50.dp))
-            Text("Recomenacions, generades per IA, de dieta basades en la informació proporcionada i els resultats de els tests")
+            Text("Recomenacions, generades per IA, de dieta basades en la informació proporcionada i els resultats de els tests", textAlign = TextAlign.Center)
             Spacer(modifier = Modifier.size(25.dp))
             Button(
                 onClick = { navigateToAIDietesScreen() },
