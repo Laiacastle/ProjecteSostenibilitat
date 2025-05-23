@@ -10,10 +10,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
+//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.ContentAlpha
+//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material3.Icon
+//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.OutlinedTextField
+//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Cake
@@ -21,6 +24,7 @@ import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -38,8 +42,8 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import appdietes.composeapp.generated.resources.Res
 import appdietes.composeapp.generated.resources.Logo
+import appdietes.composeapp.generated.resources.Res
 import appdietes.composeapp.generated.resources.eye_off_outline
 import appdietes.composeapp.generated.resources.eye_outline
 import org.jetbrains.compose.resources.painterResource
@@ -47,29 +51,28 @@ import org.project.dietes.navigation.NavViewModel
 import org.project.dietes.navigation.Screen
 
 @Composable
-fun CreateUserStatisticsScreen(
-    viewModel: UsersDataViewModel = viewModel(),
-    onAddUser: (UserData) -> Unit,
+fun EditUserStatisticsScreen(
+    userId: Int,
+    navViewModel: NavViewModel,
     onCancel: () -> Unit,
-    navViewModel: NavViewModel = viewModel(),
+    usersViewModel: UsersDataViewModel = viewModel()
 ){
-    val users = UsersDataViewModel().users
-    val userId = 1 // generar automaticament
-    var name by remember { mutableStateOf("") }
+    val user = usersViewModel.getUserById(userId) ?: return
+    var name by remember { mutableStateOf(user.name) }
     var nameError by remember { mutableStateOf(false) }
-    var lastName by remember { mutableStateOf("") }
+    var lastName by remember { mutableStateOf(user.lastName) }
     var lastNameError by remember { mutableStateOf(false) }
-    var email by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf(user.email) }
     var emailError by remember { mutableStateOf(false) }
-    var weight by remember { mutableStateOf("") }
+    var weight by remember { mutableStateOf(user.weight.toString()) }
     var weightError by remember { mutableStateOf(false) }
     var weightErrorNum by remember { mutableStateOf(false) }
-    var exerciseDone by remember { mutableStateOf("") }
+    var exerciseDone by remember { mutableStateOf(user.exerciseDone) }
     var exerciseDoneError by remember { mutableStateOf(false) }
-    var sleepTime by remember { mutableStateOf("") }
+    var sleepTime by remember { mutableStateOf(user.sleepTime.toString()) }
     var sleepTimeError by remember { mutableStateOf(false) }
     var sleepTimeErrorNum by remember { mutableStateOf(false) }
-    var age by remember { mutableStateOf("") }
+    var age by remember { mutableStateOf(user.age.toString()) }
     var ageError by remember { mutableStateOf(false) }
     var ageErrorNum by remember { mutableStateOf(false) }
     var password by remember { mutableStateOf("") }
@@ -95,9 +98,9 @@ fun CreateUserStatisticsScreen(
                 contentDescription = "logo"
             )
             Spacer(Modifier.width(10.dp))
-            Text("Crear Usuari", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+            Text("Edit User", fontSize = 30.sp, fontWeight = FontWeight.Bold)
         }
-        //Spacer(Modifier.height(10.dp))
+        Spacer(Modifier.height(10.dp))
         // name input
         OutlinedTextField(
             value = name,
@@ -113,7 +116,7 @@ fun CreateUserStatisticsScreen(
                 focusedIndicatorColor = color2,
                 unfocusedIndicatorColor = color2,
 
-            ),
+                ),
             isError = nameError,
             placeholder = {Text(text = "Introdueix el teu nom")}
         )
@@ -129,7 +132,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(10.dp))
+        Spacer(Modifier.height(20.dp))
 
         // lastname input
         OutlinedTextField(
@@ -161,7 +164,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(10.dp))
+        Spacer(Modifier.height(20.dp))
 
         // email input
         OutlinedTextField(
@@ -195,7 +198,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(10.dp))
+        Spacer(Modifier.height(20.dp))
 
         // weight input
         OutlinedTextField(
@@ -228,7 +231,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(10.dp))
+        Spacer(Modifier.height(20.dp))
 
         // exerciseDone input
         OutlinedTextField(
@@ -261,7 +264,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(10.dp))
+        Spacer(Modifier.height(20.dp))
 
         // sleepTime input
         OutlinedTextField(
@@ -293,7 +296,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(10.dp))
+        Spacer(Modifier.height(20.dp))
 
         // age input
         OutlinedTextField(
@@ -327,9 +330,7 @@ fun CreateUserStatisticsScreen(
             color = assistiveElementColorAge,
             style = MaterialTheme.typography.caption,
         )
-
-        Spacer(Modifier.height(10.dp))
-
+        Spacer(Modifier.height(20.dp))
         // password input
         OutlinedTextField(
             value = password,
@@ -341,7 +342,7 @@ fun CreateUserStatisticsScreen(
                     contentDescription = null
                 )
             },
-            label = { Text("Contrasenya") },
+            label = { Text("Contraseña") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             singleLine = true,
             colors = TextFieldDefaults.textFieldColors(
@@ -360,12 +361,12 @@ fun CreateUserStatisticsScreen(
                         if (hidden) Res.drawable.eye_outline
                         else Res.drawable.eye_off_outline
                     )
-                    val description = if (hidden) "Ocultar contrasenya" else "Revelar contrasenya"
+                    val description = if (hidden) "Ocultar contraseña" else "Revelar contraseña"
                     Icon(painter = vector, contentDescription = description)
                 }
             }
         )
-        val assistiveElementTextPassword = if (passwordError) "Error: Obligatori" else "*Obligatori"
+        val assistiveElementTextPassword = if (passwordError) "Error: Obligatorio" else "*Obligatorio"
         val assistiveElementColorPassword = if (passwordError) {
             MaterialTheme.colors.error
         } else {
@@ -377,9 +378,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(10.dp))
-
-        Row{
+        Row {
             Button(
                 onClick = {
                     nameError = name.isBlank()
@@ -389,7 +388,6 @@ fun CreateUserStatisticsScreen(
                     exerciseDoneError = exerciseDone.isBlank()
                     sleepTimeError = sleepTime.isBlank()
                     ageError = age.isBlank()
-                    passwordError = password.isBlank()
                     weightErrorNum = !isDecimal(weight)
                     sleepTimeErrorNum = !isDecimal(sleepTime)
                     ageErrorNum = !isNumeric(age)
@@ -401,14 +399,11 @@ fun CreateUserStatisticsScreen(
                         !exerciseDoneError and
                         !sleepTimeError and
                         !ageError and
-                        !passwordError and
                         isDecimal(weight) and
                         isDecimal(sleepTime) and
                         isNumeric(age)) {
 
-                        // add user
-                        val newUser = UserData(
-                            idUser = userId,
+                        usersViewModel.updateUser(user.copy(
                             name = name,
                             lastName = lastName,
                             email = email,
@@ -417,14 +412,10 @@ fun CreateUserStatisticsScreen(
                             sleepTime = sleepTime.toFloat(),
                             age = age.toInt(),
                             password = password
-                        )
-                        onAddUser(newUser)
-                        viewModel.users.add(newUser)
-
-
-                        navViewModel.selectUserId = userId
-                        navViewModel.navTo(Screen.Account)
+                        ))
                     }
+                    navViewModel.selectUserId = user.idUser
+                    navViewModel.navTo(Screen.Account)
                 },
                 colors = ButtonDefaults.textButtonColors(color1,color3)
             ){
@@ -432,26 +423,11 @@ fun CreateUserStatisticsScreen(
             }
             Spacer(Modifier.width(10.dp))
             Button(
-                onClick = { onCancel()  },
+                onClick = {onCancel() },
                 colors = ButtonDefaults.textButtonColors(Color.Red,color3)
             ){
                 Text("Cancel·la")
             }
         }
-        /*LazyColumn { // proves userData class mostrar dades inserides
-            items(users){ user ->
-                Row {
-                    Column {
-                        Text(user.name)
-                        Text(user.lastName)
-                        Text(user.email)
-                        Text(user.weight.toString())
-                        Text(user.exerciseDone)
-                        Text(user.sleepTime.toString())
-                        Text(user.age.toString())
-                    }
-                }
-            }
-        }*/
     }
 }

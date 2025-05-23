@@ -28,26 +28,24 @@ data class UserData(
     val password: String
 )
 class UsersDataViewModel : ViewModel(){
-    var users by mutableStateOf<List<UserData>?>(null)
+    //val users = mutableStateListOf<UserData>()
+    val users = mutableStateOf<List<UserData>?>(null)
     init {
         viewModelScope.launch(Dispatchers.Default){
-            users = DietaApi.listUsers()
+            users.value = DietaApi.listUsers()
         }
     }
-    // funcio update i add user no va con con StateOf
-    //val users = mutableStateListOf<UserData>()
-
-    /*fun updateUser(updated: UserData){
-        val index = users?.indexOfFirst { it.idUser == updated.idUser }
+    fun updateUser(updated: UserData){
+        val index = users.value!!.indexOfFirst { it.idUser == updated.idUser }
         if (index != -1){
-            users[index] = updated // no va [index]
+            users.value?.toMutableList()[index] = updated // no va [index]
         }
-    }*/
+    }
     fun getUserById(id: Int): UserData? =
-        users?.find { it.idUser == id }
+        users.value?.find { it.idUser == id }
 
     fun getUserByEmail(email: String): UserData? =
-        users?.find { it.email == email }
+        users.value?.find { it.email == email }
 }
 fun isNumeric(toCheck: String): Boolean {
     return toCheck.all { char -> char.isDigit() }

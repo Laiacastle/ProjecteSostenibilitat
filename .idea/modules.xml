@@ -2,39 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.appleMain.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.appleMain.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.appleTest.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.appleTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.commonMain.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.commonMain.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.commonTest.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.commonTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.iosArm64Main.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.iosArm64Main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.iosArm64Test.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.iosArm64Test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.iosMain.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.iosMain.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.iosSimulatorArm64Main.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.iosSimulatorArm64Main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.iosSimulatorArm64Test.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.iosSimulatorArm64Test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.iosTest.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.iosTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.iosX64Main.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.iosX64Main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.iosX64Test.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.iosX64Test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.nativeMain.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.nativeMain.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.nativeTest.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.nativeTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ProjecteSostenibilitat.iml" filepath="$PROJECT_DIR$/.idea/ProjecteSostenibilitat.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.appleMain.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.appleMain.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.appleTest.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.appleTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.commonMain.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.commonMain.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.commonTest.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.commonTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.iosArm64Main.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.iosArm64Main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.iosMain.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.iosMain.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.iosSimulatorArm64Main.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.iosSimulatorArm64Main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.iosSimulatorArm64Test.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.iosSimulatorArm64Test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.iosTest.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.iosTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.iosX64Main.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.iosX64Main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.iosX64Test.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.iosX64Test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.main.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.nativeMain.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.nativeMain.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.nativeTest.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.nativeTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.unitTest.iml" />
     </modules>
   </component>
 </project>
