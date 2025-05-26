@@ -145,9 +145,6 @@ fun UserLoginScreen(
         if (dadesError){
             Text("Dades incorrectes")
         }
-        TextButton(onClick = {}){
-            Text("¿Encara no estas registrat?")
-        }
         Row {
             Button(
                 onClick = {

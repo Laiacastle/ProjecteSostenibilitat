@@ -51,18 +51,19 @@ fun Navigation(){
     val currentScreen = navViewModel.currentScreen.value
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
-
+    val darkPink = Color(112, 65, 61)
+    val pink = Color(228,213,221)
     ModalNavigationDrawer(
         drawerContent = {
             Column(
                 modifier = Modifier
                     .fillMaxHeight()
-                    .background(Color(228,213,221))
+                    .background(pink)
                     .widthIn(max = 320.dp)
                     .padding(20.dp)
             ) {
                 Row(
-                    modifier = Modifier.background(Color(112, 65, 61)).fillMaxWidth(),
+                    modifier = Modifier.background(darkPink).fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
 
                 ) {
@@ -71,24 +72,24 @@ fun Navigation(){
                         modifier = Modifier.size(40.dp),
                         painter = painterResource(Res.drawable.Logo),
                         contentDescription = null,
-                        tint = Color(228,213,221)
+                        tint = pink
                     )
                     Spacer(Modifier.width(20.dp))
-                    Text("Dietes NoSeQue")
+                    Text("Dietes NoSeQue", color = pink)
                 }
                 NavigationDrawerItem(
-                    label = { Text("Inici", color = Color(112, 65, 61)) },
+                    label = { Text("Inici", color =darkPink) },
                     selected = false,
-                    icon = { Icon(Icons.Default.Home, contentDescription = "Home", tint = Color(112, 65, 61))},
+                    icon = { Icon(Icons.Default.Home, contentDescription = "Home", tint = darkPink)},
                     onClick = {
                         navViewModel.navTo(Screen.Home)
                         scope.launch { drawerState.close() }
                     }
                 )
                 NavigationDrawerItem(
-                    label = { Text("Jocs", color = Color(112, 65, 61)) },
+                    label = { Text("Jocs", color = darkPink) },
                     selected = false,
-                    icon = {Icon(Icons.Default.Games, contentDescription = "Games", tint = Color(112, 65, 61))},
+                    icon = {Icon(Icons.Default.Games, contentDescription = "Games", tint = darkPink)},
                     onClick = {
                         navViewModel.navTo(Screen.Games)
                         scope.launch { drawerState.close() }
@@ -96,18 +97,18 @@ fun Navigation(){
                 )
                 NavigationDrawerItem(
 
-                    label = { Text("Inicia Sessió", color = Color(112, 65, 61)) },
+                    label = { Text("Inicia Sessió", color = darkPink) },
                     selected = false,
-                    icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Account", tint = Color(112, 65, 61))},
+                    icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Account", tint = darkPink)},
                     onClick = {
                         navViewModel.navTo(Screen.LoginUser)
                         scope.launch { drawerState.close() }
                     }
                 )
                 NavigationDrawerItem(
-                    label = { Text("Registrar-se", color = Color(112, 65, 61)) },
+                    label = { Text("Registrar-se", color = darkPink) },
                     selected = false,
-                    icon = { Icon(Icons.Default.PersonAddAlt1, contentDescription = "Account", tint = Color(112, 65, 61))},
+                    icon = { Icon(Icons.Default.PersonAddAlt1, contentDescription = "Account", tint =darkPink)},
                     onClick = {
                         navViewModel.navTo(Screen.CreateUser)
                         scope.launch { drawerState.close() }
@@ -115,9 +116,9 @@ fun Navigation(){
                 )
                 NavigationDrawerItem(
 
-                    label = { Text("Compte", color = Color(112, 65, 61) )},
+                    label = { Text("Compte", color = darkPink)},
                     selected = false,
-                    icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Account" ,tint = Color(112, 65, 61))},
+                    icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Account" ,tint = darkPink)},
                     onClick = {
                         navViewModel.navTo(Screen.Account)
                         scope.launch { drawerState.close() }
@@ -129,12 +130,12 @@ fun Navigation(){
         gesturesEnabled = true
     ) {
         Scaffold(
-            containerColor = Color(228,213,221),
+            containerColor = pink,
             topBar = {
                 TopAppBar(
-                    title = { Text("", color = Color(112, 65, 61)) },
+                    title = { Text("", color = darkPink) },
                     colors = TopAppBarDefaults.mediumTopAppBarColors(
-                        containerColor = Color(228,213,221)
+                        containerColor = pink
                     ),
                     navigationIcon = {
                         IconButton(onClick = {
@@ -147,7 +148,7 @@ fun Navigation(){
                             Icon(
                                 imageVector = Icons.Filled.Menu,
                                 contentDescription = "Menu",
-                                tint = Color(112, 65, 61)
+                                tint = darkPink
                             )
                         }
                     }
