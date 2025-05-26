@@ -189,6 +189,7 @@ fun Navigation(){
                         )
                     }
                     Screen.LoginUser -> UserLoginScreen(
+                        navigateToCreateUserScreen = {navViewModel.navTo(Screen.CreateUser)},
                         onCancel = {
                             navViewModel.navTo(Screen.Home)
                         }

@@ -1,6 +1,7 @@
 package org.project.dietes
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.MaterialTheme
@@ -46,9 +48,11 @@ import appdietes.composeapp.generated.resources.eye_outline
 import org.jetbrains.compose.resources.painterResource
 import org.project.dietes.navigation.NavViewModel
 import org.project.dietes.navigation.Screen
+import kotlin.math.round
 
 @Composable
 fun UserLoginScreen(
+    navigateToCreateUserScreen:()-> Unit,
     viewModel: UsersDataViewModel = viewModel(),
     onCancel: () -> Unit,
     navViewModel: NavViewModel = viewModel(),
@@ -62,6 +66,8 @@ fun UserLoginScreen(
     val color1 = Color(red = 0x8E, green = 0xF4, blue = 0xC0)
     val color2 = Color(red = 0x56, green = 0xA5, blue = 0x8B)
     val color3 = Color(red = 0x49, green = 0x60, blue = 0x5E)
+    val darkPink = Color(112, 65, 61)
+    val pink = Color(228,213,221)
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -109,6 +115,7 @@ fun UserLoginScreen(
 
         OutlinedTextField(
             value = password,
+            modifier = Modifier.background(color1, shape = RoundedCornerShape(16.dp)),
             onValueChange = { password = it
                             dadesError = false},
             leadingIcon = {
@@ -141,14 +148,22 @@ fun UserLoginScreen(
                 }
             }
         )
+        TextButton(onClick = {navigateToCreateUserScreen()}){
+            Text("¿Encara no estas registrat?")
+        }
         Spacer(Modifier.height(20.dp))
         if (dadesError){
             Text("Dades incorrectes")
         }
-        TextButton(onClick = {}){
-            Text("¿Encara no estas registrat?")
-        }
+
         Row {
+            Button(
+                onClick = {onCancel() },
+                colors = ButtonDefaults.textButtonColors(darkPink,pink)
+            ){
+                Text("Cancel·la")
+            }
+            Spacer(Modifier.width(10.dp))
             Button(
                 onClick = {
                     val user = viewModel.getUserByEmail(email)
@@ -163,13 +178,8 @@ fun UserLoginScreen(
             ){
                 Text("Inicia Sessió")
             }
-            Spacer(Modifier.width(10.dp))
-            Button(
-                onClick = {onCancel() },
-                colors = ButtonDefaults.textButtonColors(Color.Red,color3)
-            ){
-                Text("Cancel·la")
-            }
+
+
         }
     }
 }
