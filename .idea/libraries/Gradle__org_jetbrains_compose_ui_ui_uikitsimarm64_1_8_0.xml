@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jetbrains.compose.ui:ui-uikitsimarm64:1.8.0" type="kotlin.native" external-system-id="GRADLE">
+    <properties groupId="org.jetbrains.compose.ui" artifactId="ui-uikitsimarm64" version="1.8.0" baseVersion="1.8.0" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-uikitsimarm64/1.8.0/aa1430f847b23374f435c08d5b94f88d48f62916/ui-uikitSimArm64Main-1.8.0.klib!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-uikitsimarm64/1.8.0/991a9cede5bd6e84ac29f16f2a61fc663bb35692/ui-uikitsimarm64-1.8.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

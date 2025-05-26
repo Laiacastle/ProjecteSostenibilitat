@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.lifecycle:lifecycle-viewmodel-iossimulatorarm64:2.9.0-beta01" type="kotlin.native" external-system-id="GRADLE">
+    <properties groupId="androidx.lifecycle" artifactId="lifecycle-viewmodel-iossimulatorarm64" version="2.9.0-beta01" baseVersion="2.9.0-beta01" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-viewmodel-iossimulatorarm64/2.9.0-beta01/840ae6f201b942d2227df4cd9c51a94fc20d31fa/lifecycle-viewmodel-iosSimulatorArm64Main-2.9.0-beta01.klib!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-viewmodel-iossimulatorarm64/2.9.0-beta01/871eb5f77bfa57fa9f94f8f50427f3f433136a6f/lifecycle-viewmodel-iossimulatorarm64-2.9.0-beta01-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
