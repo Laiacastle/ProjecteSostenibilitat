@@ -13,6 +13,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.TextButton
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
@@ -143,6 +144,9 @@ fun UserLoginScreen(
         Spacer(Modifier.height(20.dp))
         if (dadesError){
             Text("Dades incorrectes")
+        }
+        TextButton(onClick = {}){
+            Text("¿Encara no estas registrat?")
         }
         Row {
             Button(
