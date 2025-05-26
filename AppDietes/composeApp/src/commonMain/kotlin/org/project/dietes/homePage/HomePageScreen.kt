@@ -38,46 +38,41 @@ fun HomePageScreen(
     navigateToDietesScreen: () -> Unit
     ) {
 
-    val color1 = Color(142,244,192)
-    val color2 = Color(86,165,139)
-    val color3 = Color(73,96,94)
-    val color4 = Color(180,232,128)
-    val color5 = Color(228,213,221)
+    val green = Color(86,165,139)
+    val darkPink = Color(112, 65, 61)
+    val background = Color(228,213,221)
+    val white = Color.White
 
     HomePageScreen(
-        navigateToCreateUserScreen,
         navigateToLogInScreen,
-        navigateToVewStatisticsScreen,
-        navigateToModifyInformationScreen,
         navigateToGamesScreen,
         navigateToGamesResultsScreen,
         navigateToAIDietesScreen,
         navigateToDietesScreen,
-        Color.White,
-        color2,
-        color5
+        white,
+        darkPink,
+        green,
+        background
     )
 }
 
 @Composable
 fun HomePageScreen(
-    navigateToCreateUserScreen: () -> Unit,
     navigateToLogInScreen: () -> Unit,
-    navigateToVewStatisticsScreen: () -> Unit,
-    navigateToModifyInformationScreen: () -> Unit,
     navigateToGamesScreen: () -> Unit,
     navigateToGamesResultsScreen: () -> Unit,
     navigateToAIDietesScreen: () -> Unit,
     navigateToDietesScreen: () -> Unit,
-    color1: Color,
-    color3: Color,
-    color5: Color,
+    white: Color,
+    darkPink: Color,
+    green: Color,
+    background: Color,
 ) {
 
     Column(
         Modifier
             .fillMaxSize()
-            .background(color = color5)
+            .background(color = background)
             .padding(50.dp, 0.dp, 75.dp, 0.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -99,8 +94,8 @@ fun HomePageScreen(
             onClick = { navigateToGamesScreen() },
             modifier = Modifier.width(215.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = color3,
-                contentColor = color1
+                containerColor = green,
+                contentColor = white
             ),
         ) {
             Text("Fer tests")
@@ -111,8 +106,8 @@ fun HomePageScreen(
             onClick = { navigateToGamesResultsScreen() },
             modifier = Modifier.width(215.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = color3,
-                contentColor = color1
+                containerColor = green,
+                contentColor = white
             )
         ) {
             Text("Resultats")
@@ -123,25 +118,36 @@ fun HomePageScreen(
             onClick = { navigateToAIDietesScreen() },
             modifier = Modifier.width(215.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = color3,
-                contentColor = color1
+                containerColor = green,
+                contentColor = white
             )
         ) {
             Text("Recomenacions amb l'IA")
         }
-
         Spacer(modifier = Modifier.size(25.dp))
         Button(
             onClick = { navigateToDietesScreen() },
             modifier = Modifier.width(215.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = color3,
-                contentColor = color1
+                containerColor = green,
+                contentColor = white
             )
         ) {
             Text("Dietes asignades")
         }
-        Spacer(modifier = Modifier.height(90.dp))
+        Spacer(modifier = Modifier.size(25.dp))
+        Button(
+            onClick = { navigateToLogInScreen() },
+            modifier = Modifier.width(215.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = darkPink,
+                contentColor = white
+            )
+        ) {
+            Text("Inicia sessió")
+        }
+
+        Spacer(modifier = Modifier.height(65.dp))
         Text("Hospital NoSeQue, 30/5/2025", fontSize = 2.em)
 
     }
