@@ -1,11 +1,17 @@
 package org.project.dietes.navigation
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
@@ -23,6 +29,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -47,23 +54,32 @@ fun Navigation(){
 
     ModalNavigationDrawer(
         drawerContent = {
-            ModalDrawerSheet {
+
+            Column(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .widthIn(max = 320.dp)
+                    .background(Color(228,213,221))
+                    .padding(16.dp)
+            ){
                 Row(
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.background(Color(112, 65, 61)).fillMaxWidth()
                 ) {
                     Spacer(Modifier.width(10.dp))
                     Icon(
                         modifier = Modifier.size(40.dp),
                         painter = painterResource(Res.drawable.Logo),
-                        contentDescription = null
+                        contentDescription = null,
+                        tint = Color(228,213,221)
                     )
                     Spacer(Modifier.width(20.dp))
-                    Text("Menu")
+                    Text("Menu", color = Color(228,213,221))
                 }
                 NavigationDrawerItem(
-                    label = { Text("Inici") },
+                    label = { Text("Inici", color= Color(112, 65, 61)) },
                     selected = false,
-                    icon = { Icon(Icons.Default.Home, contentDescription = "Home")},
+                    icon = { Icon(Icons.Default.Home, contentDescription = "Home", tint = Color(112, 65, 61))},
                     onClick = {
                         navViewModel.navTo(Screen.Home)
                         scope.launch { drawerState.close() }
@@ -71,51 +87,46 @@ fun Navigation(){
                 )
                 NavigationDrawerItem(
 
-                    label = { Text("Compte") },
+                    label = { Text("Compte", color = Color(112, 65, 61)) },
                     selected = false,
-                    icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Account")},
+                    icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Account", tint = Color(112, 65, 61))},
                     onClick = {
                         navViewModel.navTo(Screen.Account)
                         scope.launch { drawerState.close() }
                     }
                 )
                 NavigationDrawerItem(
-                    label = { Text("Crear Compte") },
+                    label = { Text("Registrar-se", color = Color(112, 65, 61)) },
                     selected = false,
-                    icon = { Icon(Icons.Default.PersonAddAlt1, contentDescription = "Account")},
+                    icon = { Icon(Icons.Default.PersonAddAlt1, contentDescription = "Account", tint = Color(112, 65, 61))},
                     onClick = {
                         navViewModel.navTo(Screen.CreateUser)
                         scope.launch { drawerState.close() }
                     }
                 )
                 NavigationDrawerItem(
-                    label = { Text("Jocs") },
+                    label = { Text("Jocs", color = Color(112, 65, 61)) },
                     selected = false,
-                    icon = {Icon(Icons.Default.Games, contentDescription = "Games")},
+                    icon = {Icon(Icons.Default.Games, contentDescription = "Games", tint = Color(112, 65, 61))},
                     onClick = {
                         navViewModel.navTo(Screen.Games)
                         scope.launch { drawerState.close() }
                     }
                 )
-                NavigationDrawerItem(
 
-                    label = { Text("Inicia Sessió") },
-                    selected = false,
-                    icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Account")},
-                    onClick = {
-                        navViewModel.navTo(Screen.LoginUser)
-                        scope.launch { drawerState.close() }
-                    }
-                )
             }
         },
         drawerState = drawerState,
         gesturesEnabled = false
+
     ) {
         Scaffold(
+            containerColor = Color(228,213,221),
             topBar = {
                 TopAppBar(
-                    title = { Text("Menu") },
+                    colors = TopAppBarDefaults.mediumTopAppBarColors(
+                        containerColor =Color(228,213,221)),
+                    title = { Text("") },
                     navigationIcon = {
                         IconButton(onClick = {
                             scope.launch {
@@ -127,6 +138,7 @@ fun Navigation(){
                             Icon(
                                 imageVector = Icons.Filled.Menu,
                                 contentDescription = "Menu",
+                                tint = Color(112, 65, 61)
                             )
                         }
                     }
