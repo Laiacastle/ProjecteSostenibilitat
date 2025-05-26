@@ -77,12 +77,12 @@ fun UserLoginScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                modifier = Modifier.size(40.dp),
+                modifier = Modifier.size(50.dp),
                 painter = painterResource(Res.drawable.Logo),
                 contentDescription = "logo"
             )
             Spacer(Modifier.width(10.dp))
-            Text("Inicia Sessió", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+            Text("Inicia Sessió", fontSize = 40.sp, fontWeight = FontWeight.Bold)
         }
 
         Spacer(Modifier.height(10.dp))
