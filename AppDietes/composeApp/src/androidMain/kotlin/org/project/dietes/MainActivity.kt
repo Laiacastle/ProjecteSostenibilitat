@@ -15,7 +15,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             //App()
-            Navigation()
+            //Navigation()
             ListUsers()
         }
     }

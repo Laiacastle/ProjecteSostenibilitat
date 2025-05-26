@@ -6,24 +6,30 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 // arxiu prova
 @Composable
 fun ListUsers() {
-    val users = UsersDataViewModel().users
+    val users = UsersDataViewModel().users.value
+    if (users == null){
+        Text("nada")
+    } else{
+
     LazyColumn {
-        items(users.value!!.toMutableList()) { user ->
+        items(users.toList()) { user ->
             Row {
                 Column {
                     Text(user.name)
-                    Text(user.lastName)
+                    Text(user.surname)
                     Text(user.email)
                     Text(user.weight.toString())
-                    Text(user.exerciseDone)
-                    Text(user.sleepTime.toString())
+                    Text(user.exercise)
+                    Text(user.hoursSleep.toString())
                     Text(user.age.toString())
                 }
             }
         }
     }
+}
 }

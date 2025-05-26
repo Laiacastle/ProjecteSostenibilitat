@@ -149,9 +149,7 @@ fun Navigation(){
                     ) // Home Page
                     Screen.Games -> GamesScreen()
 
-                    Screen.Account -> navViewModel.selectUserId?.let { userId ->
-                        ViewUserStatistics(userId, navViewModel)
-                    }
+                    Screen.Account -> ViewUserStatistics(navViewModel.selectUserId, navViewModel)
 
                     Screen.CreateUser -> CreateUserStatisticsScreen(
                         onAddUser = { user ->
@@ -161,14 +159,12 @@ fun Navigation(){
                             navViewModel.navTo(Screen.Home)
                         }
                     )
-                    Screen.EditUser -> navViewModel.selectUserId?.let { userId ->
-                        EditUserStatisticsScreen(
-                            userId, navViewModel,
-                            onCancel = {
-                                navViewModel.navTo(Screen.Account)
-                            }
-                        )
-                    }
+                    Screen.EditUser -> EditUserStatisticsScreen(
+                        navViewModel.selectUserId, navViewModel,
+                        onCancel = {
+                            navViewModel.navTo(Screen.Account)
+                        }
+                    )
                     Screen.LoginUser -> UserLoginScreen(
                         onCancel = {
                             navViewModel.navTo(Screen.Home)

@@ -14,18 +14,22 @@ import io.ktor.client.request.get
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
+@Serializable
 data class UserData(
-    val idUser: Int,
+    val id: String,
     val name: String,
-    val lastName: String,
+    val surname: String,
     val email: String,
-    val weight: Float,
-    val exerciseDone: String,
-    val sleepTime: Float,
+    val password: String,
+    val userName: String,
+    val weight: Int,
+    val exercise: String,
+    val hoursSleep: Int,
     val age: Int,
-    val password: String
+    val diet: String
 )
 class UsersDataViewModel : ViewModel(){
     //val users = mutableStateListOf<UserData>()
@@ -36,13 +40,13 @@ class UsersDataViewModel : ViewModel(){
         }
     }
     fun updateUser(updated: UserData){
-        val index = users.value!!.indexOfFirst { it.idUser == updated.idUser }
+        val index = users.value!!.indexOfFirst { it.id == updated.id }
         if (index != -1){
-            users.value?.toMutableList()[index] = updated // no va [index]
+            users.value?.toMutableList()[index] = updated
         }
     }
-    fun getUserById(id: Int): UserData? =
-        users.value?.find { it.idUser == id }
+    fun getUserById(id: String): UserData? =
+        users.value?.find { it.id == id }
 
     fun getUserByEmail(email: String): UserData? =
         users.value?.find { it.email == email }
@@ -55,7 +59,7 @@ fun isDecimal(toCheck: String): Boolean {
     return toCheck.matches(regex)
 }
 object DietaApi {
-    val url = "https://apidiet-h6hwe7bffwgwh7gb.northeurope-01.azurewebsites.net/"
+    val url = "https://apidiet-h6hwe7bffwgwh7gb.northeurope-01.azurewebsites.net/api/authentication"
     val client = HttpClient(){
         install(ContentNegotiation){
             json(Json{

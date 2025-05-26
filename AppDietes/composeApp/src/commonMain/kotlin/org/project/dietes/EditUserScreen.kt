@@ -52,24 +52,24 @@ import org.project.dietes.navigation.Screen
 
 @Composable
 fun EditUserStatisticsScreen(
-    userId: Int,
+    userId: String,
     navViewModel: NavViewModel,
     onCancel: () -> Unit,
     usersViewModel: UsersDataViewModel = viewModel()
-){
+){/*
     val user = usersViewModel.getUserById(userId) ?: return
     var name by remember { mutableStateOf(user.name) }
     var nameError by remember { mutableStateOf(false) }
-    var lastName by remember { mutableStateOf(user.lastName) }
+    var lastName by remember { mutableStateOf(user.surname) }
     var lastNameError by remember { mutableStateOf(false) }
     var email by remember { mutableStateOf(user.email) }
     var emailError by remember { mutableStateOf(false) }
     var weight by remember { mutableStateOf(user.weight.toString()) }
     var weightError by remember { mutableStateOf(false) }
     var weightErrorNum by remember { mutableStateOf(false) }
-    var exerciseDone by remember { mutableStateOf(user.exerciseDone) }
+    var exerciseDone by remember { mutableStateOf(user.exercise) }
     var exerciseDoneError by remember { mutableStateOf(false) }
-    var sleepTime by remember { mutableStateOf(user.sleepTime.toString()) }
+    var sleepTime by remember { mutableStateOf(user.hoursSleep.toString()) }
     var sleepTimeError by remember { mutableStateOf(false) }
     var sleepTimeErrorNum by remember { mutableStateOf(false) }
     var age by remember { mutableStateOf(user.age.toString()) }
@@ -405,16 +405,16 @@ fun EditUserStatisticsScreen(
 
                         usersViewModel.updateUser(user.copy(
                             name = name,
-                            lastName = lastName,
+                            surname = lastName,
                             email = email,
-                            weight = weight.toFloat(),
-                            exerciseDone = exerciseDone,
-                            sleepTime = sleepTime.toFloat(),
+                            weight = weight.toInt(),
+                            exercise = exerciseDone,
+                            hoursSleep = sleepTime.toInt(),
                             age = age.toInt(),
                             password = password
                         ))
                     }
-                    navViewModel.selectUserId = user.idUser
+                    navViewModel.selectUserId = user.id
                     navViewModel.navTo(Screen.Account)
                 },
                 colors = ButtonDefaults.textButtonColors(color1,color3)
@@ -429,5 +429,5 @@ fun EditUserStatisticsScreen(
                 Text("Cancel·la")
             }
         }
-    }
+    }*/
 }
