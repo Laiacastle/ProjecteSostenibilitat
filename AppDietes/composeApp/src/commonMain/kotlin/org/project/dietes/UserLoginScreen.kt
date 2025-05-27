@@ -48,7 +48,7 @@ import org.project.dietes.navigation.Screen
 
 @Composable
 fun UserLoginScreen(
-    viewModel: UsersDataViewModel = viewModel(),
+    //viewModel: UsersDataViewModel = viewModel(),
     onCancel: () -> Unit,
     navViewModel: NavViewModel = viewModel(),
 ) {

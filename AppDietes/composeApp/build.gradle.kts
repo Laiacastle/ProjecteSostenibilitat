@@ -44,6 +44,7 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation("io.ktor:ktor-client-auth:3.1.0")
             implementation("io.ktor:ktor-client-core:3.1.0")
             implementation("io.ktor:ktor-serialization-kotlinx-json:3.1.0")
             implementation("io.ktor:ktor-client-cio:3.1.0")

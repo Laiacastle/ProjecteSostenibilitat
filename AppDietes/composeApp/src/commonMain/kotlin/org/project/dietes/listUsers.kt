@@ -11,22 +11,15 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 // arxiu prova
 @Composable
 fun ListUsers() {
-    val users = UsersDataViewModel().users.value
+    val users = UsersDataViewModel().users
     if (users == null){
         Text("nada")
     } else{
-
     LazyColumn {
-        items(users.toList()) { user ->
+        items(users) { user ->
             Row {
                 Column {
                     Text(user.name)
-                    Text(user.surname)
-                    Text(user.email)
-                    Text(user.weight.toString())
-                    Text(user.exercise)
-                    Text(user.hoursSleep.toString())
-                    Text(user.age.toString())
                 }
             }
         }

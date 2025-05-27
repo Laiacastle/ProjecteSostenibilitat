@@ -48,7 +48,7 @@ import org.project.dietes.navigation.Screen
 
 @Composable
 fun CreateUserStatisticsScreen(
-    viewModel: UsersDataViewModel = viewModel(),
+    //viewModel: UsersDataViewModel = viewModel(),
     onAddUser: (UserData) -> Unit,
     onCancel: () -> Unit,
     navViewModel: NavViewModel = viewModel(),
