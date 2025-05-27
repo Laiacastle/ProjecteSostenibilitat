@@ -20,9 +20,8 @@ import io.ktor.client.request.*
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-
+import kotlinx.serialization.Serializable
 
 
 @Serializable
@@ -37,8 +36,7 @@ data class UserData(
     val exercise: String,
     val hoursSleep: Int,
     val age: Int,
-    val diet: String
-)
+    val diet: String)
 class UsersDataViewModel : ViewModel(){
     //val users = mutableStateListOf<UserData>()
     var users by mutableStateOf<List<UserData>?>(null)
@@ -67,7 +65,7 @@ fun isDecimal(toCheck: String): Boolean {
     return toCheck.matches(regex)
 }
 object DietaApi {
-    val url = "https://api.sampleapis.com/jokes/goodJokes"
+    val url = "https://apidiet-h6hwe7bffwgwh7gb.northeurope-01.azurewebsites.net/api/authentication"
     val client = HttpClient(CIO){
         install(HttpTimeout){
             socketTimeoutMillis = 3 * 60 * 1000
