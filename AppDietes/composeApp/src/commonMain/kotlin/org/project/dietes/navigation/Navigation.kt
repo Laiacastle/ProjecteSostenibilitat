@@ -30,6 +30,7 @@ import appdietes.composeapp.generated.resources.Res
 import appdietes.composeapp.generated.resources.Logo
 import org.jetbrains.compose.resources.painterResource
 import org.project.dietes.CreateUserStatisticsScreen
+import org.project.dietes.DietScreen.DietSreen
 import org.project.dietes.EditUserStatisticsScreen
 import org.project.dietes.UserLoginScreen
 import org.project.dietes.ViewUserStatistics
@@ -107,6 +108,16 @@ fun Navigation(){
                         scope.launch { drawerState.close() }
                     }
                 )
+                NavigationDrawerItem(
+
+                    label = { Text("Les meves Dietes") },
+                    selected = false,
+                    icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Diets")},
+                    onClick = {
+                        navViewModel.navTo(Screen.Diets)
+                        scope.launch { drawerState.close() }
+                    }
+                )
             }
         },
         drawerState = drawerState,
@@ -172,6 +183,7 @@ fun Navigation(){
                             navViewModel.navTo(Screen.Home)
                         }
                     )
+                    Screen.Diets -> DietSreen()
                 }
             }
         }

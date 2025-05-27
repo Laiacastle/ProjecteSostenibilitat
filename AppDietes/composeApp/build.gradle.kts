@@ -82,6 +82,7 @@ android {
 dependencies {
     implementation("androidx.compose.runtime:runtime-android:1.8.1")
     implementation("androidx.navigation:navigation-compose-jvmstubs:2.9.0")
+    implementation ("androidx.compose.material3:material3:<1.3>")
     debugImplementation(compose.uiTooling)
 }
 
