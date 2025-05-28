@@ -32,7 +32,7 @@ fun ViewUserStatistics(
     userId: String,
     navViewModel: NavViewModel,
     usersViewModel: UsersDataViewModel = viewModel()
-){/*
+){
     val user = usersViewModel.getUserById(userId) ?: return
     val color1 = Color(red = 0x8E, green = 0xF4, blue = 0xC0)
     val color3 = Color(red = 0x49, green = 0x60, blue = 0x5E)
@@ -50,6 +50,7 @@ fun ViewUserStatistics(
             Spacer(Modifier.width(15.dp))
             Text(text = "Hola, ${user.name} ${user.surname}", fontSize = 30.sp, fontWeight = FontWeight.Bold)
         }
+        //Text(userId)
         Spacer(Modifier.height(15.dp))
         Text(text = "Dades Usuari:", fontSize = 20.sp)
         Spacer(Modifier.height(15.dp))
@@ -78,5 +79,5 @@ fun ViewUserStatistics(
         ){
             Text("Modificar les dades")
         }
-    }*/
+    }
 }

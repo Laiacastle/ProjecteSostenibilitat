@@ -48,11 +48,10 @@ import org.project.dietes.navigation.Screen
 
 @Composable
 fun UserLoginScreen(
-    //viewModel: UsersDataViewModel = viewModel(),
+    viewModel: UsersDataViewModel = viewModel(),
     onCancel: () -> Unit,
     navViewModel: NavViewModel = viewModel(),
 ) {
-    //val users = UsersDataViewModel().users
     var password by remember { mutableStateOf("") }
     var hidden by remember { mutableStateOf(true) }
     var email by remember { mutableStateOf("") }
@@ -143,7 +142,7 @@ fun UserLoginScreen(
         if (dadesError){
             Text("Dades incorrectes")
         }
-        /*Row {
+        Row {
             Button(
                 onClick = {
                     val user = viewModel.getUserByEmail(email)
@@ -165,6 +164,6 @@ fun UserLoginScreen(
             ){
                 Text("Cancel·la")
             }
-        }*/
+        }
     }
 }

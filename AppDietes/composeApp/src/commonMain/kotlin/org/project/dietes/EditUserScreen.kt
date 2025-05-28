@@ -32,6 +32,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -55,8 +56,8 @@ fun EditUserStatisticsScreen(
     userId: String,
     navViewModel: NavViewModel,
     onCancel: () -> Unit,
-    //usersViewModel: UsersDataViewModel = viewModel()
-){/*
+    usersViewModel: UsersDataViewModel = viewModel()
+){
     val user = usersViewModel.getUserById(userId) ?: return
     var name by remember { mutableStateOf(user.name) }
     var nameError by remember { mutableStateOf(false) }
@@ -132,7 +133,7 @@ fun EditUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
 
         // lastname input
         OutlinedTextField(
@@ -164,7 +165,7 @@ fun EditUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
 
         // email input
         OutlinedTextField(
@@ -198,7 +199,7 @@ fun EditUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
 
         // weight input
         OutlinedTextField(
@@ -231,7 +232,7 @@ fun EditUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
 
         // exerciseDone input
         OutlinedTextField(
@@ -264,7 +265,7 @@ fun EditUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
 
         // sleepTime input
         OutlinedTextField(
@@ -296,7 +297,7 @@ fun EditUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
 
         // age input
         OutlinedTextField(
@@ -330,7 +331,7 @@ fun EditUserStatisticsScreen(
             color = assistiveElementColorAge,
             style = MaterialTheme.typography.caption,
         )
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
         // password input
         OutlinedTextField(
             value = password,
@@ -429,5 +430,5 @@ fun EditUserStatisticsScreen(
                 Text("Cancel·la")
             }
         }
-    }*/
+    }
 }

@@ -45,16 +45,20 @@ import appdietes.composeapp.generated.resources.eye_outline
 import org.jetbrains.compose.resources.painterResource
 import org.project.dietes.navigation.NavViewModel
 import org.project.dietes.navigation.Screen
+import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
 
+@OptIn(ExperimentalUuidApi::class)
 @Composable
 fun CreateUserStatisticsScreen(
-    //viewModel: UsersDataViewModel = viewModel(),
+    viewModel: UsersDataViewModel = viewModel(),
     onAddUser: (UserData) -> Unit,
     onCancel: () -> Unit,
     navViewModel: NavViewModel = viewModel(),
 ){
     val users = UsersDataViewModel().users
-    val userId = "1" // generar automaticament
+    val users2 = UsersDataViewModel().users2
+    val userId = Uuid.random().toString()  // generar automaticament
     var name by remember { mutableStateOf("") }
     var nameError by remember { mutableStateOf(false) }
     var lastName by remember { mutableStateOf("") }
@@ -136,7 +140,6 @@ fun CreateUserStatisticsScreen(
         )
 
         Spacer(Modifier.height(10.dp))
-
         // lastname input
         OutlinedTextField(
             value = lastName,
@@ -413,7 +416,7 @@ fun CreateUserStatisticsScreen(
                         isNumeric(age)) {
 
                         // add user
-                        /*val newUser = UserData(
+                        val newUser = UserData(
                             id = userId,
                             name = name,
                             surname = lastName,
@@ -425,11 +428,10 @@ fun CreateUserStatisticsScreen(
                             password = password,
                             userName = userName,
                             diet = diet
-                        )*/
-                        //onAddUser(newUser)
-                        //viewModel.users.value?.toMutableList()?.add(newUser)
-                        //viewModel.users.add(newUser)
-                        navViewModel.selectUserId = userId
+                        )
+                        onAddUser(newUser)
+                        viewModel.users2.add(newUser)
+                        navViewModel.selectUserId = newUser.id
                         navViewModel.navTo(Screen.Account)
                     }
                 },
