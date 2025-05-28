@@ -37,6 +37,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import appdietes.composeapp.generated.resources.Res
 import appdietes.composeapp.generated.resources.Logo
 import org.jetbrains.compose.resources.painterResource
+import org.project.dietes.AccountScreen.UserProfileScreen
 import org.project.dietes.CreateUserStatisticsScreen
 import org.project.dietes.DietScreen.DietSreen
 import org.project.dietes.DietScreen.UserManager
@@ -97,7 +98,7 @@ fun Navigation(){
 
                         label = { Text("Compte", color = darkPink)},
                         selected = false,
-                        icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Register" ,tint = darkPink)},
+                        icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Account" ,tint = darkPink)},
                         onClick = {
                             navViewModel.navTo(Screen.Account)
                             scope.launch { drawerState.close() }
@@ -187,10 +188,9 @@ fun Navigation(){
                         navigateToDietesScreen = {navViewModel.navTo((Screen.Diets))}
                     ) // Home Page
                     Screen.Games -> GamesScreen()
-
-                    Screen.Account -> navViewModel.selectUserId?.let { userId ->
-                        ViewUserStatistics(userId, navViewModel)
-                    }
+                    Screen.Account -> UserProfileScreen(
+                        navigateToScreenLogin = {navViewModel.navTo(Screen.LoginUser)}
+                    )
 
                     Screen.CreateUser -> CreateUserStatisticsScreen(
                         onAddUser = { user ->
@@ -202,7 +202,7 @@ fun Navigation(){
                         },
                         navigateToScreenLogin = {navViewModel.navTo(Screen.LoginUser)}
                     )
-                    Screen.EditUser -> navViewModel.selectUserId?.let { userId ->
+                    Screen.EditUser ->  navViewModel.selectUserId?.let { userId ->
                         EditUserStatisticsScreen(
                             userId, navViewModel,
                             onCancel = {
@@ -210,6 +210,7 @@ fun Navigation(){
                             }
                         )
                     }
+
                     Screen.LoginUser -> UserLoginScreen(
                         navigateToScreenRegister = {navViewModel.navTo(Screen.CreateUser)},
                         navigateToScreenHome = {navViewModel.navTo(Screen.Home)},

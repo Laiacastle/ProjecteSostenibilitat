@@ -68,8 +68,6 @@ class UsersDataViewModel : ViewModel(){
         users?.find { it.id == id }
 
 
-    fun getUserByEmail(email: String): UserData? =
-        users?.find { it.email == email }
 
     fun login(email: String, password: String){
         hasTriedLogin.value = true
