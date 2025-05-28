@@ -14,6 +14,7 @@ import androidx.compose.material.ContentAlpha
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.Icon
 import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.TextButton
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Cake
@@ -386,7 +387,10 @@ fun CreateUserStatisticsScreen(
             color = assistiveElementColorPassword,
             style = MaterialTheme.typography.caption,
         )
-
+        Spacer(Modifier.height(10.dp))
+        TextButton(onClick = {navigateToScreenLogin()}){
+            Text("¿Ja tens compte?")
+        }
         Spacer(Modifier.height(10.dp))
 
         Row{

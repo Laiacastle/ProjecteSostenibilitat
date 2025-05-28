@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.em
 import appdietes.composeapp.generated.resources.Logo
 import appdietes.composeapp.generated.resources.Res
 import org.jetbrains.compose.resources.painterResource
+import org.project.dietes.DietScreen.UserManager
 
 @Composable
 fun HomePageScreen(
@@ -132,17 +133,20 @@ fun HomePageScreen(
         ) {
             Text("Dietes asignades")
         }
-        Spacer(modifier = Modifier.size(25.dp))
-        Button(
-            onClick = { navigateToLogInScreen() },
-            modifier = Modifier.width(215.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = darkPink,
-                contentColor = white
-            )
-        ) {
-            Text("Inicia sessió")
+        if(UserManager.getToken() != null){
+            Spacer(modifier = Modifier.size(25.dp))
+            Button(
+                onClick = { navigateToLogInScreen() },
+                modifier = Modifier.width(215.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = darkPink,
+                    contentColor = white
+                )
+            ) {
+                Text("Inicia sessió")
+            }
         }
+
 
         Spacer(modifier = Modifier.height(65.dp))
         Text("Hospital NoSeQue, 30/5/2025", fontSize = 2.em)

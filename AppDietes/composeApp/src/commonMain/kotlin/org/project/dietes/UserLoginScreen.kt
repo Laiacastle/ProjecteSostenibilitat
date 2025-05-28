@@ -4,6 +4,7 @@ package org.project.dietes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.runtime.*
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import kotlinx.coroutines.delay
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.MaterialTheme
@@ -28,6 +30,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -47,6 +50,8 @@ import appdietes.composeapp.generated.resources.Res
 import appdietes.composeapp.generated.resources.eye_off_outline
 import appdietes.composeapp.generated.resources.eye_outline
 import org.jetbrains.compose.resources.painterResource
+import org.project.dietes.DietScreen.UserManager
+import org.project.dietes.DietScreen.green
 import org.project.dietes.navigation.NavViewModel
 import org.project.dietes.navigation.Screen
 
@@ -56,7 +61,8 @@ fun UserLoginScreen(
     onCancel: () -> Unit,
     navViewModel: NavViewModel = viewModel(),
     navigateToScreenRegister : () -> Unit,
-    navigateToScreenHome : () -> Unit
+    navigateToScreenHome : () -> Unit,
+
 ) {
     var password by remember { mutableStateOf("") }
     var hidden by remember { mutableStateOf(true) }
@@ -152,6 +158,19 @@ fun UserLoginScreen(
         if (dadesError){
             Text("Dades incorrectes", color = Color.Red)
         }
+        if (viewModel.hasTriedLogin.value && !viewModel.loginSucces.value) {
+            LaunchedEffect(Unit){
+                delay(1000)
+                dadesError = true
+            }
+        }else if (viewModel.loginSucces.value){
+            dadesError = false
+            Text("Login succes! redirecting...", color = green)
+            LaunchedEffect(Unit){
+                delay(2000)
+                navigateToScreenHome()
+            }
+        }
         Spacer(modifier = Modifier.height(10.dp))
         TextButton(onClick = {navigateToScreenRegister()}){
             Text("¿Encara no estás registrat?", color = Color.Blue)
@@ -166,18 +185,15 @@ fun UserLoginScreen(
             Spacer(Modifier.width(10.dp))
             Button(
                 onClick = {
-                    val user = viewModel.getUserByEmail(email)
-                    dadesError = user?.password != password
+                    viewModel.login(email, password)
 
-                    if (!dadesError){
-                        navViewModel.selectUserId = user!!.id
-                        navViewModel.navTo(Screen.Account)
-                    }
                 },
                 colors = ButtonDefaults.textButtonColors(color1,color3)
             ){
                 Text("Inicia Sessió")
             }
+
+
         }
     }
 }

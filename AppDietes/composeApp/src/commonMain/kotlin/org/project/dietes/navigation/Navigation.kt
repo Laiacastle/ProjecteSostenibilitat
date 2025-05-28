@@ -39,6 +39,7 @@ import appdietes.composeapp.generated.resources.Logo
 import org.jetbrains.compose.resources.painterResource
 import org.project.dietes.CreateUserStatisticsScreen
 import org.project.dietes.DietScreen.DietSreen
+import org.project.dietes.DietScreen.UserManager
 import org.project.dietes.EditUserStatisticsScreen
 import org.project.dietes.RecipesScreen.RecipesScreen
 import org.project.dietes.UserLoginScreen
@@ -91,6 +92,19 @@ fun Navigation(){
                         scope.launch { drawerState.close() }
                     }
                 )
+                if(UserManager.getToken()!=null){
+                    NavigationDrawerItem(
+
+                        label = { Text("Compte", color = darkPink)},
+                        selected = false,
+                        icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Register" ,tint = darkPink)},
+                        onClick = {
+                            navViewModel.navTo(Screen.Account)
+                            scope.launch { drawerState.close() }
+                        }
+                    )
+                }
+
                 NavigationDrawerItem(
                     label = { Text("Jocs", color = darkPink) },
                     selected = false,
@@ -119,16 +133,7 @@ fun Navigation(){
                         scope.launch { drawerState.close() }
                     }
                 )
-                NavigationDrawerItem(
 
-                    label = { Text("Compte", color = darkPink)},
-                    selected = false,
-                    icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Register" ,tint = darkPink)},
-                    onClick = {
-                        navViewModel.navTo(Screen.Account)
-                        scope.launch { drawerState.close() }
-                    }
-                )
                 NavigationDrawerItem(
 
                     label = { Text("Les meves dietes", color = darkPink)},
@@ -171,7 +176,7 @@ fun Navigation(){
             }
         ) { padding ->
             Box(modifier = Modifier.padding(padding)) {
-                when (currentScreen) {
+                when (val screen = navViewModel.currentScreen.value) {
                     Screen.Home -> HomePageScreen(
                         navigateToLogInScreen = {navViewModel.navTo(Screen.LoginUser)},
                         navigateToGamesScreen = {navViewModel.navTo(Screen.Games)},
@@ -211,10 +216,12 @@ fun Navigation(){
                         }
                     )
                     Screen.Diets -> DietSreen(
-                        navigateToRecipeScreen = {navViewModel.navTo(Screen.Recipes)}
+                        navigateToRecipeScreen = {id ->
+                            navViewModel.navTo(Screen.Recipes(id))
+                        }
                     )
 
-                    Screen.Recipes -> RecipesScreen()
+                    is Screen.Recipes -> RecipesScreen(id = screen.id)
                 }
             }
         }
