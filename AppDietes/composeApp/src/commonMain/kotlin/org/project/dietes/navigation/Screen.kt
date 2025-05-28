@@ -7,4 +7,6 @@ sealed interface Screen {
     data object CreateUser : Screen
     data object EditUser : Screen
     data object LoginUser : Screen
+    data object Diets : Screen
+    data object Recipes : Screen
 }

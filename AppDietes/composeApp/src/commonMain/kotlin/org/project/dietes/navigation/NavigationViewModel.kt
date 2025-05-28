@@ -7,6 +7,6 @@ import androidx.lifecycle.ViewModel
 
 class NavViewModel : ViewModel(){
     val currentScreen = mutableStateOf<Screen>(Screen.Home)
-    var selectUserId by mutableStateOf<String>("")
+    var selectUserId by mutableStateOf<String?>(null)
     fun navTo(screen: Screen) {currentScreen.value = screen}
 }

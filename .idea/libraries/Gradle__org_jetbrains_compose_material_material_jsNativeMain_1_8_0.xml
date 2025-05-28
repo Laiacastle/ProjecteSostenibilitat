@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jetbrains.compose.material:material:jsNativeMain:1.8.0" type="kotlin.common" external-system-id="GRADLE">
+    <properties groupId="org.jetbrains.compose.material" artifactId="material" version="1.8.0" baseVersion="1.8.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/AppDietes/.kotlin/metadata/kotlinTransformedMetadataLibraries/org.jetbrains.compose.material-material-1.8.0-jsNativeMain-u9hUSQ.klib!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.material/material/1.8.0/bc196e8ebb3fa4091b570116821155ad0970e13a/material-1.8.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

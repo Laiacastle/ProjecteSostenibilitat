@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jetbrains.compose.foundation:foundation-uikitarm64:1.8.0" type="kotlin.native" external-system-id="GRADLE">
+    <properties groupId="org.jetbrains.compose.foundation" artifactId="foundation-uikitarm64" version="1.8.0" baseVersion="1.8.0" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.foundation/foundation-uikitarm64/1.8.0/d77d1b7aad215c41cd6ee182ffe7dc9c415a9966/foundation-uikitArm64Main-1.8.0.klib!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.foundation/foundation-uikitarm64/1.8.0/d38531356c750f75930ab96f593eb9297cf083a7/foundation-uikitarm64-1.8.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

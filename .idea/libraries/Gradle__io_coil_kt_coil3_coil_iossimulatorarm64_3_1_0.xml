@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.coil-kt.coil3:coil-iossimulatorarm64:3.1.0" type="kotlin.native" external-system-id="GRADLE">
+    <properties groupId="io.coil-kt.coil3" artifactId="coil-iossimulatorarm64" version="3.1.0" baseVersion="3.1.0" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.coil-kt.coil3/coil-iossimulatorarm64/3.1.0/4c3057a8c4d8ffa251c05adc5366326b96fb07f2/coil-iosSimulatorArm64Main-3.1.0.klib!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.coil-kt.coil3/coil-iossimulatorarm64/3.1.0/5517454c6b3f6a6e7e806b4d351f5ba10fd1fa83/coil-iossimulatorarm64-3.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

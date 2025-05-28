@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jetbrains.skiko:skiko-iossimulatorarm64:0.9.4" type="kotlin.native" external-system-id="GRADLE">
+    <properties groupId="org.jetbrains.skiko" artifactId="skiko-iossimulatorarm64" version="0.9.4" baseVersion="0.9.4" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.skiko/skiko-iossimulatorarm64/0.9.4/a61b2d2601dfbbcef8725b6f9503fc53d68d528e/skiko.klib!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.skiko/skiko-iossimulatorarm64/0.9.4/bd073dbfb71107da6cdbeac58abfea0649a4815e/skiko-cinterop-uikit.klib!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.skiko/skiko-iossimulatorarm64/0.9.4/ebba7df2694a5dbbc8c44651724b2c67525bcc2c/skiko-iossimulatorarm64-0.9.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,6 +1,8 @@
+
 package org.project.dietes
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,10 +11,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.TextButton
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
@@ -51,6 +55,8 @@ fun UserLoginScreen(
     viewModel: UsersDataViewModel = viewModel(),
     onCancel: () -> Unit,
     navViewModel: NavViewModel = viewModel(),
+    navigateToScreenRegister : () -> Unit,
+    navigateToScreenHome : () -> Unit
 ) {
     var password by remember { mutableStateOf("") }
     var hidden by remember { mutableStateOf(true) }
@@ -59,6 +65,8 @@ fun UserLoginScreen(
     val color1 = Color(red = 0x8E, green = 0xF4, blue = 0xC0)
     val color2 = Color(red = 0x56, green = 0xA5, blue = 0x8B)
     val color3 = Color(red = 0x49, green = 0x60, blue = 0x5E)
+    val darkPink = Color(112, 65, 61)
+    val pink = Color(228,213,221)
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -106,8 +114,9 @@ fun UserLoginScreen(
 
         OutlinedTextField(
             value = password,
+            modifier = Modifier.background(color1, shape = RoundedCornerShape(16.dp)),
             onValueChange = { password = it
-                            dadesError = false},
+                dadesError = false},
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Lock,
@@ -122,6 +131,7 @@ fun UserLoginScreen(
                 textColor = Color.Black,
                 focusedIndicatorColor = color2,
                 unfocusedIndicatorColor = color2,
+
             ),
             isError = dadesError,
             placeholder = { Text(text = "Introdueix la teva contrasenya") },
@@ -140,9 +150,20 @@ fun UserLoginScreen(
         )
         Spacer(Modifier.height(20.dp))
         if (dadesError){
-            Text("Dades incorrectes")
+            Text("Dades incorrectes", color = Color.Red)
+        }
+        Spacer(modifier = Modifier.height(10.dp))
+        TextButton(onClick = {navigateToScreenRegister()}){
+            Text("¿Encara no estás registrat?", color = Color.Blue)
         }
         Row {
+            Button(
+                onClick = {onCancel(); navigateToScreenHome() },
+                colors = ButtonDefaults.textButtonColors(darkPink,pink)
+            ){
+                Text("Cancel·la")
+            }
+            Spacer(Modifier.width(10.dp))
             Button(
                 onClick = {
                     val user = viewModel.getUserByEmail(email)
@@ -156,13 +177,6 @@ fun UserLoginScreen(
                 colors = ButtonDefaults.textButtonColors(color1,color3)
             ){
                 Text("Inicia Sessió")
-            }
-            Spacer(Modifier.width(10.dp))
-            Button(
-                onClick = {onCancel() },
-                colors = ButtonDefaults.textButtonColors(Color.Red,color3)
-            ){
-                Text("Cancel·la")
             }
         }
     }

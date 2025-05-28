@@ -1,3 +1,4 @@
+
 package org.project.dietes
 
 import androidx.compose.runtime.Composable
@@ -36,9 +37,9 @@ data class UserData(
     val email: String,
     val password: String,
     val userName: String,
-    val weight: Int,
+    val weight: Double,
     val exercise: String,
-    val hoursSleep: Int,
+    val hoursSleep: Double,
     val age: Int,
     val diet: String)
 @Serializable
@@ -49,9 +50,9 @@ data class PostUser(
     val email: String,
     val password: String,
     val userName: String,
-    val weight: Int,
+    val weight: Double,
     val exercise: String,
-    val hoursSleep: Int,
+    val hoursSleep: Double,
     val age: Int,
     val diet: String
 )
@@ -71,7 +72,7 @@ class UsersDataViewModel : ViewModel(){
     fun updateUser(updated: UserData){
         val index = users!!.indexOfFirst { it.id == updated.id }
         if (index != -1){
-            users?.toMutableList()[index] = updated
+            users!!.toMutableList()[index] = updated
         }
     }
     fun getUserById(id: String): UserData? =

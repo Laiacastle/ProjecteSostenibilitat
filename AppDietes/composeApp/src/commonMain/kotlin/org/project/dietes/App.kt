@@ -7,6 +7,5 @@ import org.project.dietes.navigation.Navigation
 @Composable
 @Preview
 fun App() {
-    //ListUsers()
     Navigation()
 }
