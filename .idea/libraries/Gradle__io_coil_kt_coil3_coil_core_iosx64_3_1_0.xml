@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.coil-kt.coil3:coil-core-iosx64:3.1.0" type="kotlin.native" external-system-id="GRADLE">
+    <properties groupId="io.coil-kt.coil3" artifactId="coil-core-iosx64" version="3.1.0" baseVersion="3.1.0" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.coil-kt.coil3/coil-core-iosx64/3.1.0/707504d54315f929b1b17c1350c1bf79eaca1dfd/coil-core-iosX64Main-3.1.0.klib!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.coil-kt.coil3/coil-core-iosx64/3.1.0/481a00ff20785fb618b37902b0d9dab3a41b4d97/coil-core-iosx64-3.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

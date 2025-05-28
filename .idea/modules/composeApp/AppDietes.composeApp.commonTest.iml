@@ -14,8 +14,8 @@
             <flagArg name="multiPlatform" arg="true" />
           </flagArguments>
           <stringArguments>
-            <stringArg name="apiVersion" arg="2.1" />
-            <stringArg name="languageVersion" arg="2.1" />
+            <stringArg name="apiVersion" arg="2.0" />
+            <stringArg name="languageVersion" arg="2.0" />
           </stringArguments>
           <arrayArguments>
             <arrayArg name="pluginClasspaths">
@@ -26,6 +26,7 @@
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.1.21/97a0975aa19d925e109537af60eb46902920015c/kotlin-stdlib-2.1.21.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/2.1.21/e274d560d10526099330411c45961f04d85e77b9/kotlin-script-runtime-2.1.21.jar</arg>
+                <arg>$KOTLIN_BUNDLED$/lib/kotlinx-serialization-compiler-plugin.jar</arg>
               </args>
             </arrayArg>
             <arrayArg name="pluginOptions">
@@ -47,6 +48,7 @@
     <orderEntry type="module" module-name="AppDietes.composeApp.commonMain" scope="TEST" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-test:assertionsCommonMain:2.1.21" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-test:annotationsCommonMain:2.1.21" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: app.cash.sqldelight:runtime:commonMain:2.0.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:commonMain:2.1.21" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.compose.runtime:runtime:commonMain:1.8.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.compose.foundation:foundation:commonMain:1.8.0" level="project" />
@@ -60,8 +62,19 @@
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.androidx.lifecycle:lifecycle-viewmodel:commonMain:2.9.0-beta01" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose:commonMain:2.8.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:commonMain:2.9.0-beta01" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core:concurrentMain:1.8.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core:commonMain:1.8.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.russhwolf:multiplatform-settings-no-arg:commonMain:1.3.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.russhwolf:multiplatform-settings-serialization:commonMain:1.3.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.ktor:ktor-serialization-kotlinx-json:commonMain:3.0.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.ktor:ktor-client-core:commonMain:3.0.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.ktor:ktor-client-cio:jvmAndPosixMain:3.0.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.ktor:ktor-client-content-negotiation:commonMain:3.0.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.coil-kt.coil3:coil-compose:commonMain:3.1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.coil-kt.coil3:coil-network-ktor3:commonMain:3.1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: app.cash.sqldelight:coroutines-extensions:commonMain:2.0.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlinx:kotlinx-serialization-json:commonMain:1.7.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlinx:kotlinx-datetime:commonMain:0.6.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core:concurrentMain:1.10.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core:commonMain:1.10.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.compose.animation:animation:commonMain:1.8.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.compose.animation:animation-core:commonMain:1.8.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.compose.material:material-ripple:commonMain:1.8.0" level="project" />
@@ -77,9 +90,33 @@
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.androidx.lifecycle:lifecycle-runtime:commonMain:2.8.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-savedstate:commonMain:2.9.0-beta01" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.androidx.savedstate:savedstate:commonMain:1.3.0-beta01" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.russhwolf:multiplatform-settings:commonMain:1.3.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.ktor:ktor-http:commonMain:3.0.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.ktor:ktor-serialization-kotlinx:commonMain:3.0.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlinx:kotlinx-serialization-json-io:commonMain:1.7.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.ktor:ktor-events:commonMain:3.0.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.ktor:ktor-websocket-serialization:commonMain:3.0.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.ktor:ktor-sse:commonMain:3.0.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.ktor:ktor-http-cio:commonMain:3.0.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.ktor:ktor-websockets:commonMain:3.0.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.ktor:ktor-network-tls:jvmAndPosixMain:3.0.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.ktor:ktor-serialization:commonMain:3.0.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.coil-kt.coil3:coil:commonMain:3.1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.coil-kt.coil3:coil-compose-core:commonMain:3.1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.coil-kt.coil3:coil-core:nonJsCommonMain:3.1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.coil-kt.coil3:coil-core:commonMain:3.1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.coil-kt.coil3:coil-network-core:commonMain:3.1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlinx:kotlinx-serialization-core:commonMain:1.7.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.compose.foundation:foundation-layout:commonMain:1.8.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: androidx.annotation:annotation:commonMain:1.9.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlinx:kotlinx-serialization-core:commonMain:1.7.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.ktor:ktor-utils:commonMain:3.0.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.ktor:ktor-io:commonMain:3.0.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: io.ktor:ktor-network:jvmAndPosixMain:3.0.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.squareup.okio:okio:systemFileSystemMain:3.10.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.squareup.okio:okio:zlibMain:3.10.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.squareup.okio:okio:commonMain:3.10.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlinx:kotlinx-io-core:commonMain:0.5.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlinx:kotlinx-io-bytestring:commonMain:0.5.4" level="project" />
   </component>
   <component name="TestModuleProperties" production-module="AppDietes.composeApp.commonMain" />
 </module>

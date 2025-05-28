@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core:nativeDarwinMain:1.10.1" type="kotlin.native" external-system-id="GRADLE">
+    <properties groupId="org.jetbrains.kotlinx" artifactId="kotlinx-coroutines-core" version="1.10.1" baseVersion="1.10.1" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/AppDietes/.kotlin/metadata/kotlinTransformedMetadataLibraries/org.jetbrains.kotlinx-kotlinx-coroutines-core-1.10.1-nativeDarwinMain--jzUgA.klib!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core/1.10.1/58d7cb8bc7d259bbe5ec56aadc549a2fb74657f9/kotlinx-coroutines-core-1.10.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.russhwolf:multiplatform-settings-no-arg-iosx64:1.3.0" type="kotlin.native" external-system-id="GRADLE">
+    <properties groupId="com.russhwolf" artifactId="multiplatform-settings-no-arg-iosx64" version="1.3.0" baseVersion="1.3.0" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.russhwolf/multiplatform-settings-no-arg-iosx64/1.3.0/2da1d934544f90bb2f78a50d14192f0e75ffc1cb/multiplatform-settings-no-arg-iosX64Main-1.3.0.klib!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.russhwolf/multiplatform-settings-no-arg-iosx64/1.3.0/700e1bab01c9da69ede56aac043c09d848dc0bb6/multiplatform-settings-no-arg-iosx64-1.3.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

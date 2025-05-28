@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.ktor:ktor-client-content-negotiation:posixMain:3.0.2" type="kotlin.native" external-system-id="GRADLE">
+    <properties groupId="io.ktor" artifactId="ktor-client-content-negotiation" version="3.0.2" baseVersion="3.0.2" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/AppDietes/.kotlin/metadata/kotlinTransformedMetadataLibraries/io.ktor-ktor-client-content-negotiation-3.0.2-posixMain-_r-fDQ.klib!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-client-content-negotiation/3.0.2/5a4b80b8689c851da32bc47a0b905e7a3cf4523c/ktor-client-content-negotiation-3.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

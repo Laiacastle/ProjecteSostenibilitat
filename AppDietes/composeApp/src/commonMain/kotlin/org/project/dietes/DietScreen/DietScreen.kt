@@ -44,14 +44,15 @@ val darkPink = Color(112, 65, 61)
 val background = Color(228,213,221)
 val white = Color.White
 @Composable
-fun DietSreen(){
+fun DietSreen(navigateToRecipeScreen: () -> Unit){
     val VM = viewModel{DietVM()}
-    DietScren(VM.listDiets.value, VM::addDiet)
+    DietScren(VM.listDiets.value, VM::addDiet, VM::refreshDietList, navigateToRecipeScreen)
 }
 @Composable
-fun DietScren(dietlist: List<Diet>, newDiet: ()-> Unit){
+fun DietScren(dietlist: List<Diet>, newDiet: ()-> Unit, refresh: () -> Unit, navigateToScreenRecipe: () -> Unit){
     if (dietlist.size == 0){
         Text("Encara no tens dietes o no t'has loguejat!")
+        refresh()
     }
     else{
 
@@ -88,10 +89,10 @@ fun DietScren(dietlist: List<Diet>, newDiet: ()-> Unit){
                                     Text(diet.name, fontSize = 7.em, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center, modifier = Modifier.fillMaxSize())
                                     Spacer(modifier = Modifier.height(20.dp))
                                     Text("Coses a tenir en compte d'aquesta dieta:", fontWeight = FontWeight.Bold, textAlign = TextAlign.Center, modifier = Modifier.fillMaxSize())
-                                    for (i in diet.charac){
-                                        Text(i.toString(), textAlign = TextAlign.Center, modifier = Modifier.fillMaxSize())
-                                    }
-                                    OutlinedButton(onClick = {TODO()},
+
+                                    Text(diet.charac.toString(), textAlign = TextAlign.Center, modifier = Modifier.fillMaxSize())
+
+                                    OutlinedButton(onClick = {navigateToScreenRecipe()},
                                         modifier = Modifier.align(Alignment.CenterHorizontally),
                                         shape = RoundedCornerShape(20.dp),
                                         colors =  ButtonDefaults.outlinedButtonColors(

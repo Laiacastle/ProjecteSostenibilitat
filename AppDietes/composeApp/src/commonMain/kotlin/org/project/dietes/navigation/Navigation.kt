@@ -32,6 +32,7 @@ import org.jetbrains.compose.resources.painterResource
 import org.project.dietes.CreateUserStatisticsScreen
 import org.project.dietes.DietScreen.DietSreen
 import org.project.dietes.EditUserStatisticsScreen
+import org.project.dietes.RecipesScreen.RecipesScreen
 import org.project.dietes.UserLoginScreen
 import org.project.dietes.ViewUserStatistics
 import org.project.dietes.gamesScreen.GamesScreen
@@ -183,7 +184,11 @@ fun Navigation(){
                             navViewModel.navTo(Screen.Home)
                         }
                     )
-                    Screen.Diets -> DietSreen()
+                    Screen.Diets -> DietSreen(
+                        navigateToRecipeScreen = {navViewModel.navTo(Screen.Recipe)}
+                    )
+
+                    Screen.Recipe -> RecipesScreen()
                 }
             }
         }

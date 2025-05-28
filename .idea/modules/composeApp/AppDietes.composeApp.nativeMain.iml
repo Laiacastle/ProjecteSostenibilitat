@@ -11,8 +11,8 @@
             <flagArg name="multiPlatform" arg="true" />
           </flagArguments>
           <stringArguments>
-            <stringArg name="apiVersion" arg="2.1" />
-            <stringArg name="languageVersion" arg="2.1" />
+            <stringArg name="apiVersion" arg="2.0" />
+            <stringArg name="languageVersion" arg="2.0" />
           </stringArguments>
           <arrayArguments>
             <arrayArg name="pluginClasspaths">
@@ -23,6 +23,7 @@
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.1.21/97a0975aa19d925e109537af60eb46902920015c/kotlin-stdlib-2.1.21.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/2.1.21/e274d560d10526099330411c45961f04d85e77b9/kotlin-script-runtime-2.1.21.jar</arg>
+                <arg>$KOTLIN_BUNDLED$/lib/kotlinx-serialization-compiler-plugin.jar</arg>
               </args>
             </arrayArg>
             <arrayArg name="pluginOptions">
@@ -210,6 +211,8 @@
     <orderEntry type="library" name="Kotlin/Native: BrowserEngineKit | [(ios_arm64, ios_simulator_arm64, ios_x64)]" level="project" />
     <orderEntry type="library" name="Kotlin/Native: CoreNFC | [(ios_arm64, ios_simulator_arm64, ios_x64)]" level="project" />
     <orderEntry type="library" name="Kotlin/Native: WatchConnectivity | [(ios_arm64, ios_simulator_arm64, ios_x64)]" level="project" />
+    <orderEntry type="library" name="Gradle: app.cash.sqldelight:runtime:nativeMain:2.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: app.cash.sqldelight:runtime:commonMain:2.0.2" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.compose.runtime:runtime:darwinMain:1.8.0" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.compose.runtime:runtime:posixMain:1.8.0" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.compose.runtime:runtime:nativeMain:1.8.0" level="project" />
@@ -253,14 +256,37 @@
     <orderEntry type="library" name="Gradle: org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:nativeMain:2.9.0-beta01" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:jbMain:2.9.0-beta01" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:commonMain:2.9.0-beta01" level="project" />
+    <orderEntry type="library" name="Gradle: com.russhwolf:multiplatform-settings-no-arg:appleMain:1.3.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.russhwolf:multiplatform-settings-no-arg:commonMain:1.3.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.russhwolf:multiplatform-settings-serialization:commonMain:1.3.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-serialization-kotlinx-json:posixMain:3.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-serialization-kotlinx-json:commonMain:3.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-client-core:posixMain:3.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-client-core:commonMain:3.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-client-cio:posixMain:3.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-client-cio:jvmAndPosixMain:3.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-client-content-negotiation:posixMain:3.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-client-content-negotiation:commonMain:3.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.coil-kt.coil3:coil-compose:commonMain:3.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.coil-kt.coil3:coil-network-ktor3:nativeMain:3.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.coil-kt.coil3:coil-network-ktor3:nonJvmCommonMain:3.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.coil-kt.coil3:coil-network-ktor3:commonMain:3.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: app.cash.sqldelight:coroutines-extensions:commonMain:2.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-serialization-json:nativeMain:1.7.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-serialization-json:commonMain:1.7.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-datetime:darwinMain:0.6.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-datetime:tzdbOnFilesystemMain:0.6.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-datetime:tzfileMain:0.6.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-datetime:nativeMain:0.6.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-datetime:commonMain:0.6.0" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.compose.annotation-internal:annotation:commonMain:1.8.0" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.compose.collection-internal:collection:commonMain:1.8.0" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:atomicfu:nativeMain:0.23.2" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:atomicfu:commonMain:0.23.2" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core:nativeDarwinMain:1.8.0" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core:nativeMain:1.8.0" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core:concurrentMain:1.8.0" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core:commonMain:1.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core:nativeDarwinMain:1.10.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core:nativeMain:1.10.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core:concurrentMain:1.10.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core:commonMain:1.10.1" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.compose.animation:animation:nativeMain:1.8.0" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.compose.animation:animation:jsNativeMain:1.8.0" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.compose.animation:animation:commonMain:1.8.0" level="project" />
@@ -297,11 +323,6 @@
     <orderEntry type="library" name="Gradle: org.jetbrains.compose.ui:ui-graphics:commonMain:1.8.0" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.compose.ui:ui-backhandler:jbMain:1.8.0" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.compose.ui:ui-backhandler:commonMain:1.8.0" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-datetime:darwinMain:0.6.0" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-datetime:tzdbOnFilesystemMain:0.6.0" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-datetime:tzfileMain:0.6.0" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-datetime:nativeMain:0.6.0" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-datetime:commonMain:0.6.0" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.androidx.lifecycle:lifecycle-common:nonJvmCommonMain:2.9.0-beta01" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.androidx.lifecycle:lifecycle-common:commonMain:2.9.0-beta01" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.androidx.lifecycle:lifecycle-runtime:nativeMain:2.8.4" level="project" />
@@ -318,6 +339,39 @@
     <orderEntry type="library" name="Gradle: org.jetbrains.androidx.savedstate:savedstate:nativeMain:1.3.0-beta01" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.androidx.savedstate:savedstate:nonAndroidMain:1.3.0-beta01" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.androidx.savedstate:savedstate:commonMain:1.3.0-beta01" level="project" />
+    <orderEntry type="library" name="Gradle: com.russhwolf:multiplatform-settings:apple64Main:1.3.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.russhwolf:multiplatform-settings:appleMain:1.3.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.russhwolf:multiplatform-settings:commonMain:1.3.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-serialization-core:nativeMain:1.7.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-serialization-core:commonMain:1.7.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-http:posixMain:3.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-http:commonMain:3.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-serialization-kotlinx:posixMain:3.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-serialization-kotlinx:commonMain:3.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-serialization-json-io:commonMain:1.7.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-events:commonMain:3.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-websocket-serialization:commonMain:3.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-sse:commonMain:3.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-http-cio:posixMain:3.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-http-cio:commonMain:3.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-websockets:posixMain:3.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-websockets:commonMain:3.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-network-tls:posixMain:3.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-network-tls:jvmAndPosixMain:3.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-serialization:commonMain:3.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.coil-kt.coil3:coil:nonAndroidMain:3.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.coil-kt.coil3:coil:commonMain:3.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.coil-kt.coil3:coil-compose-core:nonAndroidMain:3.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.coil-kt.coil3:coil-compose-core:commonMain:3.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.coil-kt.coil3:coil-core:nativeMain:3.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.coil-kt.coil3:coil-core:nonJvmCommonMain:3.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.coil-kt.coil3:coil-core:nonJsCommonMain:3.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.coil-kt.coil3:coil-core:nonAndroidMain:3.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.coil-kt.coil3:coil-core:commonMain:3.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.coil-kt.coil3:coil-network-core:nonAndroidMain:3.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.coil-kt.coil3:coil-network-core:commonMain:3.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: app.cash.sqldelight:async-extensions:concurrentMain:2.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: app.cash.sqldelight:async-extensions:commonMain:2.0.2" level="project" />
     <orderEntry type="library" name="Gradle: androidx.annotation:annotation:nonJvmMain:1.9.1" level="project" />
     <orderEntry type="library" name="Gradle: androidx.annotation:annotation:commonMain:1.9.1" level="project" />
     <orderEntry type="library" name="Gradle: androidx.collection:collection:darwinMain:1.5.0" level="project" />
@@ -325,7 +379,32 @@
     <orderEntry type="library" name="Gradle: androidx.collection:collection:nativeMain:1.5.0" level="project" />
     <orderEntry type="library" name="Gradle: androidx.collection:collection:nonJvmMain:1.5.0" level="project" />
     <orderEntry type="library" name="Gradle: androidx.collection:collection:commonMain:1.5.0" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-serialization-core:nativeMain:1.7.3" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-serialization-core:commonMain:1.7.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-utils:darwinMain:3.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-utils:nixMain:3.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-utils:posixMain:3.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-utils:commonMain:3.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-io-core:appleMain:0.5.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-io-core:nativeNonAndroidMain:0.5.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-io-core:nativeMain:0.5.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-io-core:commonMain:0.5.4" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-io:darwinMain:3.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-io:posixMain:3.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-io:commonMain:3.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-network:iosMain:3.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-network:darwinMain:3.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-network:nixMain:3.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-network:posixMain:3.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.ktor:ktor-network:jvmAndPosixMain:3.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.okio:okio:appleMain:3.10.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.okio:okio:unixMain:3.10.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.okio:okio:nativeMain:3.10.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.okio:okio:systemFileSystemMain:3.10.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.okio:okio:zlibMain:3.10.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.okio:okio:nonJvmMain:3.10.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.okio:okio:hashFunctions:3.10.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.okio:okio:commonMain:3.10.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-io-bytestring:appleMain:0.5.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-io-bytestring:nativeMain:0.5.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-io-bytestring:commonMain:0.5.4" level="project" />
   </component>
 </module>

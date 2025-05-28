@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.ktor:ktor-network-tls:jvmAndPosixMain:3.0.2" type="kotlin.common" external-system-id="GRADLE">
+    <properties groupId="io.ktor" artifactId="ktor-network-tls" version="3.0.2" baseVersion="3.0.2" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/AppDietes/.kotlin/metadata/kotlinTransformedMetadataLibraries/io.ktor-ktor-network-tls-3.0.2-jvmAndPosixMain-sD3x3w.klib!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-network-tls/3.0.2/a182b7231c6520f3ad6531d6e5519b875e04ebf6/ktor-network-tls-3.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

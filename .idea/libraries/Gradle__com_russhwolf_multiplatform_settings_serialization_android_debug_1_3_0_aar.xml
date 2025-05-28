@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.russhwolf:multiplatform-settings-serialization-android-debug:1.3.0@aar" external-system-id="GRADLE">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/8.9/transforms/cd1fb4f30fc00095e428983c5592451a/transformed/multiplatform-settings-serialization-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/8.9/transforms/cd1fb4f30fc00095e428983c5592451a/transformed/multiplatform-settings-serialization-debug/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.russhwolf/multiplatform-settings-serialization-android-debug/1.3.0/bddb38ab8fc065e2f1acfd81919aab6771fbb868/multiplatform-settings-serialization-android-debug-1.3.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.russhwolf/multiplatform-settings-serialization-android-debug/1.3.0/573e3aa5aad2f4467d9623a3fadc0ccc6ebf3906/multiplatform-settings-serialization-android-debug-1.3.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

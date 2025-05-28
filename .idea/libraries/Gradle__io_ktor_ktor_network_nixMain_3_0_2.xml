@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.ktor:ktor-network:nixMain:3.0.2" type="kotlin.native" external-system-id="GRADLE">
+    <properties groupId="io.ktor" artifactId="ktor-network" version="3.0.2" baseVersion="3.0.2" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/AppDietes/.kotlin/metadata/kotlinTransformedMetadataLibraries/io.ktor-ktor-network-3.0.2-nixMain-MLpl5A.klib!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-network/3.0.2/8b90ea9922036f4af9ef839b70a3b6cab2c837dc/ktor-network-3.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

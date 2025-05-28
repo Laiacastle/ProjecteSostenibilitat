@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.russhwolf:multiplatform-settings-serialization-iosx64:1.3.0" type="kotlin.native" external-system-id="GRADLE">
+    <properties groupId="com.russhwolf" artifactId="multiplatform-settings-serialization-iosx64" version="1.3.0" baseVersion="1.3.0" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.russhwolf/multiplatform-settings-serialization-iosx64/1.3.0/cee217c58219a13cbc7464ee4d56ce8d383f2c82/multiplatform-settings-serialization-iosX64Main-1.3.0.klib!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.russhwolf/multiplatform-settings-serialization-iosx64/1.3.0/573e3aa5aad2f4467d9623a3fadc0ccc6ebf3906/multiplatform-settings-serialization-iosx64-1.3.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

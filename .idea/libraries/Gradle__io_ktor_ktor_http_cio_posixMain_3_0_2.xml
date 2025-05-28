@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.ktor:ktor-http-cio:posixMain:3.0.2" type="kotlin.native" external-system-id="GRADLE">
+    <properties groupId="io.ktor" artifactId="ktor-http-cio" version="3.0.2" baseVersion="3.0.2" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/AppDietes/.kotlin/metadata/kotlinTransformedMetadataLibraries/io.ktor-ktor-http-cio-3.0.2-posixMain-XmG4mw.klib!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-http-cio/3.0.2/625817d67e4ee8a86d8dfe7ec302ed48057f4358/ktor-http-cio-3.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

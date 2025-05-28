@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.squareup.okio:okio-iosarm64:3.10.2" type="kotlin.native" external-system-id="GRADLE">
+    <properties groupId="com.squareup.okio" artifactId="okio-iosarm64" version="3.10.2" baseVersion="3.10.2" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio-iosarm64/3.10.2/e0ddd82b278012c6410915ed00f014900917d1ca/okio-iosArm64Main-3.10.2.klib!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio-iosarm64/3.10.2/ec5d97a16e8579d02cfde9a8827abd48432b56f9/okio-iosarm64-3.10.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
