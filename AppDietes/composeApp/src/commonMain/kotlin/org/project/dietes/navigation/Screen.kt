@@ -8,5 +8,5 @@ sealed interface Screen {
     data object EditUser : Screen
     data object LoginUser : Screen
     data object Diets : Screen
-    data object Recipes : Screen
+    data class Recipes(val id: Int) : Screen
 }

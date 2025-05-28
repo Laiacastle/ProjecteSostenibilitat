@@ -6,9 +6,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.viewModelScope
 import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.*
@@ -26,6 +26,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.Serializable
+import org.project.dietes.DietScreen.MyApi
+import org.project.dietes.DietScreen.UserManager
 import kotlin.String
 
 
@@ -42,33 +44,20 @@ data class UserData(
     val hoursSleep: Double,
     val age: Int,
     val diet: String)
-@Serializable
-data class PostUser(
-    val id: String,
-    val name: String,
-    val surname: String,
-    val email: String,
-    val password: String,
-    val userName: String,
-    val weight: Double,
-    val exercise: String,
-    val hoursSleep: Double,
-    val age: Int,
-    val diet: String
-)
 class UsersDataViewModel : ViewModel(){
     var users2 = mutableStateListOf<UserData>()
     var users by mutableStateOf<List<UserData>?>(null)
+    val hasTriedLogin = mutableStateOf(false)
+    val loginSucces = mutableStateOf(false)
+    val hasTriedRegister = mutableStateOf(false)
+    val registerSucces = mutableStateOf(false)
+    val loading = mutableStateOf(false)
     init {
         viewModelScope.launch(Dispatchers.Default){
-            users = DietaApi.listUsers()
+            users = MyApi.listUsers()
         }
     }
 
-    /*var users by mutableStateOf<List<UserData>?>(null)
-    init {
-        users = users2
-    }*/
     fun updateUser(updated: UserData){
         val index = users!!.indexOfFirst { it.id == updated.id }
         if (index != -1){
@@ -78,9 +67,44 @@ class UsersDataViewModel : ViewModel(){
     fun getUserById(id: String): UserData? =
         users?.find { it.id == id }
 
+
     fun getUserByEmail(email: String): UserData? =
         users?.find { it.email == email }
+
+    fun login(email: String, password: String){
+        hasTriedLogin.value = true
+        viewModelScope.launch(Dispatchers.Default) {
+            loading.value = true
+            try {
+
+                MyApi.login(email, password)
+                println(UserManager.getToken())
+                loginSucces.value = true
+            }
+            finally {
+                loading.value = false
+            }
+        }
+
+    }
+
+    fun register(user: UserData){
+        hasTriedRegister.value = true
+        viewModelScope.launch(Dispatchers.Default) {
+            loading.value = true
+            try {
+
+                MyApi.register(user)
+                println(UserManager.getToken())
+                registerSucces.value = true
+            }
+            finally {
+                loading.value = false
+            }
+        }
+    }
 }
+
 fun isNumeric(toCheck: String): Boolean {
     return toCheck.all { char -> char.isDigit() }
 }
@@ -88,44 +112,3 @@ fun isDecimal(toCheck: String): Boolean {
     val regex = "[0-9]+(\\.[0-9]+)?".toRegex()
     return toCheck.matches(regex)
 }
-object DietaApi {
-    val url = "https://apidiets-axhbbgcubzfjhfda.northeurope-01.azurewebsites.net/api/authentication"
-    val client = HttpClient(){
-        install(ContentNegotiation){
-            json(Json{
-                ignoreUnknownKeys = true
-            })
-        }
-
-    }
-    suspend fun listUsers() = client.get(url).body<List<UserData>>()
-}
-/*suspend fun UserPost(){
-    val url = "https://apidiets-axhbbgcubzfjhfda.northeurope-01.azurewebsites.net/api/authentication"
-    val client = HttpClient()
-    val post = PostUser(
-        id = "userid1",
-        name = "",
-        surname = "",
-        email = "",
-        password = "",
-        userName = "",
-        weight = 5,
-        exercise = "",
-        hoursSleep = 6,
-        age = 21,
-        diet = ""
-    )
-    val response = client.post(url){
-        setBody(post)
-        contentType(ContentType.Application.Json)
-    }
-}*/
-/*
-@Composable
-fun AddUsers(){
-    var users = UsersDataViewModel().users
-    val users2 = UsersDataViewModel().users2
-    users = users?.plus(users2.toMutableStateList())
-    UsersDataViewModel().users = users
-}*/

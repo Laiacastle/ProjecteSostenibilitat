@@ -45,7 +45,7 @@ val background = Color(228,213,221)
 val white = Color.White
 val pink = Color(180, 132, 128)
 @Composable
-fun DietSreen(navigateToRecipeScreen: () -> Unit){
+fun DietSreen(navigateToRecipeScreen: (Int) -> Unit){
     val VM = viewModel{DietVM()}
     DietScreen(VM.listDiets.value, VM::addDiet, VM::refreshDietList, navigateToRecipeScreen)
 }
@@ -54,7 +54,7 @@ fun DietScreen(
     dietlist: List<Diet>,
     newDiet: () -> Unit,
     refresh: () -> Unit,
-    navigateToScreenRecipe: () -> Unit
+    navigateToScreenRecipe: (Int) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -122,7 +122,7 @@ fun DietScreen(
                             )
                             Spacer(modifier = Modifier.height(10.dp))
                             OutlinedButton(
-                                onClick = { navigateToScreenRecipe() },
+                                onClick = { navigateToScreenRecipe(diet.id) },
                                 modifier = Modifier.align(Alignment.CenterHorizontally),
                                 shape = RoundedCornerShape(20.dp),
                                 colors = ButtonDefaults.outlinedButtonColors(

@@ -41,8 +41,8 @@ import org.project.dietes.DietScreen.green
 import org.project.dietes.DietScreen.white
 
 @Composable
-fun RecipesScreen(){
-        val VM = viewModel {RecipesVM()}
+fun RecipesScreen(id: Int){
+        val VM = viewModel {RecipesVM(id)}
     RecipesScreen(VM.recipesList.value, VM::refreshRecipes)
 }
 
