@@ -94,17 +94,7 @@ object MyApi {
     suspend fun register(user: UserData): Boolean{
         val response = client.post(URL + "authentication/register") {
             contentType(ContentType.Application.Json)
-            setBody(mapOf(
-                "name" to user.name,
-                "surname" to user.surname,
-                "email" to user.email,
-                "password" to user.password,
-                "userName" to user.userName,
-                "weight" to user.weight,
-                "exercise" to user.exercise,
-                "hoursSleep" to user.hoursSleep,
-                "age" to user.age,
-                "diet" to user.diet))
+            setBody(user)
         }
         if (response.status.isSuccess()) {
             println("Register succesful")
