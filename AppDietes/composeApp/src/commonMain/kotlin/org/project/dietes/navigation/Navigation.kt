@@ -20,15 +20,10 @@ import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.InternalComposeApi
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.launch
 import androidx.lifecycle.viewmodel.compose.viewModel
 import appdietes.composeapp.generated.resources.Res
@@ -141,8 +136,11 @@ fun Navigation(){
             Box(modifier = Modifier.padding(padding)) {
                 when (currentScreen) {
                     Screen.Home -> HomePageScreen(
-                        navigateToModifyInformationScreen = { navViewModel.navTo(Screen.EditUser) },
-                        navigateToGamesScreen = { navViewModel.navTo(Screen.Games) },
+                        navigateToCreateUserScreen = {navViewModel.navTo(Screen.CreateUser)},
+                        navigateToLogInScreen = {navViewModel.navTo(Screen.LoginUser)},
+                        navigateToVewStatisticsScreen = {navViewModel.navTo(Screen.Account)},
+                        navigateToModifyInformationScreen = {navViewModel.navTo(Screen.EditUser)},
+                        navigateToGamesScreen = {navViewModel.navTo(Screen.Games)},
                         navigateToGamesResultsScreen = {},
                         navigateToAIDietesScreen = {},
                         navigateToDietesScreen = {}
