@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.main.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/AppDietes.composeApp.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ProjecteSostenibilitat.iml" filepath="$PROJECT_DIR$/.idea/ProjecteSostenibilitat.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.main.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.main.iml" />
     </modules>

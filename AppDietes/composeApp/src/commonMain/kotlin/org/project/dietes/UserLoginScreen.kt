@@ -52,8 +52,6 @@ fun UserLoginScreen(
     onCancel: () -> Unit,
     navViewModel: NavViewModel = viewModel(),
 ) {
-    val users = UsersDataViewModel().users
-    val userId = 0
     var password by remember { mutableStateOf("") }
     var hidden by remember { mutableStateOf(true) }
     var email by remember { mutableStateOf("") }
@@ -151,7 +149,7 @@ fun UserLoginScreen(
                     dadesError = user?.password != password
 
                     if (!dadesError){
-                        navViewModel.selectUserId = user?.idUser
+                        navViewModel.selectUserId = user!!.id
                         navViewModel.navTo(Screen.Account)
                     }
                 },

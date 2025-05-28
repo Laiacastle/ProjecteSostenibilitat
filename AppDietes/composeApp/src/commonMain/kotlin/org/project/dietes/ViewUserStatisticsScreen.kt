@@ -29,7 +29,7 @@ import org.project.dietes.navigation.Screen
 
 @Composable
 fun ViewUserStatistics(
-    userId: Int,
+    userId: String,
     navViewModel: NavViewModel,
     usersViewModel: UsersDataViewModel = viewModel()
 ){
@@ -48,29 +48,30 @@ fun ViewUserStatistics(
                 contentDescription = "logo"
             )
             Spacer(Modifier.width(15.dp))
-            Text(text = "Hola, ${user.name} ${user.lastName}", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+            Text(text = "Hola, ${user.name} ${user.surname}", fontSize = 30.sp, fontWeight = FontWeight.Bold)
         }
+        //Text(userId)
         Spacer(Modifier.height(15.dp))
         Text(text = "Dades Usuari:", fontSize = 20.sp)
         Spacer(Modifier.height(15.dp))
         Text(text = "Nom: ${user.name}")
         Spacer(Modifier.height(10.dp))
-        Text(text = "Cognoms: ${user.lastName}")
+        Text(text = "Cognoms: ${user.surname}")
         Spacer(Modifier.height(10.dp))
         Text(text = "Correu: ${user.email}")
         Spacer(Modifier.height(10.dp))
         Text(text = "Pes: ${user.weight.toString()}")
         Spacer(Modifier.height(10.dp))
-        Text(text = "Exercici Fet: ${user.exerciseDone}")
+        Text(text = "Exercici Fet: ${user.exercise}")
         Spacer(Modifier.height(10.dp))
-        Text(text = "Hores de Son: ${user.sleepTime.toString()}")
+        Text(text = "Hores de Son: ${user.hoursSleep.toString()}")
         Spacer(Modifier.height(10.dp))
         Text(text = "Edat: ${user.age.toString()}")
         Spacer(Modifier.height(15.dp))
 
         Button(
             onClick = {
-                navViewModel.selectUserId = user.idUser
+                navViewModel.selectUserId = user.id
                 navViewModel.navTo(Screen.EditUser)
             },
             colors = ButtonDefaults.textButtonColors(color1,color3)

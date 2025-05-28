@@ -45,7 +45,10 @@ import appdietes.composeapp.generated.resources.eye_outline
 import org.jetbrains.compose.resources.painterResource
 import org.project.dietes.navigation.NavViewModel
 import org.project.dietes.navigation.Screen
+import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
 
+@OptIn(ExperimentalUuidApi::class)
 @Composable
 fun CreateUserStatisticsScreen(
     viewModel: UsersDataViewModel = viewModel(),
@@ -54,7 +57,8 @@ fun CreateUserStatisticsScreen(
     navViewModel: NavViewModel = viewModel(),
 ){
     val users = UsersDataViewModel().users
-    val userId = 1 // generar automaticament
+    val users2 = UsersDataViewModel().users2
+    val userId = Uuid.random().toString()  // generar automaticament
     var name by remember { mutableStateOf("") }
     var nameError by remember { mutableStateOf(false) }
     var lastName by remember { mutableStateOf("") }
@@ -75,6 +79,12 @@ fun CreateUserStatisticsScreen(
     var password by remember { mutableStateOf("") }
     var hidden by remember { mutableStateOf(true) }
     var passwordError by remember { mutableStateOf(false) }
+    var userName by remember { mutableStateOf("UserName") } // falta implementar
+    var userNameError by remember { mutableStateOf(false) }
+    var diet by remember { mutableStateOf("") } // falta implementar
+    var dietError by remember { mutableStateOf(false) }
+
+
 
     val color1 = Color(red = 0x8E, green = 0xF4, blue = 0xC0)
     val color2 = Color(red = 0x56, green = 0xA5, blue = 0x8B)
@@ -130,7 +140,6 @@ fun CreateUserStatisticsScreen(
         )
 
         Spacer(Modifier.height(10.dp))
-
         // lastname input
         OutlinedTextField(
             value = lastName,
@@ -408,21 +417,21 @@ fun CreateUserStatisticsScreen(
 
                         // add user
                         val newUser = UserData(
-                            idUser = userId,
+                            id = userId,
                             name = name,
-                            lastName = lastName,
+                            surname = lastName,
                             email = email,
-                            weight = weight.toFloat(),
-                            exerciseDone = exerciseDone,
-                            sleepTime = sleepTime.toFloat(),
+                            weight = weight.toInt(),
+                            exercise = exerciseDone,
+                            hoursSleep = sleepTime.toInt(),
                             age = age.toInt(),
-                            password = password
+                            password = password,
+                            userName = userName,
+                            diet = diet
                         )
                         onAddUser(newUser)
-                        viewModel.users.add(newUser)
-
-
-                        navViewModel.selectUserId = userId
+                        viewModel.users2.add(newUser)
+                        navViewModel.selectUserId = newUser.id
                         navViewModel.navTo(Screen.Account)
                     }
                 },

@@ -32,6 +32,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -52,7 +53,7 @@ import org.project.dietes.navigation.Screen
 
 @Composable
 fun EditUserStatisticsScreen(
-    userId: Int,
+    userId: String,
     navViewModel: NavViewModel,
     onCancel: () -> Unit,
     usersViewModel: UsersDataViewModel = viewModel()
@@ -60,16 +61,16 @@ fun EditUserStatisticsScreen(
     val user = usersViewModel.getUserById(userId) ?: return
     var name by remember { mutableStateOf(user.name) }
     var nameError by remember { mutableStateOf(false) }
-    var lastName by remember { mutableStateOf(user.lastName) }
+    var lastName by remember { mutableStateOf(user.surname) }
     var lastNameError by remember { mutableStateOf(false) }
     var email by remember { mutableStateOf(user.email) }
     var emailError by remember { mutableStateOf(false) }
     var weight by remember { mutableStateOf(user.weight.toString()) }
     var weightError by remember { mutableStateOf(false) }
     var weightErrorNum by remember { mutableStateOf(false) }
-    var exerciseDone by remember { mutableStateOf(user.exerciseDone) }
+    var exerciseDone by remember { mutableStateOf(user.exercise) }
     var exerciseDoneError by remember { mutableStateOf(false) }
-    var sleepTime by remember { mutableStateOf(user.sleepTime.toString()) }
+    var sleepTime by remember { mutableStateOf(user.hoursSleep.toString()) }
     var sleepTimeError by remember { mutableStateOf(false) }
     var sleepTimeErrorNum by remember { mutableStateOf(false) }
     var age by remember { mutableStateOf(user.age.toString()) }
@@ -132,7 +133,7 @@ fun EditUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
 
         // lastname input
         OutlinedTextField(
@@ -164,7 +165,7 @@ fun EditUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
 
         // email input
         OutlinedTextField(
@@ -198,7 +199,7 @@ fun EditUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
 
         // weight input
         OutlinedTextField(
@@ -231,7 +232,7 @@ fun EditUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
 
         // exerciseDone input
         OutlinedTextField(
@@ -264,7 +265,7 @@ fun EditUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
 
         // sleepTime input
         OutlinedTextField(
@@ -296,7 +297,7 @@ fun EditUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
 
         // age input
         OutlinedTextField(
@@ -330,7 +331,7 @@ fun EditUserStatisticsScreen(
             color = assistiveElementColorAge,
             style = MaterialTheme.typography.caption,
         )
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(10.dp))
         // password input
         OutlinedTextField(
             value = password,
@@ -405,16 +406,16 @@ fun EditUserStatisticsScreen(
 
                         usersViewModel.updateUser(user.copy(
                             name = name,
-                            lastName = lastName,
+                            surname = lastName,
                             email = email,
-                            weight = weight.toFloat(),
-                            exerciseDone = exerciseDone,
-                            sleepTime = sleepTime.toFloat(),
+                            weight = weight.toInt(),
+                            exercise = exerciseDone,
+                            hoursSleep = sleepTime.toInt(),
                             age = age.toInt(),
                             password = password
                         ))
                     }
-                    navViewModel.selectUserId = user.idUser
+                    navViewModel.selectUserId = user.id
                     navViewModel.navTo(Screen.Account)
                 },
                 colors = ButtonDefaults.textButtonColors(color1,color3)
