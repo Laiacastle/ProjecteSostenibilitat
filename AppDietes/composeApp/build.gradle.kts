@@ -55,6 +55,8 @@ kotlin {
                 implementation("io.ktor:ktor-client-cio:3.1.0")
                 implementation("io.ktor:ktor-client-content-negotiation:3.1.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+                implementation("com.squareup.okio:okio:3.6.0")
+
             }
             commonTest.dependencies {
                 implementation(libs.kotlin.test)
@@ -113,6 +115,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
 dependencies {
     implementation("androidx.compose.runtime:runtime-android:1.8.1")
     implementation("androidx.navigation:navigation-compose-jvmstubs:2.9.0")
-    implementation("androidx.compose.material3:material3:1.2.0") // versión corregida
+    implementation("androidx.compose.material3:material3:1.2.0")
+    implementation("com.google.firebase:firebase-crashlytics-buildtools:3.0.3") // versión corregida
     debugImplementation(compose.uiTooling)
 }

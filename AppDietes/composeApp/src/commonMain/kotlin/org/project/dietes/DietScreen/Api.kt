@@ -26,13 +26,19 @@ import io.ktor.client.statement.bodyAsText
 import io.ktor.http.contentType
 import io.ktor.http.isSuccess
 import io.ktor.serialization.kotlinx.json.json
+import kotlinx.serialization.Serializable
+import org.project.dietes.Token.TokenManager
 import org.project.dietes.UserData
+import kotlin.io.encoding.Base64
+
+
 
 object UserManager {
     private var _token: String? = null
     fun getToken(): String? = _token
     fun saveToken(newToken: String){
         _token = newToken
+        TokenManager.saveToken(_token.toString())
     }
 
 
@@ -69,6 +75,10 @@ object MyApi {
 
     suspend fun listIngredients(id:Int): List<Ingredient> =
         client.get(URL + "ingredient/recipe/$id").body(typeInfo<List<Ingredient>>())
+
+    suspend fun getUser(id: String): UserData=
+        client.get(URL+"authentication/$id").body(typeInfo<UserData>())
+
 
     suspend fun listUsers(): List<UserData> =
         client.get(URL + "authentication").body(typeInfo<List<UserData>>())
