@@ -25,6 +25,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -43,7 +44,9 @@ import appdietes.composeapp.generated.resources.Res
 import appdietes.composeapp.generated.resources.Logo
 import appdietes.composeapp.generated.resources.eye_off_outline
 import appdietes.composeapp.generated.resources.eye_outline
+import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
+import org.project.dietes.DietScreen.green
 import org.project.dietes.navigation.NavViewModel
 import org.project.dietes.navigation.Screen
 import kotlin.uuid.ExperimentalUuidApi
@@ -96,7 +99,7 @@ fun CreateUserStatisticsScreen(
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Top
     ){
         Row(
             verticalAlignment = Alignment.CenterVertically
@@ -107,7 +110,7 @@ fun CreateUserStatisticsScreen(
                 contentDescription = "logo"
             )
             Spacer(Modifier.width(10.dp))
-            Text("Crear Usuari", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+            Text("Registrar-se", fontSize = 30.sp, fontWeight = FontWeight.Bold)
         }
         //Spacer(Modifier.height(10.dp))
         // name input
@@ -141,7 +144,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(10.dp))
+        Spacer(Modifier.height(2.dp))
         // lastname input
         OutlinedTextField(
             value = lastName,
@@ -172,7 +175,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(10.dp))
+        Spacer(Modifier.height(2.dp))
 
         // email input
         OutlinedTextField(
@@ -206,7 +209,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(10.dp))
+        Spacer(Modifier.height(2.dp))
 
         // weight input
         OutlinedTextField(
@@ -239,7 +242,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(10.dp))
+        Spacer(Modifier.height(2.dp))
 
         // exerciseDone input
         OutlinedTextField(
@@ -272,7 +275,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(10.dp))
+        Spacer(Modifier.height(2.dp))
 
         // sleepTime input
         OutlinedTextField(
@@ -304,7 +307,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(10.dp))
+        Spacer(Modifier.height(2.dp))
 
         // age input
         OutlinedTextField(
@@ -339,7 +342,7 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(10.dp))
+        Spacer(Modifier.height(2.dp))
 
         // password input
         OutlinedTextField(
@@ -387,12 +390,26 @@ fun CreateUserStatisticsScreen(
             color = assistiveElementColorPassword,
             style = MaterialTheme.typography.caption,
         )
-        Spacer(Modifier.height(10.dp))
+        Spacer(Modifier.height(5.dp))
         TextButton(onClick = {navigateToScreenLogin()}){
-            Text("¿Ja tens compte?")
+            Text("¿Ja tens compte?", color = Color.Blue)
         }
-        Spacer(Modifier.height(10.dp))
-
+        Spacer(Modifier.height(5.dp))
+        if (viewModel.hasTriedRegister.value && !viewModel.registerSucces.value) {
+            val txt = mutableStateOf("")
+            LaunchedEffect(Unit){
+                delay(1000)
+               txt.value = "Error desconegut, torna a provar en una estona"
+            }
+            Text(txt.value)
+            }else if (viewModel.registerSucces.value){
+                Text("Register succes! redirecting...", color = green)
+                LaunchedEffect(Unit){
+                    delay(2000)
+                    navigateToScreenLogin()
+                }
+            }
+        Spacer(Modifier.height(5.dp))
         Row{
             Button(
                 onClick = { onCancel()  },
@@ -400,7 +417,7 @@ fun CreateUserStatisticsScreen(
             ){
                 Text("Cancel·la")
             }
-            Spacer(Modifier.width(10.dp))
+            Spacer(Modifier.width(5.dp))
             Button(
                 onClick = {
                     nameError = name.isBlank()
@@ -438,16 +455,13 @@ fun CreateUserStatisticsScreen(
                             hoursSleep = sleepTime.toDouble(),
                             age = age.toInt(),
                             password = password,
-                            userName = userName,
-                            diet = diet
+                            userName = name,
+                            diet = null
                         )
-                        onAddUser(newUser)
-                        viewModel.users2.add(newUser)
-                        navViewModel.selectUserId = newUser.id
-                        navViewModel.navTo(Screen.Account)
-                        navigateToScreenLogin()
+                        viewModel.register(newUser)
 
                     }
+
                 },
                 colors = ButtonDefaults.textButtonColors(color1,color3)
             ){
@@ -456,20 +470,5 @@ fun CreateUserStatisticsScreen(
 
 
         }
-        /*LazyColumn { // proves userData class mostrar dades inserides
-            items(users){ user ->
-                Row {
-                    Column {
-                        Text(user.name)
-                        Text(user.lastName)
-                        Text(user.email)
-                        Text(user.weight.toString())
-                        Text(user.exerciseDone)
-                        Text(user.sleepTime.toString())
-                        Text(user.age.toString())
-                    }
-                }
-            }
-        }*/
     }
 }

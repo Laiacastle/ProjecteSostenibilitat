@@ -43,7 +43,7 @@ data class UserData(
     val exercise: String,
     val hoursSleep: Double,
     val age: Int,
-    val diet: String)
+    val diet: String?)
 class UsersDataViewModel : ViewModel(){
     var users2 = mutableStateListOf<UserData>()
     var users by mutableStateOf<List<UserData>?>(null)

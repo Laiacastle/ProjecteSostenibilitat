@@ -133,7 +133,7 @@ fun HomePageScreen(
         ) {
             Text("Dietes asignades")
         }
-        if(UserManager.getToken() != null){
+        if(UserManager.getToken() == null){
             Spacer(modifier = Modifier.size(25.dp))
             Button(
                 onClick = { navigateToLogInScreen() },

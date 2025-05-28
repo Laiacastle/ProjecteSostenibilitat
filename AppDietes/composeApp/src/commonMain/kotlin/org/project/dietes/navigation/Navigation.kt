@@ -114,25 +114,27 @@ fun Navigation(){
                         scope.launch { drawerState.close() }
                     }
                 )
-                NavigationDrawerItem(
+                if(UserManager.getToken() == null){
+                    NavigationDrawerItem(
 
-                    label = { Text("Inicia Sessió", color = darkPink) },
-                    selected = false,
-                    icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Account", tint = darkPink)},
-                    onClick = {
-                        navViewModel.navTo(Screen.LoginUser)
-                        scope.launch { drawerState.close() }
-                    }
-                )
-                NavigationDrawerItem(
-                    label = { Text("Registrar-se", color = darkPink) },
-                    selected = false,
-                    icon = { Icon(Icons.Default.PersonAddAlt1, contentDescription = "Account", tint =darkPink)},
-                    onClick = {
-                        navViewModel.navTo(Screen.CreateUser)
-                        scope.launch { drawerState.close() }
-                    }
-                )
+                        label = { Text("Inicia Sessió", color = darkPink) },
+                        selected = false,
+                        icon = { Icon(Icons.Default.AccountCircle, contentDescription = "Account", tint = darkPink)},
+                        onClick = {
+                            navViewModel.navTo(Screen.LoginUser)
+                            scope.launch { drawerState.close() }
+                        }
+                    )
+                    NavigationDrawerItem(
+                        label = { Text("Registrar-se", color = darkPink) },
+                        selected = false,
+                        icon = { Icon(Icons.Default.PersonAddAlt1, contentDescription = "Account", tint =darkPink)},
+                        onClick = {
+                            navViewModel.navTo(Screen.CreateUser)
+                            scope.launch { drawerState.close() }
+                        }
+                    )
+                }
 
                 NavigationDrawerItem(
 
