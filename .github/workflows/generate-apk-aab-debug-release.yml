@@ -2,7 +2,7 @@ name: Generated APK AAB (Upload - Create Artifact To Github Action)
 
 env:
   main_project_module: composeApp
-  playstore_name: GameKittensApp
+  playstore_name: DietasNoSeQue
 
 on:
   push:
