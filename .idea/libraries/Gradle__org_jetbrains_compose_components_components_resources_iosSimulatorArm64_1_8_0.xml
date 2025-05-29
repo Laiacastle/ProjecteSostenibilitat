@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jetbrains.compose.components:components-resources-iosSimulatorArm64:1.8.0" type="kotlin.native" external-system-id="GRADLE">
+    <properties groupId="org.jetbrains.compose.components" artifactId="components-resources-iosSimulatorArm64" version="1.8.0" baseVersion="1.8.0" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.components/components-resources-iosSimulatorArm64/1.8.0/67cd3199e7aa6d2566064f05f3d04ad11edc6935/library-iosSimulatorArm64Main-1.8.0.klib!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.components/components-resources-iosSimulatorArm64/1.8.0/41db9bd4d3638840f14c0b02bb937c1aca72f007/library-iossimulatorarm64-1.8.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.coil-kt.coil3:coil-compose-core:nonAndroidMain:3.1.0" type="kotlin.common" external-system-id="GRADLE">
+    <properties groupId="io.coil-kt.coil3" artifactId="coil-compose-core" version="3.1.0" baseVersion="3.1.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/AppDietes/.kotlin/metadata/kotlinTransformedMetadataLibraries/io.coil-kt.coil3-coil-compose-core-3.1.0-nonAndroidMain-53H-3w.klib!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.coil-kt.coil3/coil-compose-core/3.1.0/a3e3dc481de5f9dc1121f79b2833b31587116e63/coil-compose-core-3.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

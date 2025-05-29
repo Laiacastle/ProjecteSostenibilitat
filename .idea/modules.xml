@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ProjecteSostenibilitat.iml" filepath="$PROJECT_DIR$/.idea/ProjecteSostenibilitat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.main.iml" filepath="$PROJECT_DIR$/.idea/modules/composeApp/ProjecteSostenibilitat.AppDietes.composeApp.main.iml" />
     </modules>
   </component>
 </project>

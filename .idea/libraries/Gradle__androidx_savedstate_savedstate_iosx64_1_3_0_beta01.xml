@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.savedstate:savedstate-iosx64:1.3.0-beta01" type="kotlin.native" external-system-id="GRADLE">
+    <properties groupId="androidx.savedstate" artifactId="savedstate-iosx64" version="1.3.0-beta01" baseVersion="1.3.0-beta01" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.savedstate/savedstate-iosx64/1.3.0-beta01/9d9eb75b2cd71a31dac7c170486476a8a6c544de/savedstate-iosX64Main-1.3.0-beta01.klib!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.savedstate/savedstate-iosx64/1.3.0-beta01/7770a72f42431cd6a14d2bded87e3a56df336ad3/savedstate-iosx64-1.3.0-beta01-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
