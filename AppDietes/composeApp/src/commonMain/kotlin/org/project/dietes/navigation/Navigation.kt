@@ -14,14 +14,12 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.Fastfood
 import androidx.compose.material.icons.filled.FoodBank
 import androidx.compose.material.icons.filled.Games
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.PersonAddAlt1
 import androidx.compose.material3.*
-import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Text
@@ -38,14 +36,12 @@ import appdietes.composeapp.generated.resources.Res
 import appdietes.composeapp.generated.resources.Logo
 import org.jetbrains.compose.resources.painterResource
 import org.project.dietes.AccountScreen.UserProfileScreen
-import org.project.dietes.CreateUserStatisticsScreen
+import org.project.dietes.User.CreateUserStatisticsScreen
 import org.project.dietes.DietScreen.DietSreen
-import org.project.dietes.DietScreen.UserManager
-import org.project.dietes.EditUserStatisticsScreen
 import org.project.dietes.RecipesScreen.RecipesScreen
 import org.project.dietes.Token.TokenManager
-import org.project.dietes.UserLoginScreen
-import org.project.dietes.ViewUserStatistics
+import org.project.dietes.User.EditUserScreen
+import org.project.dietes.User.UserLoginScreen
 import org.project.dietes.gamesScreen.GamesScreen
 import org.project.dietes.homePage.HomePageScreen
 
@@ -193,7 +189,8 @@ fun Navigation(){
                     Screen.Games -> GamesScreen()
                     Screen.Account -> UserProfileScreen(
                         navigateToScreenLogin = {navViewModel.navTo(Screen.LoginUser)},
-                        navigateToScreenHome = {navViewModel.navTo(Screen.Home)}
+                        navigateToScreenHome = {navViewModel.navTo(Screen.Home)},
+                        navigateToEditScreen = {navViewModel.navTo(Screen.EditUser)}
                     )
 
                     Screen.CreateUser -> CreateUserStatisticsScreen(
@@ -206,14 +203,10 @@ fun Navigation(){
                         },
                         navigateToScreenLogin = {navViewModel.navTo(Screen.LoginUser)}
                     )
-                    Screen.EditUser ->  navViewModel.selectUserId?.let { userId ->
-                        EditUserStatisticsScreen(
-                            userId, navViewModel,
-                            onCancel = {
-                                navViewModel.navTo(Screen.Account)
-                            }
-                        )
-                    }
+                    Screen.EditUser -> EditUserScreen(
+                        navigateToScreenAccount = {navViewModel.navTo(Screen.Account)},
+                        onCancel = {navViewModel.navTo(Screen.Home)}
+                    )
 
                     Screen.LoginUser -> UserLoginScreen(
                         navigateToScreenRegister = {navViewModel.navTo(Screen.CreateUser)},

@@ -1,4 +1,4 @@
-package org.project.dietes
+package org.project.dietes.User
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -47,22 +47,18 @@ import appdietes.composeapp.generated.resources.eye_outline
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
 import org.project.dietes.DietScreen.green
+import org.project.dietes.Token.TokenManager
 import org.project.dietes.navigation.NavViewModel
-import org.project.dietes.navigation.Screen
 import kotlin.uuid.ExperimentalUuidApi
 import kotlin.uuid.Uuid
 
 @OptIn(ExperimentalUuidApi::class)
 @Composable
-fun CreateUserStatisticsScreen(
-    viewModel: UsersDataViewModel = viewModel(),
-    onAddUser: (UserData) -> Unit,
+fun EditUserScreen(
+
     onCancel: () -> Unit,
-    navViewModel: NavViewModel = viewModel(),
-    navigateToScreenLogin : () -> Unit,
+    navigateToScreenAccount : () -> Unit,
 ){
-    val users = UsersDataViewModel().users
-    val users2 = UsersDataViewModel().users2
     val userId = Uuid.random().toString()  // generar automaticament
     var name by remember { mutableStateOf("") }
     var nameError by remember { mutableStateOf(false) }
@@ -90,7 +86,7 @@ fun CreateUserStatisticsScreen(
     var dietError by remember { mutableStateOf(false) }
 
 
-
+    val viewModel = viewModel {UsersVM()}
     val color1 = Color(red = 0x8E, green = 0xF4, blue = 0xC0)
     val color2 = Color(red = 0x56, green = 0xA5, blue = 0x8B)
     val color3 = Color(red = 0x49, green = 0x60, blue = 0x5E)
@@ -110,7 +106,7 @@ fun CreateUserStatisticsScreen(
                 contentDescription = "logo"
             )
             Spacer(Modifier.width(10.dp))
-            Text("Registrar-se", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+            Text("Modifica les teves dades", fontSize = 30.sp, fontWeight = FontWeight.Bold)
         }
         //Spacer(Modifier.height(10.dp))
         // name input
@@ -391,24 +387,19 @@ fun CreateUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
         Spacer(Modifier.height(5.dp))
-        TextButton(onClick = {navigateToScreenLogin()}){
+        TextButton(onClick = {navigateToScreenAccount()}){
             Text("¿Ja tens compte?", color = Color.Blue)
         }
         Spacer(Modifier.height(5.dp))
-        if (viewModel.hasTriedRegister.value && !viewModel.registerSucces.value) {
-            val txt = mutableStateOf("")
+        if (viewModel.hasTriedUpdate.value ==true && viewModel.updateSucces.value==false) {
+            Text("Format de contrasenya o email incorrectes", color = darkPink)
+        }else if (viewModel.updateSucces.value ==true){
+            Text("update succes! redirecting...", color = green)
             LaunchedEffect(Unit){
-                delay(1000)
-               txt.value = "Error desconegut, torna a provar en una estona"
+                delay(2000)
+                navigateToScreenAccount()
             }
-            Text(txt.value)
-            }else if (viewModel.registerSucces.value){
-                Text("Register succes! redirecting...", color = green)
-                LaunchedEffect(Unit){
-                    delay(2000)
-                    navigateToScreenLogin()
-                }
-            }
+        }
         Spacer(Modifier.height(5.dp))
         Row{
             Button(
@@ -442,7 +433,8 @@ fun CreateUserStatisticsScreen(
                         !passwordError and
                         isDecimal(weight) and
                         isDecimal(sleepTime) and
-                        isNumeric(age)) {
+                        isNumeric(age)
+                    ) {
 
                         // add user
                         val newUser = UserData(
@@ -458,7 +450,7 @@ fun CreateUserStatisticsScreen(
                             userName = name,
                             diet = null
                         )
-                        viewModel.register(newUser)
+                        viewModel.updateUser(viewModel.userId.toString(),newUser )
 
                     }
 

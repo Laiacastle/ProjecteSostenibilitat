@@ -6,12 +6,11 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import org.project.dietes.DietScreen.Diet
 import org.project.dietes.DietScreen.MyApi
 import org.project.dietes.DietScreen.UserManager
 import org.project.dietes.Token.TokenManager
 import org.project.dietes.Token.getUserIdFromToken
-import org.project.dietes.UserData
+import org.project.dietes.User.UserData
 
 class AccountViewModel : ViewModel(){
     val user = mutableStateOf<UserData?>(null)

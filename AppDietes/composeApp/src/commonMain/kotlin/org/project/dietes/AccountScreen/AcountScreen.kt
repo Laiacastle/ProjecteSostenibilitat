@@ -21,12 +21,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.delay
-import org.project.dietes.UserData
+import org.project.dietes.User.UserData
 
 @Composable
 fun UserProfileScreen(
     navigateToScreenLogin: () -> Unit,
-    navigateToScreenHome: () -> Unit
+    navigateToScreenHome: () -> Unit,
+    navigateToEditScreen: () -> Unit
 ) {
     val vm = viewModel { AccountViewModel() }
 
@@ -39,7 +40,8 @@ fun UserProfileScreen(
                 delay(1000)
                 navigateToScreenHome()
             }
-        }
+        },
+        navigateToEditScreen = navigateToEditScreen
     )
 }
 
@@ -47,7 +49,8 @@ fun UserProfileScreen(
 fun UserProfileContent(
     user: UserData?,
     navigateToScreenLogin: () -> Unit,
-    logoutAndNavigate: () -> Unit
+    logoutAndNavigate: () -> Unit,
+    navigateToEditScreen: () -> Unit
 ) {
     val background = Color(228, 213, 221)
     val green = Color(86, 165, 139)
@@ -119,7 +122,7 @@ fun UserProfileContent(
                         Spacer(modifier = Modifier.height(24.dp))
 
                         Button(
-                            onClick = { /* Acción editar perfil */ },
+                            onClick = { navigateToEditScreen() },
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = green,
                                 contentColor = white

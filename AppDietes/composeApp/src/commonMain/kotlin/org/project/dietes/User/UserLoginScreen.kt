@@ -1,10 +1,9 @@
 
-package org.project.dietes
+package org.project.dietes.User
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.runtime.*
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,8 +14,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import kotlinx.coroutines.delay
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.TextButton
 import androidx.compose.material.TextFieldDefaults
@@ -27,7 +24,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -50,20 +46,17 @@ import appdietes.composeapp.generated.resources.Res
 import appdietes.composeapp.generated.resources.eye_off_outline
 import appdietes.composeapp.generated.resources.eye_outline
 import org.jetbrains.compose.resources.painterResource
-import org.project.dietes.DietScreen.UserManager
 import org.project.dietes.DietScreen.green
 import org.project.dietes.navigation.NavViewModel
-import org.project.dietes.navigation.Screen
 
 @Composable
 fun UserLoginScreen(
-    viewModel: UsersDataViewModel = viewModel(),
+    viewModel: UsersVM = viewModel(),
     onCancel: () -> Unit,
-    navViewModel: NavViewModel = viewModel(),
     navigateToScreenRegister : () -> Unit,
     navigateToScreenHome : () -> Unit,
 
-) {
+    ) {
     var password by remember { mutableStateOf("") }
     var hidden by remember { mutableStateOf(true) }
     var email by remember { mutableStateOf("") }
@@ -158,12 +151,10 @@ fun UserLoginScreen(
         if (dadesError){
             Text("Dades incorrectes", color = Color.Red)
         }
-        if (viewModel.hasTriedLogin.value && !viewModel.loginSucces.value) {
-            LaunchedEffect(Unit){
-                delay(1000)
-                dadesError = true
-            }
-        }else if (viewModel.loginSucces.value){
+        if (viewModel.hasTriedLogin.value ==true && viewModel.loginSucces.value ==false) {
+            dadesError = true
+
+        }else if (viewModel.loginSucces.value ==true){
             dadesError = false
             Text("Login succes! redirecting...", color = green)
             LaunchedEffect(Unit){

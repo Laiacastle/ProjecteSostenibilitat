@@ -13,24 +13,12 @@ import io.ktor.http.contentType
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.util.reflect.typeInfo
 import kotlinx.serialization.json.Json
-import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.HttpTimeout
-import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
-import io.ktor.client.request.accept
-import io.ktor.client.request.get
-import io.ktor.client.request.header
-import io.ktor.client.request.post
-import io.ktor.client.request.setBody
-import io.ktor.client.statement.bodyAsText
-import io.ktor.http.contentType
+import io.ktor.client.request.put
 import io.ktor.http.isSuccess
-import io.ktor.serialization.kotlinx.json.json
-import kotlinx.serialization.Serializable
 import org.project.dietes.Token.TokenManager
-import org.project.dietes.UserData
-import kotlin.io.encoding.Base64
-
+import org.project.dietes.User.UserData
 
 
 object UserManager {
@@ -79,7 +67,7 @@ object MyApi {
     suspend fun listIngredients(id:Int): List<Ingredient> =
         client.get(URL + "ingredient/recipe/$id").body(typeInfo<List<Ingredient>>())
 
-    suspend fun getUser(id: String): UserData=
+    suspend fun getUser(id: String): UserData =
         client.get(URL+"authentication/$id").body(typeInfo<UserData>())
 
 
@@ -106,6 +94,21 @@ object MyApi {
 
     suspend fun register(user: UserData): Boolean{
         val response = client.post(URL + "authentication/register") {
+            contentType(ContentType.Application.Json)
+            setBody(user)
+        }
+        if (response.status.isSuccess()) {
+            println("Register succesful")
+            return true
+        } else {
+            val errorMessage: String = response.body()
+            println("Register failed: $errorMessage")
+            return false
+        }
+    }
+
+    suspend fun updateUser(id: String, user: UserData): Boolean{
+        val response = client.put(URL + "authentication/$id"){
             contentType(ContentType.Application.Json)
             setBody(user)
         }
