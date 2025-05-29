@@ -66,6 +66,7 @@ fun UserLoginScreen(
     val color3 = Color(red = 0x49, green = 0x60, blue = 0x5E)
     val darkPink = Color(112, 65, 61)
     val pink = Color(228,213,221)
+    viewModel.cleanVars()
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
