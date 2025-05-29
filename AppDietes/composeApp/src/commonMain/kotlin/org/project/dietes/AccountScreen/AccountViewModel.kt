@@ -4,6 +4,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.project.dietes.DietScreen.Diet
 import org.project.dietes.DietScreen.MyApi
@@ -17,6 +18,16 @@ class AccountViewModel : ViewModel(){
     val token = TokenManager.getToken()
     val userId = token?.let { getUserIdFromToken(it) }
 
+    fun logout(navigate: ()-> Unit){
+        if(token!= null){
+            TokenManager.clearToken()
+            UserManager.clearToken()
+            viewModelScope.launch {
+            delay(1000)
+            navigate()
+            }
+        }
+    }
     fun getUser(){
         if (token == null) {
             println("Token is null")
@@ -28,8 +39,8 @@ class AccountViewModel : ViewModel(){
             return
         }
 
-        println("✅ Token: $token")
-        println("✅ userId: $userId")
+        println("Token: $token")
+        println("userId: $userId")
 
         viewModelScope.launch(Dispatchers.Default) {
             try {

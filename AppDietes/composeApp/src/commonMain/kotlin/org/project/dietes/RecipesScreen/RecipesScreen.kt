@@ -4,6 +4,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -34,6 +35,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import appdietes.composeapp.generated.resources.Logo
 import appdietes.composeapp.generated.resources.Res
 import org.jetbrains.compose.resources.painterResource
+import org.project.dietes.DietScreen.Ingredient
 import org.project.dietes.DietScreen.Recipe
 import org.project.dietes.DietScreen.background
 import org.project.dietes.DietScreen.darkPink
@@ -41,18 +43,14 @@ import org.project.dietes.DietScreen.green
 import org.project.dietes.DietScreen.white
 
 @Composable
-fun RecipesScreen(id: Int){
+fun RecipesScreen(id: Int, onCancel: ()-> Unit){
         val VM = viewModel {RecipesVM(id)}
-    RecipesScreen(VM.recipesList.value, VM::refreshRecipes)
+    RecipesScreen(VM.recipesList.value, VM::refreshRecipes, VM.ingredientList.value, VM::getIngredients, onCancel)
 }
 
 @Composable
-fun RecipesScreen(recipesList: List<Recipe>, refresh: () -> Unit){
-    if (recipesList.size == 0){
-        Text("Hi hagut un error carregant les receptes, siusplau torna-ho a provar més tard")
-        refresh()
-    }
-    else{
+fun RecipesScreen(recipesList: List<Recipe>, refresh: () -> Unit, ingredientsList: List<Ingredient>, getIng: (Int)-> Unit, onCancel: ()-> Unit){
+
 
 
         Column(
@@ -70,7 +68,15 @@ fun RecipesScreen(recipesList: List<Recipe>, refresh: () -> Unit){
             }
             Box( modifier = Modifier
                 .fillMaxWidth()
-                .padding(10.dp)){
+                .padding(10.dp)
+                .align(Alignment.CenterHorizontally)
+            )
+            {
+                if (recipesList.size == 0){
+                    Text("Hi hagut un error carregant les receptes, siusplau torna-ho a provar més tard", color = darkPink)
+                    refresh()
+                }
+                else{
                 LazyColumn(modifier = Modifier.
                 fillMaxWidth().padding(10.dp)) {
                     itemsIndexed(recipesList){
@@ -84,13 +90,14 @@ fun RecipesScreen(recipesList: List<Recipe>, refresh: () -> Unit){
                         )
                         {
                             Column(){
+                                getIng(recipe.id)
                                 Text(recipe.name, fontSize = 4.em, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center, modifier = Modifier.fillMaxSize())
                                 Spacer(modifier = Modifier.height(20.dp))
                                 Text("Descripció", fontWeight = FontWeight.Bold, textAlign = TextAlign.Center, modifier = Modifier.fillMaxSize())
 
                                 Text(recipe.description.toString(), textAlign = TextAlign.Center, modifier = Modifier.fillMaxSize())
                                 Text("Ingredients:")
-                                for(i in recipe.ingredients){
+                                for(i in ingredientsList){
                                     TextButton(onClick = {}){
                                         Text(i.name.toString())
                                     }
@@ -102,6 +109,27 @@ fun RecipesScreen(recipesList: List<Recipe>, refresh: () -> Unit){
                         }
                     }
                 }
+                }
+
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 16.dp),
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        Spacer(modifier = Modifier.height(30.dp))
+                        Button(
+                            onClick = { onCancel() },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = darkPink,
+                                contentColor = white
+                            )
+                        ) {
+                            Text("Enrere", fontWeight = FontWeight.Bold, color = white)
+                        }
+                    }
+                }
+
 
 
 
@@ -110,5 +138,5 @@ fun RecipesScreen(recipesList: List<Recipe>, refresh: () -> Unit){
         }
 
 
-    }
-}
+
+

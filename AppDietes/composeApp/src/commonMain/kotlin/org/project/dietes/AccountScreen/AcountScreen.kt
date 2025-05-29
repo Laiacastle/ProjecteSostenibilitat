@@ -17,22 +17,44 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.delay
 import org.project.dietes.UserData
 
 @Composable
-fun UserProfileScreen(navigateToScreenLogin: () -> Unit) {
+fun UserProfileScreen(
+    navigateToScreenLogin: () -> Unit,
+    navigateToScreenHome: () -> Unit
+) {
     val vm = viewModel { AccountViewModel() }
-    UserProfileContent(vm.user.value, navigateToScreenLogin)
+
+    UserProfileContent(
+        user = vm.user.value,
+        navigateToScreenLogin = navigateToScreenLogin,
+        logoutAndNavigate = {
+            CoroutineScope(Dispatchers.Default).launch {
+                vm.logout(navigateToScreenHome)
+                delay(1000)
+                navigateToScreenHome()
+            }
+        }
+    )
 }
 
 @Composable
-fun UserProfileContent(user: UserData?, navigateToScreenLogin: () -> Unit) {
+fun UserProfileContent(
+    user: UserData?,
+    navigateToScreenLogin: () -> Unit,
+    logoutAndNavigate: () -> Unit
+) {
     val background = Color(228, 213, 221)
     val green = Color(86, 165, 139)
     val darkPink = Color(112, 65, 61)
     val white = Color.White
 
-    Scaffold{ paddingValues ->
+    Scaffold { paddingValues ->
         Column(
             modifier = Modifier
                 .padding(paddingValues)
@@ -65,7 +87,6 @@ fun UserProfileContent(user: UserData?, navigateToScreenLogin: () -> Unit) {
                             .fillMaxWidth(),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        // Icono de usuario
                         Icon(
                             imageVector = Icons.Default.Person,
                             contentDescription = "Foto de perfil",
@@ -98,13 +119,25 @@ fun UserProfileContent(user: UserData?, navigateToScreenLogin: () -> Unit) {
                         Spacer(modifier = Modifier.height(24.dp))
 
                         Button(
-                            onClick = { /* Acción editar */ },
+                            onClick = { /* Acción editar perfil */ },
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = green,
                                 contentColor = white
                             )
                         ) {
                             Text("Editar Perfil")
+                        }
+
+                        Spacer(modifier = Modifier.height(12.dp))
+
+                        Button(
+                            onClick = logoutAndNavigate,
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = darkPink,
+                                contentColor = background
+                            )
+                        ) {
+                            Text("Logout")
                         }
                     }
                 }
@@ -116,8 +149,7 @@ fun UserProfileContent(user: UserData?, navigateToScreenLogin: () -> Unit) {
 @Composable
 fun ProfileItem(label: String, value: String) {
     Column(
-        modifier = Modifier
-            .padding(vertical = 6.dp),
+        modifier = Modifier.padding(vertical = 6.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
