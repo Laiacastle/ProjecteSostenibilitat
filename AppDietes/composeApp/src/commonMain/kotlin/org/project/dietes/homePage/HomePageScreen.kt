@@ -26,6 +26,7 @@ import appdietes.composeapp.generated.resources.Logo
 import appdietes.composeapp.generated.resources.Res
 import org.jetbrains.compose.resources.painterResource
 import org.project.dietes.DietScreen.UserManager
+import org.project.dietes.Token.TokenManager
 
 @Composable
 fun HomePageScreen(
@@ -133,7 +134,7 @@ fun HomePageScreen(
         ) {
             Text("Dietes asignades")
         }
-        if(UserManager.getToken() == null){
+        if(TokenManager.getToken() == null){
             Spacer(modifier = Modifier.size(25.dp))
             Button(
                 onClick = { navigateToLogInScreen() },

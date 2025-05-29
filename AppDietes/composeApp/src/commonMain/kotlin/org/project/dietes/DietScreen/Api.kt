@@ -40,6 +40,9 @@ object UserManager {
         _token = newToken
         TokenManager.saveToken(_token.toString())
     }
+    fun clearToken(){
+        _token = null
+    }
 
 
 }

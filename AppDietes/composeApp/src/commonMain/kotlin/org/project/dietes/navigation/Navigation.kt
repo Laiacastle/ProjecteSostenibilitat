@@ -43,6 +43,7 @@ import org.project.dietes.DietScreen.DietSreen
 import org.project.dietes.DietScreen.UserManager
 import org.project.dietes.EditUserStatisticsScreen
 import org.project.dietes.RecipesScreen.RecipesScreen
+import org.project.dietes.Token.TokenManager
 import org.project.dietes.UserLoginScreen
 import org.project.dietes.ViewUserStatistics
 import org.project.dietes.gamesScreen.GamesScreen
@@ -93,7 +94,7 @@ fun Navigation(){
                         scope.launch { drawerState.close() }
                     }
                 )
-                if(UserManager.getToken()!=null){
+                if(TokenManager.getToken()!=null){
                     NavigationDrawerItem(
 
                         label = { Text("Compte", color = darkPink)},
@@ -115,7 +116,7 @@ fun Navigation(){
                         scope.launch { drawerState.close() }
                     }
                 )
-                if(UserManager.getToken() == null){
+                if(TokenManager.getToken() == null){
                     NavigationDrawerItem(
 
                         label = { Text("Inicia Sessió", color = darkPink) },
@@ -136,17 +137,19 @@ fun Navigation(){
                         }
                     )
                 }
+                if(TokenManager.getToken() !=null){
+                    NavigationDrawerItem(
 
-                NavigationDrawerItem(
+                        label = { Text("La meva dieta", color = darkPink)},
+                        selected = false,
+                        icon = { Icon(Icons.Default.FoodBank, contentDescription = "Diets" ,tint = darkPink)},
+                        onClick = {
+                            navViewModel.navTo(Screen.Diets)
+                            scope.launch { drawerState.close() }
+                        }
+                    )
+                }
 
-                    label = { Text("Les meves dietes", color = darkPink)},
-                    selected = false,
-                    icon = { Icon(Icons.Default.FoodBank, contentDescription = "Diets" ,tint = darkPink)},
-                    onClick = {
-                        navViewModel.navTo(Screen.Diets)
-                        scope.launch { drawerState.close() }
-                    }
-                )
             }
         },
         drawerState = drawerState,
@@ -189,7 +192,8 @@ fun Navigation(){
                     ) // Home Page
                     Screen.Games -> GamesScreen()
                     Screen.Account -> UserProfileScreen(
-                        navigateToScreenLogin = {navViewModel.navTo(Screen.LoginUser)}
+                        navigateToScreenLogin = {navViewModel.navTo(Screen.LoginUser)},
+                        navigateToScreenHome = {navViewModel.navTo(Screen.Home)}
                     )
 
                     Screen.CreateUser -> CreateUserStatisticsScreen(
@@ -224,7 +228,10 @@ fun Navigation(){
                         }
                     )
 
-                    is Screen.Recipes -> RecipesScreen(id = screen.id)
+                    is Screen.Recipes -> RecipesScreen(
+                        id = screen.id,
+                        onCancel = { navViewModel.navTo(Screen.Diets)}
+                    )
                 }
             }
         }
