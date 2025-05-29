@@ -133,8 +133,20 @@ class UsersVM : ViewModel(){
             }
         }
     }
+
+    fun cleanVars(){
+        if(TokenManager.getToken() == null){
+            hasTriedLogin.value = false
+            loginSucces.value = false
+            hasTriedRegister.value = false
+            registerSucces.value = false
+            updateSucces.value = false
+            hasTriedUpdate.value = false
+        }
+    }
     init{
         getUser()
+        cleanVars()
     }
 }
 
