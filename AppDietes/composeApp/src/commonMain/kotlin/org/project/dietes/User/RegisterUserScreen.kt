@@ -1,5 +1,4 @@
-
-package org.project.dietes
+package org.project.dietes.User
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -7,17 +6,16 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
-//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.ContentAlpha
-//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.MaterialTheme
-//noinspection UsingMaterialAndMaterial3Libraries
+import androidx.compose.material3.Icon
 import androidx.compose.material.OutlinedTextField
-//noinspection UsingMaterialAndMaterial3Libraries
+import androidx.compose.material.TextButton
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Cake
@@ -25,15 +23,18 @@ import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -44,52 +45,63 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import appdietes.composeapp.generated.resources.Logo
 import appdietes.composeapp.generated.resources.Res
+import appdietes.composeapp.generated.resources.Logo
 import appdietes.composeapp.generated.resources.eye_off_outline
 import appdietes.composeapp.generated.resources.eye_outline
+import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
+import org.project.dietes.DietScreen.green
 import org.project.dietes.navigation.NavViewModel
-import org.project.dietes.navigation.Screen
+import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
 
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EditUserStatisticsScreen(
-    userId: String,
-    navViewModel: NavViewModel,
+fun CreateUserStatisticsScreen(
+    viewModel: UsersVM = viewModel(),
+    onAddUser: (UserData) -> Unit,
     onCancel: () -> Unit,
-    usersViewModel: UsersDataViewModel = viewModel()
+    navViewModel: NavViewModel = viewModel(),
+    navigateToScreenLogin : () -> Unit,
 ){
-    val user = usersViewModel.getUserById(userId) ?: return
-    var name by remember { mutableStateOf(user.name) }
+    var name by remember { mutableStateOf("") }
     var nameError by remember { mutableStateOf(false) }
-    var lastName by remember { mutableStateOf(user.surname) }
+    var lastName by remember { mutableStateOf("") }
     var lastNameError by remember { mutableStateOf(false) }
-    var email by remember { mutableStateOf(user.email) }
+    var email by remember { mutableStateOf("") }
     var emailError by remember { mutableStateOf(false) }
-    var weight by remember { mutableStateOf(user.weight.toString()) }
+    var weight by remember { mutableStateOf("") }
     var weightError by remember { mutableStateOf(false) }
     var weightErrorNum by remember { mutableStateOf(false) }
-    var exerciseDone by remember { mutableStateOf(user.exercise) }
+    var exerciseDone by remember { mutableStateOf("") }
     var exerciseDoneError by remember { mutableStateOf(false) }
-    var sleepTime by remember { mutableStateOf(user.hoursSleep.toString()) }
+    var sleepTime by remember { mutableStateOf("") }
     var sleepTimeError by remember { mutableStateOf(false) }
     var sleepTimeErrorNum by remember { mutableStateOf(false) }
-    var age by remember { mutableStateOf(user.age.toString()) }
+    var age by remember { mutableStateOf("") }
     var ageError by remember { mutableStateOf(false) }
     var ageErrorNum by remember { mutableStateOf(false) }
     var password by remember { mutableStateOf("") }
     var hidden by remember { mutableStateOf(true) }
     var passwordError by remember { mutableStateOf(false) }
+    var userName by remember { mutableStateOf("UserName") } // falta implementar
+    var userNameError by remember { mutableStateOf(false) }
+    var diet by remember { mutableStateOf("") } // falta implementar
+    var dietError by remember { mutableStateOf(false) }
+
+
 
     val color1 = Color(red = 0x8E, green = 0xF4, blue = 0xC0)
     val color2 = Color(red = 0x56, green = 0xA5, blue = 0x8B)
     val color3 = Color(red = 0x49, green = 0x60, blue = 0x5E)
-    val color4 = Color(red = 0xB4, green = 0x84, blue = 0x80)
-    val color5 = Color(red = 0xE4, green = 0xD5, blue = 0xDD)
+    val darkPink = Color(112, 65, 61)
+    val pink = Color(228,213,221)
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Top
     ){
         Row(
             verticalAlignment = Alignment.CenterVertically
@@ -100,9 +112,9 @@ fun EditUserStatisticsScreen(
                 contentDescription = "logo"
             )
             Spacer(Modifier.width(10.dp))
-            Text("Edit User", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+            Text("Registrar-se", fontSize = 30.sp, fontWeight = FontWeight.Bold)
         }
-        Spacer(Modifier.height(10.dp))
+        //Spacer(Modifier.height(10.dp))
         // name input
         OutlinedTextField(
             value = name,
@@ -134,8 +146,7 @@ fun EditUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(10.dp))
-
+        Spacer(Modifier.height(2.dp))
         // lastname input
         OutlinedTextField(
             value = lastName,
@@ -166,7 +177,7 @@ fun EditUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(10.dp))
+        Spacer(Modifier.height(2.dp))
 
         // email input
         OutlinedTextField(
@@ -200,7 +211,7 @@ fun EditUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(10.dp))
+        Spacer(Modifier.height(2.dp))
 
         // weight input
         OutlinedTextField(
@@ -233,27 +244,54 @@ fun EditUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(10.dp))
+        Spacer(Modifier.height(2.dp))
 
         // exerciseDone input
-        OutlinedTextField(
-            value = exerciseDone,
-            onValueChange = {
-                exerciseDone = it
-                exerciseDoneError = false
-            },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-            label = {Text(text = "Exercici Fet")},
-            colors = TextFieldDefaults.textFieldColors(
-                backgroundColor = Color.White,
-                textColor = Color.Black,
-                focusedIndicatorColor = color2,
-                unfocusedIndicatorColor = color2,
-            ),
-            isError = exerciseDoneError,
-            singleLine = true,
-            placeholder = {Text(text = "Introdueix el exercici")}
-        )
+        val options = listOf("Res", "Poc", "Mig", "Molt")
+        var expanded by remember { mutableStateOf(false) }
+
+        ExposedDropdownMenuBox(
+            expanded = expanded,
+            onExpandedChange = { expanded = !expanded }
+        ) {
+            OutlinedTextField(
+                value = exerciseDone,
+                onValueChange = {},
+                readOnly = true,
+                label = { Text("Exercici Fet") },
+                placeholder = { Text("Selecciona una opció") },
+                trailingIcon = {
+                    ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
+                },
+                colors = TextFieldDefaults.textFieldColors(
+                    backgroundColor = Color.White,
+                    textColor = Color.Black,
+                    focusedIndicatorColor = color2,
+                    unfocusedIndicatorColor = color2,
+                ),
+                isError = exerciseDoneError,
+                modifier = Modifier
+                    .menuAnchor()
+            )
+
+            ExposedDropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false }
+            ) {
+                options.forEach { selectionOption ->
+                    DropdownMenuItem(
+                        text = { Text(selectionOption) },
+                        onClick = {
+                            exerciseDone = selectionOption
+                            exerciseDoneError = false
+                            expanded = false
+                        }
+                    )
+                }
+            }
+        }
+
+
         val assistiveElementTextExercise = if (exerciseDoneError) "Error: Obligatori" else "*Obligatori"
         val assistiveElementColorExercise = if (exerciseDoneError) {
             MaterialTheme.colors.error
@@ -266,7 +304,7 @@ fun EditUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(10.dp))
+        Spacer(Modifier.height(2.dp))
 
         // sleepTime input
         OutlinedTextField(
@@ -298,7 +336,7 @@ fun EditUserStatisticsScreen(
             style = MaterialTheme.typography.caption,
         )
 
-        Spacer(Modifier.height(10.dp))
+        Spacer(Modifier.height(2.dp))
 
         // age input
         OutlinedTextField(
@@ -332,7 +370,9 @@ fun EditUserStatisticsScreen(
             color = assistiveElementColorAge,
             style = MaterialTheme.typography.caption,
         )
-        Spacer(Modifier.height(10.dp))
+
+        Spacer(Modifier.height(2.dp))
+
         // password input
         OutlinedTextField(
             value = password,
@@ -344,7 +384,7 @@ fun EditUserStatisticsScreen(
                     contentDescription = null
                 )
             },
-            label = { Text("Contraseña") },
+            label = { Text("Contrasenya") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             singleLine = true,
             colors = TextFieldDefaults.textFieldColors(
@@ -363,12 +403,12 @@ fun EditUserStatisticsScreen(
                         if (hidden) Res.drawable.eye_outline
                         else Res.drawable.eye_off_outline
                     )
-                    val description = if (hidden) "Ocultar contraseña" else "Revelar contraseña"
+                    val description = if (hidden) "Ocultar contrasenya" else "Revelar contrasenya"
                     Icon(painter = vector, contentDescription = description)
                 }
             }
         )
-        val assistiveElementTextPassword = if (passwordError) "Error: Obligatorio" else "*Obligatorio"
+        val assistiveElementTextPassword = if (passwordError) "Error: Obligatori" else "*Obligatori"
         val assistiveElementColorPassword = if (passwordError) {
             MaterialTheme.colors.error
         } else {
@@ -379,8 +419,32 @@ fun EditUserStatisticsScreen(
             color = assistiveElementColorPassword,
             style = MaterialTheme.typography.caption,
         )
+        Spacer(Modifier.height(5.dp))
+        TextButton(onClick = {navigateToScreenLogin()}){
+            Text("¿Ja tens compte?", color = Color.Blue)
+        }
+        Spacer(Modifier.height(5.dp))
+            if (viewModel.registerSucces.value == true){
+                Text("Register succes! redirecting...", color = green)
+                navigateToScreenLogin()
 
-        Row {
+            }
+            else if (viewModel.hasTriedRegister.value == true && viewModel.registerSucces.value == false) {
+                println("ERROR inserint")
+                Text("Format de contrasenya o email incorrectes", color = darkPink)
+            }
+
+
+
+        Spacer(Modifier.height(5.dp))
+        Row{
+            Button(
+                onClick = { onCancel()  },
+                colors = ButtonDefaults.textButtonColors(darkPink,pink)
+            ){
+                Text("Cancel·la")
+            }
+            Spacer(Modifier.width(5.dp))
             Button(
                 onClick = {
                     nameError = name.isBlank()
@@ -390,6 +454,7 @@ fun EditUserStatisticsScreen(
                     exerciseDoneError = exerciseDone.isBlank()
                     sleepTimeError = sleepTime.isBlank()
                     ageError = age.isBlank()
+                    passwordError = password.isBlank()
                     weightErrorNum = !isDecimal(weight)
                     sleepTimeErrorNum = !isDecimal(sleepTime)
                     ageErrorNum = !isNumeric(age)
@@ -401,11 +466,15 @@ fun EditUserStatisticsScreen(
                         !exerciseDoneError and
                         !sleepTimeError and
                         !ageError and
+                        !passwordError and
                         isDecimal(weight) and
                         isDecimal(sleepTime) and
-                        isNumeric(age)) {
+                        isNumeric(age)
+                    ) {
 
-                        usersViewModel.updateUser(user.copy(
+                        // add user
+                        val newUser = UserData(
+                            id = null,
                             name = name,
                             surname = lastName,
                             email = email,
@@ -413,23 +482,21 @@ fun EditUserStatisticsScreen(
                             exercise = exerciseDone,
                             hoursSleep = sleepTime.toDouble(),
                             age = age.toInt(),
-                            password = password
-                        ))
+                            password = password,
+                            userName = name,
+                            diet = null
+                        )
+                        viewModel.register(newUser)
+
                     }
-                    navViewModel.selectUserId = user.id
-                    navViewModel.navTo(Screen.Account)
+
                 },
                 colors = ButtonDefaults.textButtonColors(color1,color3)
             ){
                 Text("Envia")
             }
-            Spacer(Modifier.width(10.dp))
-            Button(
-                onClick = {onCancel() },
-                colors = ButtonDefaults.textButtonColors(Color.Red,color3)
-            ){
-                Text("Cancel·la")
-            }
+
+
         }
     }
 }
