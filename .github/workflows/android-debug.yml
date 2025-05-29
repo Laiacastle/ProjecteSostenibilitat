@@ -25,7 +25,7 @@ jobs:
         uses: ./.github/actions/setup-gradle
 
       - name: Build with Gradle
-        run: "./gradlew :composeApp:assembleDebug"
+        run: "./composeApp/gradlew assembleDebug"
 
       - name: Create path variables
         id: path_variables
