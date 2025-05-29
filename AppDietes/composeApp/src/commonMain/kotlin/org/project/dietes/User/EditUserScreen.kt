@@ -388,10 +388,6 @@ fun EditUserScreen(
             style = MaterialTheme.typography.caption,
         )
         Spacer(Modifier.height(5.dp))
-        TextButton(onClick = {navigateToScreenAccount()}){
-            Text("¿Ja tens compte?", color = Color.Blue)
-        }
-        Spacer(Modifier.height(5.dp))
         if (viewModel.hasTriedUpdate.value ==true && viewModel.updateSucces.value==false) {
             Text("Format de contrasenya o email incorrectes", color = darkPink)
         }else if (viewModel.updateSucces.value ==true){
